@@ -1,55 +1,101 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Bio</title>
+    <title>MY BIO - Ivan</title>
     <style>
         body {
-            background-image: url("https://avatars.mds.yandex.net/i?id=7a772733df57c750f72f1e7f1a902a08_l-8918938-images-thumbs&n=13");
+            background-image: url('https://avatars.mds.yandex.net/i?id=7a772733df57c750f72f1e7f1a902a08_l-8918938-images-thumbs&n=13');
             background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
             overflow: hidden;
-        }
-        .bio-container {
             position: relative;
-            width: 300px;
-            height: 200px;
-            background-color: rgba(0, 0, 0, 0.7);
-            border-radius: 15px;
-            color: white;
-            text-align: center;
-            margin: auto;
-            top: 50%;
-            transform: translateY(-50%);
-            padding: 20px;
             font-family: 'Arial', sans-serif;
         }
+
+        .bio-container {
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+            position: relative;
+            z-index: 1;
+        }
+
+        .bio-container h1 {
+            color: red;
+            font-size: 2.5em;
+            position: relative;
+        }
+
+        .bio-container p {
+            color: red;
+            font-size: 1.2em;
+        }
+
+        .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 20px auto;
+            border: 3px solid white;
+        }
+
         .snowflake {
             position: absolute;
             color: white;
-            font-size: 24px;
+            font-size: 1em;
+            pointer-events: none;
             animation: fall linear infinite;
         }
+
         @keyframes fall {
-            0% { top: -10%; }
-            100% { top: 100%; }
+            0% {
+                top: -10%;
+                opacity: 1;
+            }
+            100% {
+                top: 100%;
+                opacity: 0;
+            }
         }
     </style>
 </head>
 <body>
+
     <div class="bio-container">
-        <h1 style="font-family: 'Cursive', sans-serif;">MY BIO</h1>
-        <p>Number: +79515*****<br>Name: Ivan<br>Years: 14<br>tg: @Toxka7744</p>
+        <img src="https://raw.githubusercontent.com/invalidedst/invalidedst.github.io/refs/heads/main/IMG_20241226_110253_469.jpg" alt="Avatar" class="avatar">
+        <h1>MY BIO</h1>
+        <p>Имя: Ivan</p>
+        <p>Номер: +79515*****</p>
+        <p>Возраст: 14</p>
+        <p>Telegram: @Toxka7744</p>
     </div>
+
     <script>
-        for (let i = 0; i < 50; i++) {
-            let snowflake = document.createElement('div');
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
             snowflake.className = 'snowflake';
-            snowflake.innerHTML = '❄';
+            snowflake.innerHTML = '❄'; // Символ снежинки
             snowflake.style.left = Math.random() * 100 + 'vw';
-            snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
+            snowflake.style.animationDuration = Math.random() * 3 + 2 + 's'; // Случайная продолжительность падения
+            snowflake.style.fontSize = Math.random() * 1 + 0.5 + 'em'; // Случайный размер снежинки
             document.body.appendChild(snowflake);
+
+            // Удаляем снежинку после падения
+            setTimeout(() => {
+                snowflake.remove();
+            }, 5000);
         }
+
+        setInterval(createSnowflake, 300); // Создаем снежинку каждые 300 мс
     </script>
+
 </body>
 </html>
