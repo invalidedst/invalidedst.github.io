@@ -3,33 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Bio</title>
+    <title>My Bio - Ivan</title>
     <style>
-        body { background: url('https://avatars.mds.yandex.net/i?id=7a772733df57c750f72f1e7f1a902a08_l-8918938-images-thumbs&n=13') no-repeat center center fixed; }
-        .bio { background: rgba(0, 0, 0, 0.7); color: white; border-radius: 15px; padding: 20px; text-align: center; }
-        .menu { display: none; transition: all 0.5s; }
-        .menu-btn { cursor: pointer; }
+        body {
+            background-image: url('https://avatars.mds.yandex.net/i?id=7a772733df57c750f72f1e7f1a902a08_l-8918938-images-thumbs&n=13');
+            background-size: cover;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        .bio {
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            margin: 50px auto;
+            width: 300px;
+        }
+        .menu {
+            display: none;
+            transition: all 0.5s ease;
+        }
+        .menu-button {
+            cursor: pointer;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
     <div class="bio">
         <h1>My Bio</h1>
-        <p>Number: +7...</p>
         <p>Name: Ivan</p>
-        <p>Search: 14</p>
-        <div class="menu-btn" onclick="toggleMenu()">▼</div>
+        <p>Number: +7...</p>
+        <p>Contact: tg:@Toxka7744</p>
+        <div class="menu-button" onclick="toggleMenu()">▼</div>
         <div class="menu" id="menu">
-            <p>tg:@Toxka7744</p>
+            <p>Welcome to my menu!</p>
+            <button onclick="startGame()">Play Tic-Tac-Toe</button>
         </div>
-        <button onclick="playGame()">Play Tic-Tac-Toe</button>
     </div>
+
     <script>
         function toggleMenu() {
             const menu = document.getElementById('menu');
             menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
         }
-        function playGame() {
-            alert('Game feature coming soon!');
+
+        function startGame() {
+            alert('Starting Tic-Tac-Toe game against AI!');
+            // Game logic goes here
         }
     </script>
 </body>
