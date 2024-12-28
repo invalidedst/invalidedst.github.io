@@ -60,10 +60,22 @@
                 max-width: 90%;
             }
         }
-        
-        /* Скрытие второго блока */
-        .second-block {
-            display: none;
+
+        /* Стиль стрелочки */
+        .arrow {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 20px solid #ffd700;
+            transition: transform 0.3s ease;
+        }
+
+        .arrow:hover {
+            transform: translateY(-5px);
         }
     </style>
 </head>
@@ -83,6 +95,8 @@
         <div style="margin-top: 20px; text-align: center;">
             <button onclick="toggleBlock()">Переключить меню</button>
         </div>
+        
+        <div class="arrow"></div>
     </div>
 
     <script>
