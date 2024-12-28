@@ -8,43 +8,39 @@
         body {
             background-image: url('https://avatars.mds.yandex.net/i?id=7a772733df57c750f72f1e7f1a902a08_l-8918938-images-thumbs&n=13');
             background-size: cover;
-            color: white;
-            font-family: Arial, sans-serif;
             overflow: hidden;
         }
         .bio-container {
             background-color: rgba(0, 0, 0, 0.7);
+            color: white;
             border-radius: 15px;
             padding: 20px;
             width: 300px;
+            position: relative;
             margin: 100px auto;
             text-align: center;
-            position: relative;
         }
         .arrow {
             cursor: pointer;
             transition: transform 0.3s;
         }
         .arrow:hover {
-            transform: rotate(90deg);
+            transform: scale(1.1);
         }
         .menu {
             display: none;
             margin-top: 10px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            padding: 10px;
+            transition: max-height 0.5s ease-out;
         }
         .snowflake {
             position: absolute;
-            top: -10px;
-            left: 50%;
-            opacity: 0.8;
-            animation: fall 5s infinite;
+            color: white;
+            font-size: 1.5em;
+            animation: fall 5s linear infinite;
         }
         @keyframes fall {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(100vh); }
+            0% { top: -10%; }
+            100% { top: 100%; }
         }
     </style>
 </head>
@@ -56,15 +52,23 @@
         <p>Search: 14</p>
         <div class="arrow" onclick="toggleMenu()">➡️</div>
         <div class="menu" id="menu">
-            <p>Contact: tg:@Toxka7744</p>
+            <p>tg:@Toxka7744</p>
         </div>
-        <div class="snowflake">❄️</div>
     </div>
-
     <script>
         function toggleMenu() {
             const menu = document.getElementById('menu');
             menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
+    <script>
+        for (let i = 0; i < 50; i++) {
+            const snowflake = document.createElement('div');
+            snowflake.className = 'snowflake';
+            snowflake.innerHTML = '❄️';
+            snowflake.style.left = Math.random() * 100 + 'vw';
+            snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
+            document.body.appendChild(snowflake);
         }
     </script>
 </body>
