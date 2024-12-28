@@ -6,6 +6,8 @@
     <title>My Bio</title>
     <style>
         body {
+            margin: 0;
+            padding: 0;
             background-image: url('https://avatars.mds.yandex.net/i?id=7a772733df57c750f72f1e7f1a902a08_l-8918938-images-thumbs&n=13');
             background-size: cover;
             overflow: hidden;
@@ -23,50 +25,38 @@
             top: 50%;
             transform: translateY(-50%);
         }
-        .snow {
-            position: absolute;
-            width: 5px;
-            height: 5px;
-            background-color: white;
-            border-radius: 50%;
-            animation: fall 3s infinite;
-        }
-        @keyframes fall {
-            0% { top: -10px; }
-            100% { top: 100%; }
-        }
         .arrow {
             cursor: pointer;
             transition: transform 0.3s;
         }
         .arrow:hover {
-            transform: scale(1.1);
+            transform: translateY(-5px);
+        }
+        .snow {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            animation: snow 10s linear infinite;
+        }
+        @keyframes snow {
+            0% { top: -10%; }
+            100% { top: 100%; }
         }
     </style>
 </head>
 <body>
+    <div class="snow"></div>
     <div class="container">
         <h1>My Bio</h1>
         <p>Name: Ivan</p>
         <p>Number: +7...</p>
         <p>Search: 14</p>
         <div class="arrow" onclick="toggleMenu()">➡️</div>
-        <div id="menu" style="display:none;">
-            <p>tg:@Toxka7744</p>
-        </div>
     </div>
     <script>
         function toggleMenu() {
-            const menu = document.getElementById('menu');
-            menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
-        }
-    </script>
-    <script>
-        for (let i = 0; i < 50; i++) {
-            const snowflake = document.createElement('div');
-            snowflake.className = 'snow';
-            snowflake.style.left = Math.random() * window.innerWidth + 'px';
-            document.body.appendChild(snowflake);
+            // Code to open new menu with smooth transition
         }
     </script>
 </body>
