@@ -17,31 +17,65 @@
             align-items: center;
             height: 100vh;
             margin: 0;
+            overflow: hidden; /* Скрываем полосы прокрутки */
         }
 
         .container {
-            background-color: rgba(0, 0, 0, 0.7); /* Полупрозрачный черный фон */
+            background-color: rgba(0, 0, 0, 0.7);
             padding: 30px;
             border-radius: 10px;
             width: 300px;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5); /* Добавляем золотистую тень */
+            transition: transform 0.3s ease-in-out; /* Анимация плавного появления */
+            transform: scale(0); /* Изначально контейнер скрыт */
         }
 
         h1 {
             text-align: center;
             margin-bottom: 20px;
+            opacity: 0; /* Изначально заголовок невидим */
+            animation: fadeIn 1s forwards; /* Анимация появления заголовка */
         }
 
         ul {
             list-style-type: none;
             padding-left: 0;
+            opacity: 0; /* Изначально список невидим */
+            animation: fadeIn 1s 0.5s forwards; /* Задержка перед появлением списка */
         }
 
         li strong {
-            color: #ffd700; /* Золотистый цвет для выделенного текста */
+            color: #ffd700;
+        }
+
+        /* Анимации */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Медиа-запросы для адаптивности */
+        @media (max-width: 600px) {
+            .container {
+                width: auto;
+                max-width: 90%;
+            }
         }
     </style>
 </head>
-<body>
+<body onload="playMusic()"> <!-- Запуск музыки при загрузке страницы -->
+    <audio id="background-music" loop> <!-- Фоновая музыка -->
+        <source src="https://github.com/invalidedst/invalidedst.github.io/blob/main/2_5197292474090937908.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        function playMusic() {
+            document.getElementById('background-music').play(); // Воспроизведение музыки
+            document.querySelector('.container').style.transform = 'scale(1)'; // Показ контейнера
+        }
+    </script>
+
     <div class="container">
         <h1>MY BIO</h1>
         <ul>
