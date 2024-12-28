@@ -10,15 +10,30 @@
             background-size: cover;
             overflow: hidden;
         }
-        .bio-container {
-            background-color: rgba(0, 0, 0, 0.7);
-            color: white;
-            border-radius: 15px;
-            padding: 20px;
-            width: 300px;
+        .container {
             position: relative;
-            margin: 100px auto;
+            width: 300px;
+            height: 200px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            color: white;
             text-align: center;
+            padding: 20px;
+            margin: auto;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .snow {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background-color: white;
+            border-radius: 50%;
+            animation: fall 3s infinite;
+        }
+        @keyframes fall {
+            0% { top: -10px; }
+            100% { top: 100%; }
         }
         .arrow {
             cursor: pointer;
@@ -27,47 +42,30 @@
         .arrow:hover {
             transform: scale(1.1);
         }
-        .menu {
-            display: none;
-            margin-top: 10px;
-            transition: max-height 0.5s ease-out;
-        }
-        .snowflake {
-            position: absolute;
-            color: white;
-            font-size: 1.5em;
-            animation: fall 5s linear infinite;
-        }
-        @keyframes fall {
-            0% { top: -10%; }
-            100% { top: 100%; }
-        }
     </style>
 </head>
 <body>
-    <div class="bio-container">
+    <div class="container">
         <h1>My Bio</h1>
         <p>Name: Ivan</p>
         <p>Number: +7...</p>
         <p>Search: 14</p>
         <div class="arrow" onclick="toggleMenu()">➡️</div>
-        <div class="menu" id="menu">
+        <div id="menu" style="display:none;">
             <p>tg:@Toxka7744</p>
         </div>
     </div>
     <script>
         function toggleMenu() {
             const menu = document.getElementById('menu');
-            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+            menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
         }
     </script>
     <script>
         for (let i = 0; i < 50; i++) {
             const snowflake = document.createElement('div');
-            snowflake.className = 'snowflake';
-            snowflake.innerHTML = '❄️';
-            snowflake.style.left = Math.random() * 100 + 'vw';
-            snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
+            snowflake.className = 'snow';
+            snowflake.style.left = Math.random() * window.innerWidth + 'px';
             document.body.appendChild(snowflake);
         }
     </script>
