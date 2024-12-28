@@ -8,38 +8,40 @@
         body {
             background-image: url('https://avatars.mds.yandex.net/i?id=7a772733df57c750f72f1e7f1a902a08_l-8918938-images-thumbs&n=13');
             background-size: cover;
-            border-radius: 15px;
             color: white;
             font-family: Arial, sans-serif;
+            border-radius: 15px;
+            padding: 20px;
             text-align: center;
-            padding: 50px;
+        }
+        .light-effect {
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
         }
         .menu {
             display: none;
-            position: absolute;
-            background-color: rgba(0, 0, 0, 0.7);
-            border-radius: 10px;
-            padding: 10px;
             margin-top: 10px;
         }
         .arrow {
             cursor: pointer;
         }
-        .arrow:hover + .menu {
-            display: block;
-        }
     </style>
 </head>
 <body>
-    <h1>My Bio</h1>
-    <p>Name: Ivan</p>
+    <h1 class="light-effect">My Bio</h1>
     <p>Number: +7...</p>
+    <p>Name: Ivan</p>
     <p>Search: 14</p>
-    <div class="arrow">➤</div>
-    <div class="menu">
-        <p><a href="https://vk.com" style="color: white;">VK</a></p>
-        <p><a href="https://ok.ru" style="color: white;">OK</a></p>
-        <p><a href="https://t.me" style="color: white;">TG</a></p>
+    <div class="arrow" onclick="toggleMenu()">&#8595; Open Menu</div>
+    <div class="menu" id="menu">
+        <p><a href="https://vk.com/" style="color: white;">VK</a></p>
+        <p><a href="https://ok.ru/" style="color: white;">OK</a></p>
+        <p><a href="https://t.me/Toxka7744" style="color: white;">TG</a></p>
     </div>
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById('menu');
+            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
 </body>
 </html>
