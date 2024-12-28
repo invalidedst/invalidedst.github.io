@@ -8,51 +8,64 @@
         body {
             background-image: url('https://avatars.mds.yandex.net/i?id=7a772733df57c750f72f1e7f1a902a08_l-8918938-images-thumbs&n=13');
             background-size: cover;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
+            overflow: hidden;
         }
         .bio-container {
             background-color: rgba(0, 0, 0, 0.7);
             border-radius: 15px;
             padding: 20px;
+            width: 300px;
+            margin: 100px auto;
             text-align: center;
-            color: white;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+            position: relative;
         }
         .arrow {
             cursor: pointer;
-            margin-top: 20px;
-            font-size: 24px;
+            transition: transform 0.3s;
         }
-        .menu {
-            display: none;
-            margin-top: 10px;
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 10px;
-            padding: 10px;
-            color: black;
+        .arrow:hover {
+            transform: scale(1.1);
+        }
+        .snowflake {
+            position: absolute;
+            top: -10%;
+            left: 50%;
+            width: 10px;
+            height: 10px;
+            background: white;
+            border-radius: 50%;
+            animation: fall 5s infinite;
+        }
+        @keyframes fall {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(100vh); }
         }
     </style>
 </head>
 <body>
     <div class="bio-container">
         <h1>My Bio</h1>
-        <p>Number: +7...</p>
         <p>Name: Ivan</p>
-        <p>years: 14</p>
+        <p>Number: +7...</p>
+        <p>Search: 14</p>
         <div class="arrow" onclick="toggleMenu()">➡️</div>
-        <div class="menu" id="menu">
+        <div id="menu" style="display:none;">
             <p>tg:@Toxka7744</p>
         </div>
     </div>
-
     <script>
         function toggleMenu() {
             const menu = document.getElementById('menu');
-            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+            menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+        }
+    </script>
+    <script>
+        for (let i = 0; i < 20; i++) {
+            const snowflake = document.createElement('div');
+            snowflake.className = 'snowflake';
+            snowflake.style.left = Math.random() * 100 + 'vw';
+            snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
+            document.body.appendChild(snowflake);
         }
     </script>
 </body>
