@@ -12,7 +12,16 @@
             background-size: cover;
             overflow: hidden;
         }
-        .container {
+        .snow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .bio-container {
             position: relative;
             width: 300px;
             height: 200px;
@@ -24,39 +33,55 @@
             margin: auto;
             top: 50%;
             transform: translateY(-50%);
+            z-index: 2;
+        }
+        .menu {
+            display: none;
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            padding: 10px;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 3;
         }
         .arrow {
             cursor: pointer;
-            transition: transform 0.3s;
         }
-        .arrow:hover {
-            transform: translateY(-5px);
-        }
-        .snow {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            animation: snow 10s linear infinite;
-        }
-        @keyframes snow {
-            0% { top: -10%; }
-            100% { top: 100%; }
+        .arrow:hover + .menu {
+            display: block;
+            transition: all 0.5s ease;
         }
     </style>
 </head>
 <body>
     <div class="snow"></div>
-    <div class="container">
+    <div class="bio-container">
         <h1>My Bio</h1>
-        <p>Name: Ivan</p>
         <p>Number: +7...</p>
-        <p>Search: 14</p>
-        <div class="arrow" onclick="toggleMenu()">➡️</div>
+        <p>Name: Ivan</p>
+        <p>earch: 14</p>
+        <div class="arrow">➡️</div>
+        <div class="menu">
+            <p>Contact: tg:@Toxka7744</p>
+        </div>
     </div>
     <script>
-        function toggleMenu() {
-            // Code to open new menu with smooth transition
+        // Snow animation
+        const snowContainer = document.querySelector('.snow');
+        for (let i = 0; i < 100; i++) {
+            const snowflake = document.createElement('div');
+            snowflake.className = 'snowflake';
+            snowflake.style.position = 'absolute';
+            snowflake.style.backgroundColor = 'white';
+            snowflake.style.borderRadius = '50%';
+            snowflake.style.width = Math.random() * 5 + 'px';
+            snowflake.style.height = snowflake.style.width;
+            snowflake.style.left = Math.random() * 100 + 'vw';
+            snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
+            snowflake.style.opacity = Math.random();
+            snowContainer.appendChild(snowflake);
         }
     </script>
 </body>
