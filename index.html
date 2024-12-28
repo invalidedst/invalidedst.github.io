@@ -6,33 +6,40 @@
     <title>My Bio</title>
     <style>
         body {
-            background-image: url("https://avatars.mds.yandex.net/i?id=7a772733df57c750f72f1e7f1a902a08_l-8918938-images-thumbs&n=13");
+            background-image: url('https://avatars.mds.yandex.net/i?id=7a772733df57c750f72f1e7f1a902a08_l-8918938-images-thumbs&n=13');
             background-size: cover;
-            font-family: Arial, sans-serif;
+            border-radius: 15px;
             color: white;
+            font-family: Arial, sans-serif;
             text-align: center;
-            border-radius: 15px;
-            padding: 20px;
+            padding: 50px;
         }
-        .bio {
+        .menu {
+            display: none;
+            position: absolute;
             background-color: rgba(0, 0, 0, 0.7);
-            border-radius: 15px;
-            padding: 20px;
-            display: inline-block;
+            border-radius: 10px;
+            padding: 10px;
+            margin-top: 10px;
         }
         .arrow {
-            margin-top: 20px;
-            font-size: 24px;
+            cursor: pointer;
+        }
+        .arrow:hover + .menu {
+            display: block;
         }
     </style>
 </head>
 <body>
-    <div class="bio">
-        <h1>My Bio</h1>
-        <p>Name: Ivan</p>
-        <p>Number: +7...</p>
-        <p>Search: 14</p>
+    <h1>My Bio</h1>
+    <p>Name: Ivan</p>
+    <p>Number: +7...</p>
+    <p>Search: 14</p>
+    <div class="arrow">➤</div>
+    <div class="menu">
+        <p><a href="https://vk.com" style="color: white;">VK</a></p>
+        <p><a href="https://ok.ru" style="color: white;">OK</a></p>
+        <p><a href="https://t.me" style="color: white;">TG</a></p>
     </div>
-    <div class="arrow">➡️</div>
 </body>
 </html>
