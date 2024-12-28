@@ -8,38 +8,50 @@
         body {
             background-image: url('https://avatars.mds.yandex.net/i?id=7a772733df57c750f72f1e7f1a902a08_l-8918938-images-thumbs&n=13');
             background-size: cover;
-            color: white;
-            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .bio-container {
+            background-color: rgba(0, 0, 0, 0.7);
             border-radius: 15px;
             padding: 20px;
             text-align: center;
+            color: white;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
         }
-        .light-effect {
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+        .arrow {
+            cursor: pointer;
+            margin-top: 20px;
+            font-size: 24px;
         }
         .menu {
             display: none;
             margin-top: 10px;
-        }
-        .arrow {
-            cursor: pointer;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 10px;
+            color: black;
         }
     </style>
 </head>
 <body>
-    <h1 class="light-effect">My Bio</h1>
-    <p>Number: +7...</p>
-    <p>Name: Ivan</p>
-    <p>Search: 14</p>
-    <div class="arrow" onclick="toggleMenu()">&#8595; Open Menu</div>
-    <div class="menu" id="menu">
-        <p><a href="https://vk.com/" style="color: white;">VK</a></p>
-        <p><a href="https://ok.ru/" style="color: white;">OK</a></p>
-        <p><a href="https://t.me/Toxka7744" style="color: white;">TG</a></p>
+    <div class="bio-container">
+        <h1>My Bio</h1>
+        <p>Number: +7...</p>
+        <p>Name: Ivan</p>
+        <p>earch: 14</p>
+        <div class="arrow" onclick="toggleMenu()">➡️</div>
+        <div class="menu" id="menu">
+            <p>tg:@Toxka7744</p>
+        </div>
     </div>
+
     <script>
         function toggleMenu() {
-            var menu = document.getElementById('menu');
+            const menu = document.getElementById('menu');
             menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
         }
     </script>
