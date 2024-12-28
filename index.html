@@ -16,16 +16,16 @@
             border-radius: 15px;
             padding: 20px;
             text-align: center;
-            margin: 100px auto;
+            margin: 50px auto;
             width: 300px;
         }
         .menu {
             display: none;
             transition: all 0.5s;
         }
-        .toggle-menu {
+        .menu-button {
             cursor: pointer;
-            color: lightblue;
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -35,21 +35,9 @@
         <p>Number: +7...</p>
         <p>Name: Ivan</p>
         <p>Search: 14</p>
-        <span class="toggle-menu" onclick="toggleMenu()">▶</span>
+        <div class="menu-button" onclick="toggleMenu()">▼</div>
         <div class="menu" id="menu">
             <p>tg: @Toxka7744</p>
+            <button onclick="playGame()">Play Tic-Tac-Toe</button>
         </div>
-        <button onclick="startGame()">Play Snake</button>
-    </div>
-    <script>
-        function toggleMenu() {
-            const menu = document.getElementById('menu');
-            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
-        }
-        function startGame() {
-            alert('Starting Snake Game...');
-            // Game logic would go here
-        }
-    </script>
-</body>
-</html>
+    </
