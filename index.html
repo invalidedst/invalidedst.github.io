@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Bio</title>
+    <title>MY BIO</title>
     <style>
         body {
             margin: 0;
@@ -21,6 +21,18 @@
             pointer-events: none;
             z-index: 1;
         }
+        .snowflake {
+            position: absolute;
+            top: -10%;
+            color: white;
+            font-size: 1em;
+            opacity: 0.8;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(100vh); }
+        }
         .bio-container {
             position: relative;
             width: 300px;
@@ -28,60 +40,57 @@
             background-color: rgba(0, 0, 0, 0.7);
             border-radius: 15px;
             color: white;
-            text-align: center;
-            padding: 20px;
-            margin: auto;
-            top: 50%;
-            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             z-index: 2;
+            text-align: center;
         }
         .menu {
             display: none;
-            background-color: rgba(0, 0, 0, 0.8);
-            border-radius: 10px;
-            padding: 10px;
             position: absolute;
             top: 100%;
             left: 50%;
             transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            padding: 10px;
             z-index: 3;
         }
-        .arrow {
+        .menu-button {
             cursor: pointer;
-        }
-        .arrow:hover + .menu {
-            display: block;
-            transition: all 0.5s ease;
+            color: white;
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
     <div class="snow"></div>
     <div class="bio-container">
-        <h1>My Bio</h1>
+        <h1>MY BIO</h1>
         <p>Number: +7...</p>
         <p>Name: Ivan</p>
         <p>earch: 14</p>
-        <div class="arrow">➡️</div>
-        <div class="menu">
-            <p>Contact: tg:@Toxka7744</p>
+        <div class="menu-button" onclick="toggleMenu()">⬇️</div>
+        <div class="menu" id="menu">
+            <p>tg:@Toxka7744</p>
         </div>
     </div>
     <script>
-        // Snow animation
-        const snowContainer = document.querySelector('.snow');
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+        }
+        // Генерация снежинок
         for (let i = 0; i < 100; i++) {
             const snowflake = document.createElement('div');
             snowflake.className = 'snowflake';
-            snowflake.style.position = 'absolute';
-            snowflake.style.backgroundColor = 'white';
-            snowflake.style.borderRadius = '50%';
-            snowflake.style.width = Math.random() * 5 + 'px';
-            snowflake.style.height = snowflake.style.width;
+            snowflake.innerHTML = '❄';
             snowflake.style.left = Math.random() * 100 + 'vw';
             snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
-            snowflake.style.opacity = Math.random();
-            snowContainer.appendChild(snowflake);
+            snowflake.style.fontSize = Math.random() * 1 + 0.5 + 'em';
+            document.querySelector('.snow').appendChild(snowflake);
         }
     </script>
 </body>
