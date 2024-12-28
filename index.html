@@ -1,117 +1,52 @@
+# My Bio
+
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Моя страница</title>
+    <title>My Bio</title>
     <style>
-        /* Общий стиль */
         body {
             font-family: Arial, sans-serif;
-            background-image: url('https://avatars.mds.yandex.net/i?id=7a772733df57c750f72f1e7f1a902a08_l-8918938-images-thumbs&n=13');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            background-color: #f4f4f4;
+            color: #333;
             margin: 0;
-            overflow: hidden; /* Скрываем полосы прокрутки */
+            padding: 20px;
         }
-
-        .container {
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 30px;
-            border-radius: 10px;
-            width: 300px;
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5); /* Добавляем золотистую тень */
-            transition: transform 0.1s ease-in-out; /* Анимация плавного появления */
-        }
-
-        h1 {
+        header {
+            background: #007BFF;
+            color: white;
+            padding: 10px 0;
             text-align: center;
-            margin-bottom: 20px;
-            opacity: 0; /* Изначально заголовок невидим */
-            animation: fadeIn 1s forwards; /* Анимация появления заголовка */
         }
-
-        ul {
-            list-style-type: none;
-            padding-left: 0;
-            opacity: 0; /* Изначально список невидим */
-            animation: fadeIn 1s 0.25s forwards; /* Задержка перед появлением списка */
+        .bio {
+            margin: 20px 0;
+            padding: 20px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-
-        li strong {
-            color: #ffd700;
-        }
-
-        /* Анимации */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        /* Медиа-запросы для адаптивности */
-        @media (max-width: 600px) {
-            .container {
-                width: auto;
-                max-width: 90%;
-            }
-        }
-
-        /* Стиль стрелочки */
         .arrow {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            width: 0;
-            height: 0;
-            border-left: 10px solid transparent;
-            border-right: 10px solid transparent;
-            border-top: 20px solid #ffd700;
-            transition: transform 0.3s ease;
-        }
-
-        .arrow:hover {
-            transform: translateY(-5px);
+            display: inline-block;
+            margin-top: 20px;
+            font-size: 24px;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>MY BIO</h1>
-        <ul id="first-block">
-            <li><strong>Имя:</strong> Иван</li>
-            <li><strong>Возраст:</strong> 15 лет</li>
-        </ul>
-        <ul id="second-block" class="second-block">
-            <li><strong>TG:</strong> @Toxka7744</li>
-            <li><strong>Телефон:</strong> +7#########*</li>
-        </ul>
-        
-        <!-- Кнопка для переключения блоков -->
-        <div style="margin-top: 20px; text-align: center;">
-            <button onclick="toggleBlock()">Переключить меню</button>
-        </div>
-        
-        <div class="arrow"></div>
-    </div>
 
-    <script>
-        function toggleBlock() {
-            const firstBlock = document.getElementById("first-block");
-            const secondBlock = document.getElementById("second-block");
-            
-            if (firstBlock.style.display === "none") {
-                firstBlock.style.display = "block";
-                secondBlock.style.display = "none";
-            } else {
-                firstBlock.style.display = "none";
-                secondBlock.style.display = "block";
-            }
-        }
-    </script>
+<header>
+    <h1>My Bio</h1>
+</header>
+
+<div class="bio">
+    <h2>Name: Ivan</h2>
+    <p>Contact Number: +7...</p>
+    <p>Search: 14</p>
+    <div class="arrow" onclick="window.location.href='new_menu.html'">➡️</div>
+</div>
+
 </body>
 </html>
