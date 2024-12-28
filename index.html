@@ -6,31 +6,26 @@
     <title>My Bio</title>
     <style>
         body {
-            background: url('https://avatars.mds.yandex.net/i?id=7a772733df57c750f72f1e7f1a902a08_l-8918938-images-thumbs&n=13') no-repeat center center fixed;
-            overflow: hidden;
-            animation: snow 10s linear infinite;
-        }
-        @keyframes snow {
-            0% { background-position: 0 0; }
-            100% { background-position: 0 100%; }
+            background-image: url('https://avatars.mds.yandex.net/i?id=7a772733df57c750f72f1e7f1a902a08_l-8918938-images-thumbs&n=13');
+            background-size: cover;
+            color: white;
+            font-family: Arial, sans-serif;
         }
         .bio {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
             background: rgba(0, 0, 0, 0.7);
-            color: white;
-            padding: 20px;
             border-radius: 15px;
+            padding: 20px;
             text-align: center;
+            margin: 100px auto;
+            width: 300px;
         }
         .menu {
             display: none;
             transition: all 0.5s;
         }
-        .toggle-menu:hover + .menu {
-            display: block;
+        .toggle-menu {
+            cursor: pointer;
+            color: lightblue;
         }
     </style>
 </head>
@@ -40,8 +35,21 @@
         <p>Number: +7...</p>
         <p>Name: Ivan</p>
         <p>Search: 14</p>
-        <div class="toggle-menu">🔽</div>
-        <div class="menu">tg:@Toxka7744</div>
+        <span class="toggle-menu" onclick="toggleMenu()">▶</span>
+        <div class="menu" id="menu">
+            <p>tg: @Toxka7744</p>
+        </div>
+        <button onclick="startGame()">Play Snake</button>
     </div>
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+        }
+        function startGame() {
+            alert('Starting Snake Game...');
+            // Game logic would go here
+        }
+    </script>
 </body>
 </html>
