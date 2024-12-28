@@ -13,6 +13,9 @@
             align-items: center;
             height: 100vh;
             margin: 0;
+            overflow: hidden;
+            position: relative;
+            font-family: 'Arial', sans-serif;
         }
 
         .bio-container {
@@ -21,43 +24,50 @@
             padding: 20px;
             text-align: center;
             box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+            position: relative;
+            z-index: 1;
         }
 
         .bio-container h1 {
             color: white;
+            font-size: 2.5em;
+            position: relative;
+        }
+
+        .bio-container h1::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 50px;
+            background-image: url('https://example.com/winter-hat.png'); /* Замените на URL вашей шапки */
+            background-size: cover;
         }
 
         .bio-container p {
             color: white;
+            font-size: 1.2em;
         }
 
-        .menu {
-            display: none;
-            margin-top: 20px;
+        .snowflake {
+            position: absolute;
+            color: white;
+            font-size: 1em;
+            pointer-events: none;
+            animation: fall linear infinite;
         }
 
-        .menu-button {
-            background-color: white;
-            color: black;
-            border: none;
-            border-radius: 5px;
-            padding: 10px 20px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .menu-button:hover {
-            background-color: lightgray;
-        }
-
-        .game-button {
-            margin-top: 20px;
-            background-color: white;
-            color: black;
-            border: none;
-            border-radius: 5px;
-            padding: 10px 20px;
-            cursor: pointer;
+        @keyframes fall {
+            0% {
+                top: -10%;
+                opacity: 1;
+            }
+            100% {
+                top: 100%;
+                opacity: 0;
+            }
         }
     </style>
 </head>
@@ -66,25 +76,28 @@
     <div class="bio-container">
         <h1>MY BIO</h1>
         <p>Имя: Ivan</p>
-        <p>Номер: +7...</p>
+        <p>Номер: +79515*****</p>
+        <p>Возраст: 14</p>
         <p>Telegram: @Toxka7744</p>
-        <button class="menu-button" onclick="toggleMenu()">▼ Открыть меню</button>
-        <div class="menu" id="menu">
-            <p>Меню с дополнительной информацией...</p>
-        </div>
-        <button class="game-button" onclick="startGame()">Играть в крестики-нолики</button>
     </div>
 
     <script>
-        function toggleMenu() {
-            const menu = document.getElementById('menu');
-            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.className = 'snowflake';
+            snowflake.innerHTML = '❄'; // Символ снежинки
+            snowflake.style.left = Math.random() * 100 + 'vw';
+            snowflake.style.animationDuration = Math.random() * 3 + 2 + 's'; // Случайная продолжительность падения
+            snowflake.style.fontSize = Math.random() * 1 + 0.5 + 'em'; // Случайный размер снежинки
+            document.body.appendChild(snowflake);
+
+            // Удаляем снежинку после падения
+            setTimeout(() => {
+                snowflake.remove();
+            }, 5000);
         }
 
-        function startGame() {
-            alert('Запуск игры в крестики-нолики против ИИ!');
-            // Здесь можно добавить логику для игры
-        }
+        setInterval(createSnowflake, 300); // Создаем снежинку каждые 300 мс
     </script>
 
 </body>
