@@ -1,97 +1,48 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MY BIO</title>
+    <title>My Bio</title>
     <style>
         body {
-            margin: 0;
-            padding: 0;
-            background-image: url('https://avatars.mds.yandex.net/i?id=7a772733df57c750f72f1e7f1a902a08_l-8918938-images-thumbs&n=13');
-            background-size: cover;
+            background: url('https://avatars.mds.yandex.net/i?id=7a772733df57c750f72f1e7f1a902a08_l-8918938-images-thumbs&n=13') no-repeat center center fixed;
             overflow: hidden;
+            animation: snow 10s infinite;
         }
-        .snow {
+        @keyframes snow {
+            0% { background-position: 0 0; }
+            100% { background-position: 0 100%; }
+        }
+        .bio {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
-        .snowflake {
-            position: absolute;
-            top: -10%;
-            color: white;
-            font-size: 1em;
-            opacity: 0.8;
-            animation: fall linear infinite;
-        }
-        @keyframes fall {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(100vh); }
-        }
-        .bio-container {
-            position: relative;
-            width: 300px;
-            height: 200px;
-            background-color: rgba(0, 0, 0, 0.7);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.7);
             border-radius: 15px;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            z-index: 2;
+            padding: 20px;
             text-align: center;
+            color: white;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
         }
         .menu {
             display: none;
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: rgba(0, 0, 0, 0.8);
-            border-radius: 10px;
-            padding: 10px;
-            z-index: 3;
+            transition: all 0.5s;
         }
-        .menu-button {
-            cursor: pointer;
-            color: white;
-            margin-top: 10px;
+        .toggle-menu:hover + .menu {
+            display: block;
         }
     </style>
 </head>
 <body>
-    <div class="snow"></div>
-    <div class="bio-container">
-        <h1>MY BIO</h1>
+    <div class="bio">
+        <h1>My Bio</h1>
         <p>Number: +7...</p>
         <p>Name: Ivan</p>
-        <p>earch: 14</p>
-        <div class="menu-button" onclick="toggleMenu()">⬇️</div>
-        <div class="menu" id="menu">
-            <p>tg:@Toxka7744</p>
-        </div>
+        <p>Search: 14</p>
+        <div class="toggle-menu">🔽</div>
+        <div class="menu">Contact: tg:@Toxka7744</div>
     </div>
-    <script>
-        function toggleMenu() {
-            const menu = document.getElementById('menu');
-            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
-        }
-        // Генерация снежинок
-        for (let i = 0; i < 100; i++) {
-            const snowflake = document.createElement('div');
-            snowflake.className = 'snowflake';
-            snowflake.innerHTML = '❄';
-            snowflake.style.left = Math.random() * 100 + 'vw';
-            snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
-            snowflake.style.fontSize = Math.random() * 1 + 0.5 + 'em';
-            document.querySelector('.snow').appendChild(snowflake);
-        }
-    </script>
 </body>
 </html>
