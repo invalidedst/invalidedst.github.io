@@ -60,17 +60,44 @@
                 max-width: 90%;
             }
         }
+        
+        /* Скрытие второго блока */
+        .second-block {
+            display: none;
+        }
     </style>
 </head>
-<body> <!-- Удалено onload="playMusic()" -->
+<body>
     <div class="container">
         <h1>MY BIO</h1>
-        <ul>
-            <li><strong>TG:</strong> @Toxka7744</li>
-            <li><strong>Телефон:</strong> +7#########*</li>
+        <ul id="first-block">
             <li><strong>Имя:</strong> Иван</li>
             <li><strong>Возраст:</strong> 15 лет</li>
         </ul>
+        <ul id="second-block" class="second-block">
+            <li><strong>TG:</strong> @Toxka7744</li>
+            <li><strong>Телефон:</strong> +7#########*</li>
+        </ul>
+        
+        <!-- Кнопка для переключения блоков -->
+        <div style="margin-top: 20px; text-align: center;">
+            <button onclick="toggleBlock()">Переключить меню</button>
+        </div>
     </div>
+
+    <script>
+        function toggleBlock() {
+            const firstBlock = document.getElementById("first-block");
+            const secondBlock = document.getElementById("second-block");
+            
+            if (firstBlock.style.display === "none") {
+                firstBlock.style.display = "block";
+                secondBlock.style.display = "none";
+            } else {
+                firstBlock.style.display = "none";
+                secondBlock.style.display = "block";
+            }
+        }
+    </script>
 </body>
 </html>
