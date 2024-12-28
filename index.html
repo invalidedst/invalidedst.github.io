@@ -1,45 +1,78 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Bio - Ivan</title>
+    <title>MY BIO - Ivan</title>
     <style>
         body {
             background-image: url('https://avatars.mds.yandex.net/i?id=7a772733df57c750f72f1e7f1a902a08_l-8918938-images-thumbs&n=13');
             background-size: cover;
-            color: white;
-            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
         }
-        .bio {
+
+        .bio-container {
             background-color: rgba(0, 0, 0, 0.7);
             border-radius: 15px;
             padding: 20px;
             text-align: center;
-            margin: 50px auto;
-            width: 300px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
         }
+
+        .bio-container h1 {
+            color: white;
+        }
+
+        .bio-container p {
+            color: white;
+        }
+
         .menu {
             display: none;
-            transition: all 0.5s ease;
-        }
-        .menu-button {
-            cursor: pointer;
             margin-top: 20px;
+        }
+
+        .menu-button {
+            background-color: white;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .menu-button:hover {
+            background-color: lightgray;
+        }
+
+        .game-button {
+            margin-top: 20px;
+            background-color: white;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
-    <div class="bio">
-        <h1>My Bio</h1>
-        <p>Name: Ivan</p>
-        <p>Number: +7...</p>
-        <p>Contact: tg:@Toxka7744</p>
-        <div class="menu-button" onclick="toggleMenu()">▼</div>
+
+    <div class="bio-container">
+        <h1>MY BIO</h1>
+        <p>Имя: Ivan</p>
+        <p>Номер: +7...</p>
+        <p>Telegram: @Toxka7744</p>
+        <button class="menu-button" onclick="toggleMenu()">▼ Открыть меню</button>
         <div class="menu" id="menu">
-            <p>Welcome to my menu!</p>
-            <button onclick="startGame()">Play Tic-Tac-Toe</button>
+            <p>Меню с дополнительной информацией...</p>
         </div>
+        <button class="game-button" onclick="startGame()">Играть в крестики-нолики</button>
     </div>
 
     <script>
@@ -49,9 +82,10 @@
         }
 
         function startGame() {
-            alert('Starting Tic-Tac-Toe game against AI!');
-            // Game logic goes here
+            alert('Запуск игры в крестики-нолики против ИИ!');
+            // Здесь можно добавить логику для игры
         }
     </script>
+
 </body>
 </html>
