@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Модули для Юзербота</title>
+    <style>
+        :root {
+            --primary-color: #FF8C00;
+            --secondary-color: #FFD700; /* Более желтый оттенок */
+            --accent-color: #FF4500;
+            --background-color: #FFF3E0;
+            --text-color: #333;
+            --card-color: #fff;
+            --gradient-primary: linear-gradient(135deg, #FF8C00, #FFD700);
+            --gradient-secondary: linear-gradient(135deg, #FFD700, #FF4500);
+            --menu-bg: #FF8C00;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 215, 0, 0.4) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        /* Навигационное меню */
+        .nav-menu {
+            background-color: var(--menu-bg);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .menu-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .menu-list {
+            display: flex;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .menu-list li {
+            position: relative;
+        }
+        
+        .menu-list li a {
+            display: block;
+            padding: 15px 20px;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        .menu-list li a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .menu-list li.active a {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            min-width: 200px;
+            display: none;
+            z-index: 1;
+            border-radius: 0 0 4px 4px;
+            overflow: hidden;
+        }
+        
+        .menu-list li:hover .dropdown-menu {
+            display: block;
+        }
+        
+        .dropdown-menu a {
+            color: var(--text-color) !important;
+            padding: 12px 20px;
+            display: block;
+            transition: background-color 0.2s;
+        }
+        
+        .dropdown-menu a:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .hamburger-menu {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+            padding: 15px;
+        }
+        
+        .hamburger-menu span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: white;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .module-card {
+            background-color: var(--card-color);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(255, 140, 0, 0.1);
+            position: relative;
+        }
+        
+        .module-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(255, 140, 0, 0.2);
+        }
+        
+        .module-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-primary);
+            z-index: 1;
+        }
+        
+        .module-header {
+            background: var(--gradient-secondary);
+            padding: 15px 20px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .module-header:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 30%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.15));
+            pointer-events: none;
+        }
+        
+        .module-title {
+            font-size: 1.5rem;
+            margin: 0;
+        }
+        
+        .module-content {
+            padding: 20px;
+        }
+        
+        .module-install {
+            background-color: #f7f7f7;
+            padding: 12px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            margin: 15px 0;
+            overflow-x: auto;
+            position: relative;
+        }
+        
+        .copy-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 3px 8px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+        
+        .copy-btn:hover {
+            opacity: 1;
+        }
+        
+        .module-description {
+            margin: 15px 0;
+            line-height: 1.6;
+        }
+        
+        .features-title {
+            font-size: 1.1rem;
+            margin: 15px 0 10px;
+            color: var(--accent-color);
+        }
+        
+        .module-features {
+            list-style-type: none;
+        }
+        
+        .module-features li {
+            padding: 5px 0 5px 25px;
+            position: relative;
+        }
+        
+        .module-features li:before {
+            content: "✓";
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        @media (max-width: 768px) {
+            .modules-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .module-card {
+                margin-bottom: 15px;
+            }
+            
+            .menu-list {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 56px;
+                left: 0;
+                background-color: var(--menu-bg);
+            }
+            
+            .menu-list.active {
+                display: flex;
+            }
+            
+            .hamburger-menu {
+                display: flex;
+            }
+            
+            .dropdown-menu {
+                position: static;
+                box-shadow: none;
+                display: none;
+                width: 100%;
+                background-color: rgba(0, 0, 0, 0.1);
+            }
+            
+            .menu-list li.active .dropdown-menu {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Модули для Юзербота</h1>
+        <p>Коллекция полезных модулей для вашего юзербота</p>
+    </header>
+    
+    <nav class="nav-menu">
+        <div class="menu-container">
+            <div class="hamburger-menu" id="hamburger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="menu-list" id="menu-list">
+                <li class="active"><a href="#">Главная</a></li>
+                <li><a href="#">Категории</a>
+                    <div class="dropdown-menu">
+                        <a href="#">Интерфейс</a>
+                        <a href="#">Утилиты</a>
+                        <a href="#">Развлечения</a>
+                        <a href="#">Безопасность</a>
+                    </div>
+                </li>
+                <li><a href="#">Новые модули</a></li>
+                <li><a href="#">Популярные</a></li>
+                <li><a href="#">О проекте</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="modules-grid" id="modules-container">
+            <!-- НАЧАЛО СЕКЦИИ МОДУЛЕЙ - РЕДАКТИРУЙТЕ ЗДЕСЬ -->
+            
+            <!-- Модуль 1 -->
+            <div class="module-card">
+                <div class="module-header">
+                    <h2 class="module-title">TimeInNick</h2>
+                </div>
+                <div class="module-content">
+                    <div class="module-install" id="install-1">
+                        .dlm https://raw.githubusercontent.com/invalidedst/Modules/refs/heads/main/TimeInName.py
+                        <button class="copy-btn" onclick="copyToClipboard('install-1')">Копировать</button>
+                    </div>
+                    <div class="module-description">
+                        Модуль для отображения текущего времени в никнейме пользователя.
+                    </div>
+                    <h3 class="features-title">Особенности:</h3>
+                    <ul class="module-features">
+                        <li>Автоматическое обновление времени</li>
+                        <li>Настраиваемый формат времени</li>
+                        <li>Работает во всех чатах</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Модуль 2 -->
+            <div class="module-card">
+                <div class="module-header">
+                    <h2 class="module-title">AutoReply</h2>
+                </div>
+                <div class="module-content">
+                    <div class="module-install" id="install-2">
+                        .dlm https://raw.githubusercontent.com/invalidedst/Modules/refs/heads/main/AutoReply.py
+                        <button class="copy-btn" onclick="copyToClipboard('install-2')">Копировать</button>
+                    </div>
+                    <div class="module-description">
+                        Автоматический ответ на определенные сообщения в чатах.
+                    </div>
+                    <h3 class="features-title">Особенности:</h3>
+                    <ul class="module-features">
+                        <li>Настраиваемые шаблоны ответов</li>
+                        <li>Фильтрация по ключевым словам</li>
+                        <li>Поддержка регулярных выражений</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Модуль 3 -->
+            <div class="module-card">
+                <div class="module-header">
+                    <h2 class="module-title">ChatStats</h2>
+                </div>
+                <div class="module-content">
+                    <div class="module-install" id="install-3">
+                        .dlm https://raw.githubusercontent.com/invalidedst/Modules/refs/heads/main/ChatStats.py
+                        <button class="copy-btn" onclick="copyToClipboard('install-3')">Копировать</button>
+                    </div>
+                    <div class="module-description">
+                        Сбор и отображение статистики активности в чатах.
+                    </div>
+                    <h3 class="features-title">Особенности:</h3>
+                    <ul class="module-features">
+                        <li>Подсчет сообщений по пользователям</li>
+                        <li>Графики активности</li>
+                        <li>Экспорт статистики</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- КОНЕЦ СЕКЦИИ МОДУЛЕЙ -->
+        </div>
+    </div>
+
+    <script>
+        // Функция для копирования текста в буфер обмена
+        function copyToClipboard(elementId) {
+            const element = document.getElementById(elementId);
+            const text = element.textContent.trim();
+            
+            navigator.clipboard.writeText(text)
+                .then(() => {
+                    const button = element.querySelector('.copy-btn');
+                    const originalText = button.textContent;
+                    button.textContent = 'Скопировано!';
+                    setTimeout(() => {
+                        button.textContent = originalText;
+                    }, 2000);
+                })
+                .catch(err => {
+                    console.error('Не удалось скопировать текст: ', err);
+                });
+        }
+        
+        // Мобильное меню
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburgerMenu = document.getElementById('hamburger-menu');
+            const menuList = document.getElementById('menu-list');
+            
+            hamburgerMenu.addEventListener('click', function() {
+                menuList.classList.toggle('active');
+                hamburgerMenu.classList.toggle('active');
+            });
+            
+            // Обработка нажатий на элементы меню на мобильных
+            const menuItems = document.querySelectorAll('.menu-list > li');
+            menuItems.forEach(function(item) {
+                if (item.querySelector('.dropdown-menu')) {
+                    item.addEventListener('click', function(e) {
+                        if (window.innerWidth <= 768) {
+                            if (e.target === item.querySelector('a')) {
+                                e.preventDefault();
+                                item.classList.toggle('active');
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+  </html>
