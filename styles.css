@@ -73,32 +73,50 @@ body {
     font-family: 'Metal Mania', cursive;
     background: 
         /* Звездное поле */
-        radial-gradient(2px 2px at 20px 30px, var(--primary-color), transparent),
-        radial-gradient(1px 1px at 40px 70px, var(--secondary-color), transparent),
+        radial-gradient(3px 3px at 20px 30px, var(--primary-color), transparent),
+        radial-gradient(2px 2px at 40px 70px, var(--secondary-color), transparent),
         radial-gradient(1px 1px at 90px 40px, var(--accent-color), transparent),
         radial-gradient(2px 2px at 130px 80px, var(--primary-color), transparent),
         radial-gradient(1px 1px at 160px 30px, var(--secondary-color), transparent),
-        radial-gradient(1px 1px at 200px 100px, var(--primary-color), transparent),
-        radial-gradient(2px 2px at 300px 200px, var(--secondary-color), transparent),
-        radial-gradient(1px 1px at 450px 50px, var(--accent-color), transparent),
+        radial-gradient(2px 2px at 200px 100px, var(--primary-color), transparent),
+        radial-gradient(1px 1px at 300px 200px, var(--secondary-color), transparent),
+        radial-gradient(3px 3px at 450px 50px, var(--accent-color), transparent),
+        radial-gradient(1px 1px at 600px 150px, var(--primary-color), transparent),
+        radial-gradient(2px 2px at 750px 100px, var(--secondary-color), transparent),
+        /* Мистические свечения */
+        radial-gradient(circle at 15% 25%, var(--primary-color) 0%, transparent 25%),
+        radial-gradient(circle at 85% 75%, var(--secondary-color) 0%, transparent 30%),
+        radial-gradient(circle at 50% 50%, var(--accent-color) 0%, transparent 35%),
         /* Основной градиент */
         linear-gradient(135deg, var(--bg-start) 0%, var(--bg-mid-1) 25%, var(--bg-mid-2) 50%, var(--bg-mid-1) 75%, var(--bg-start) 100%);
     color: var(--text-color);
     overflow-x: hidden;
     min-height: 100vh;
     position: relative;
-    transition: all 0.5s ease;
+    transition: all 0.8s ease;
+    animation: backgroundPulse 10s ease-in-out infinite;
+}
+
+@keyframes backgroundPulse {
+    0%, 100% {
+        filter: brightness(1) contrast(1.1);
+    }
+    50% {
+        filter: brightness(1.1) contrast(1.2);
+    }
 }
 
 /* Красивое выделение текста */
 ::selection {
-    background: rgba(255, 255, 255, 0.2);
-    color: var(--primary-color);
+    background: var(--primary-color);
+    color: #000000;
+    text-shadow: 0 0 10px var(--accent-color);
 }
 
 ::-moz-selection {
-    background: rgba(255, 255, 255, 0.2);
-    color: var(--primary-color);
+    background: var(--primary-color);
+    color: #000000;
+    text-shadow: 0 0 10px var(--accent-color);
 }
 
 /* Анимированные частицы (вместо смайликов) */
@@ -224,44 +242,118 @@ body {
 .snowflake {
     position: absolute;
     color: var(--primary-color);
-    font-size: 20px;
-    animation: snowfall 8s infinite linear;
-    opacity: 0.7;
-    text-shadow: 0 0 10px var(--primary-color);
+    font-size: 18px;
+    opacity: 0.8;
+    text-shadow: 
+        0 0 15px var(--primary-color),
+        0 0 30px var(--secondary-color);
+    filter: drop-shadow(0 0 10px var(--primary-color));
 }
 
 .snowflake i {
-    animation: snowflakeRotate 4s infinite linear;
+    animation: snowflakeRotate 6s ease-in-out infinite;
 }
 
-@keyframes snowfall {
+/* Разные анимации для снежинок */
+.snowflake:nth-child(odd) {
+    animation: snowfallLeft 12s ease-in-out infinite;
+}
+
+.snowflake:nth-child(even) {
+    animation: snowfallRight 10s ease-in-out infinite;
+}
+
+.snowflake:nth-child(3n) {
+    animation: snowfallCenter 14s ease-in-out infinite;
+}
+
+@keyframes snowfallLeft {
     0% {
         top: -50px;
         opacity: 0;
-        transform: translateX(0) scale(0.5);
+        transform: translateX(0) scale(0.3) rotate(0deg);
     }
     10% {
-        opacity: 0.7;
-        transform: translateX(10px) scale(1);
+        opacity: 0.8;
+        transform: translateX(-20px) scale(1) rotate(45deg);
     }
-    50% {
-        transform: translateX(-10px) scale(1.2);
+    30% {
+        transform: translateX(30px) scale(1.1) rotate(180deg);
+    }
+    60% {
+        transform: translateX(-15px) scale(0.9) rotate(270deg);
         opacity: 1;
     }
     90% {
-        opacity: 0.7;
-        transform: translateX(5px) scale(1);
+        opacity: 0.6;
+        transform: translateX(10px) scale(1) rotate(360deg);
     }
     100% {
         top: 100vh;
         opacity: 0;
-        transform: translateX(0) scale(0.5);
+        transform: translateX(0) scale(0.3) rotate(405deg);
+    }
+}
+
+@keyframes snowfallRight {
+    0% {
+        top: -50px;
+        opacity: 0;
+        transform: translateX(0) scale(0.4) rotate(0deg);
+    }
+    15% {
+        opacity: 0.9;
+        transform: translateX(25px) scale(1.2) rotate(60deg);
+    }
+    40% {
+        transform: translateX(-30px) scale(0.8) rotate(180deg);
+    }
+    70% {
+        transform: translateX(20px) scale(1.1) rotate(300deg);
+        opacity: 1;
+    }
+    95% {
+        opacity: 0.5;
+        transform: translateX(-5px) scale(1) rotate(360deg);
+    }
+    100% {
+        top: 100vh;
+        opacity: 0;
+        transform: translateX(0) scale(0.4) rotate(420deg);
+    }
+}
+
+@keyframes snowfallCenter {
+    0% {
+        top: -50px;
+        opacity: 0;
+        transform: translateX(0) scale(0.5) rotate(0deg);
+    }
+    20% {
+        opacity: 0.7;
+        transform: translateX(-10px) scale(1) rotate(90deg);
+    }
+    50% {
+        transform: translateX(10px) scale(1.3) rotate(180deg);
+        opacity: 1;
+    }
+    80% {
+        transform: translateX(-5px) scale(0.9) rotate(270deg);
+        opacity: 0.8;
+    }
+    100% {
+        top: 100vh;
+        opacity: 0;
+        transform: translateX(0) scale(0.5) rotate(360deg);
     }
 }
 
 @keyframes snowflakeRotate {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% { transform: rotate(0deg) scale(1); }
+    25% { transform: rotate(90deg) scale(1.1); }
+    50% { transform: rotate(180deg) scale(0.9); }
+    75% { transform: rotate(270deg) scale(1.1); }
+    100% { transform: rotate(360deg) scale(1); }
 }
 
 /* Основной контейнер */
@@ -337,13 +429,12 @@ body {
     font-family: 'Nosifer', cursive;
     font-size: 4rem;
     margin-bottom: 1rem;
+    color: var(--primary-color);
     text-shadow: 
         0 0 20px var(--secondary-color),
+        0 0 40px var(--primary-color),
         0 5px 10px rgba(0, 0, 0, 0.8);
-    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    filter: drop-shadow(0 0 15px var(--primary-color));
 }
 
 .blood-text {
@@ -545,6 +636,138 @@ body {
 
 .bro-link .link-icon {
     color: #00ff00 !important;
+}
+
+/* Стили для био ссылки */
+.bio-link {
+    background: linear-gradient(135deg, #1a001a, #330033) !important;
+    border-color: #aa00ff !important;
+}
+
+.bio-link:hover {
+    border-color: #cc66ff !important;
+    box-shadow: 
+        0 10px 30px rgba(170, 0, 255, 0.5),
+        inset 0 0 30px rgba(204, 102, 255, 0.2) !important;
+}
+
+.bio-link .link-icon {
+    color: #aa00ff !important;
+}
+
+/* Музыкальный плеер */
+.music-player {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.music-toggle {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.music-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px var(--primary-color);
+}
+
+.music-menu {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+    margin-top: 5px;
+    width: 200px;
+}
+
+.music-menu.open {
+    display: flex;
+}
+
+.volume-control {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--primary-color);
+}
+
+.volume-slider {
+    flex: 1;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    outline: none;
+    -webkit-appearance: none;
+}
+
+.volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 15px;
+    height: 15px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 10px var(--primary-color);
+}
+
+.volume-slider::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 0 10px var(--primary-color);
+}
+
+.music-tracks {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.track-btn {
+    background: linear-gradient(135deg, var(--bg-mid-1), var(--bg-mid-2));
+    border: 1px solid var(--secondary-color);
+    border-radius: 8px;
+    padding: 8px 12px;
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.track-btn:hover {
+    background: linear-gradient(135deg, var(--bg-mid-2), var(--primary-color));
+    border-color: var(--primary-color);
+    transform: translateX(5px);
+}
+
+.track-btn.active {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-color: var(--accent-color);
+    box-shadow: 0 0 15px var(--primary-color);
 }
 
 /* Секция био */

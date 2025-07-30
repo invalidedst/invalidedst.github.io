@@ -468,10 +468,140 @@
         });
     }
 
+    // Музыкальный плеер
+    function initMusicPlayer() {
+        const musicToggle = document.querySelector('.music-toggle');
+        const musicMenu = document.querySelector('.music-menu');
+        const trackButtons = document.querySelectorAll('.track-btn');
+        const volumeSlider = document.querySelector('.volume-slider');
+        
+        let currentTrack = null;
+        let isPlaying = false;
+        
+        // Обработчик для кнопки открытия/закрытия музыкального меню
+        musicToggle.addEventListener('click', () => {
+            musicMenu.classList.toggle('open');
+        });
+        
+        // Закрытие меню при клике вне его
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.music-player')) {
+                musicMenu.classList.remove('open');
+            }
+        });
+        
+        // Обработчики для кнопок треков
+        trackButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const trackName = button.dataset.track;
+                
+                // Останавливаем текущий трек
+                if (currentTrack) {
+                    currentTrack.pause();
+                    currentTrack.currentTime = 0;
+                }
+                
+                // Убираем активный класс у всех кнопок
+                trackButtons.forEach(btn => btn.classList.remove('active'));
+                
+                // Добавляем активный класс к выбранной кнопке
+                button.classList.add('active');
+                
+                // Запускаем новый трек
+                currentTrack = document.getElementById(trackName + 'Track');
+                if (currentTrack) {
+                    currentTrack.volume = volumeSlider.value / 100;
+                    currentTrack.play().catch(e => console.log('Автовоспроизведение заблокировано'));
+                    isPlaying = true;
+                    
+                    // Обновляем иконку
+                    musicToggle.innerHTML = '<i class="fas fa-pause"></i>';
+                }
+            });
+        });
+        
+        // Обработчик громкости
+        volumeSlider.addEventListener('input', () => {
+            if (currentTrack) {
+                currentTrack.volume = volumeSlider.value / 100;
+            }
+        });
+        
+        // Переключение воспроизведения/паузы
+        musicToggle.addEventListener('dblclick', () => {
+            if (currentTrack) {
+                if (isPlaying) {
+                    currentTrack.pause();
+                    musicToggle.innerHTML = '<i class="fas fa-play"></i>';
+                    isPlaying = false;
+                } else {
+                    currentTrack.play().catch(e => console.log('Воспроизведение заблокировано'));
+                    musicToggle.innerHTML = '<i class="fas fa-pause"></i>';
+                    isPlaying = true;
+                }
+            }
+        });
+    }
+
+    // Улучшенное создание снежинок со случайной позицией
+    function createRandomSnowflakes() {
+        const snowflakesContainer = document.querySelector('.snowflakes');
+        if (!snowflakesContainer) return;
+        
+        // Очищаем существующие снежинки
+        snowflakesContainer.innerHTML = '';
+        
+        // Создаем 20 снежинок со случайными позициями
+        for (let i = 0; i < 20; i++) {
+            const snowflake = document.createElement('div');
+            snowflake.className = 'snowflake';
+            snowflake.innerHTML = '<i class="fas fa-snowflake"></i>';
+            
+            // Случайная позиция по горизонтали
+            snowflake.style.left = Math.random() * 100 + '%';
+            
+            // Случайная задержка анимации
+            snowflake.style.animationDelay = Math.random() * 8 + 's';
+            
+            // Случайная продолжительность анимации
+            const duration = 8 + Math.random() * 6; // от 8 до 14 секунд
+            snowflake.style.animationDuration = duration + 's';
+            
+            snowflakesContainer.appendChild(snowflake);
+        }
+        
+        // Периодически добавляем новые снежинки
+        setInterval(() => {
+            if (snowflakesContainer.children.length < 25) {
+                const snowflake = document.createElement('div');
+                snowflake.className = 'snowflake';
+                snowflake.innerHTML = '<i class="fas fa-snowflake"></i>';
+                snowflake.style.left = Math.random() * 100 + '%';
+                snowflake.style.animationDelay = '0s';
+                snowflake.style.animationDuration = (8 + Math.random() * 6) + 's';
+                
+                snowflakesContainer.appendChild(snowflake);
+                
+                // Удаляем снежинку через время её анимации
+                setTimeout(() => {
+                    if (snowflake.parentNode) {
+                        snowflake.remove();
+                    }
+                }, parseFloat(snowflake.style.animationDuration) * 1000);
+            }
+        }, 2000); // Новая снежинка каждые 2 секунды
+    }
+
     // Запуск всех эффектов после загрузки DOM
     document.addEventListener('DOMContentLoaded', function() {
         // Инициализируем переключатель тем первым
         initThemeSwitcher();
+        
+        // Инициализируем музыкальный плеер
+        initMusicPlayer();
+        
+        // Создаем случайные снежинки
+        createRandomSnowflakes();
         
         // Небольшая задержка для загрузки всех элементов
         setTimeout(() => {
@@ -483,7 +613,7 @@
             interactiveSocialLinks();
             flickerEffect();
             
-            console.log('🎨 Анимации и темы активированы');
+            console.log('🎨 Анимации, темы и музыка активированы');
         }, 300);
     });
 
