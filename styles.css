@@ -210,8 +210,8 @@ body {
     100% { transform: rotate(360deg) scale(0.8); }
 }
 
-/* Улучшенные капли (теперь энергетические лучи) */
-.blood-drops {
+/* Анимированные снежинки */
+.snowflakes {
     position: fixed;
     top: 0;
     left: 0;
@@ -221,36 +221,47 @@ body {
     z-index: 1;
 }
 
-.drop {
+.snowflake {
     position: absolute;
-    width: 3px;
-    height: 60px;
-    background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color), transparent);
-    border-radius: 2px;
-    animation: energyBeam 6s infinite linear;
-    opacity: 0.8;
-    box-shadow: 0 0 15px var(--primary-color);
+    color: var(--primary-color);
+    font-size: 20px;
+    animation: snowfall 8s infinite linear;
+    opacity: 0.7;
+    text-shadow: 0 0 10px var(--primary-color);
 }
 
-@keyframes energyBeam {
+.snowflake i {
+    animation: snowflakeRotate 4s infinite linear;
+}
+
+@keyframes snowfall {
     0% {
-        top: -60px;
+        top: -50px;
         opacity: 0;
-        transform: scale(0.5);
+        transform: translateX(0) scale(0.5);
     }
     10% {
-        opacity: 0.8;
-        transform: scale(1);
+        opacity: 0.7;
+        transform: translateX(10px) scale(1);
+    }
+    50% {
+        transform: translateX(-10px) scale(1.2);
+        opacity: 1;
     }
     90% {
-        opacity: 0.8;
-        transform: scale(1);
+        opacity: 0.7;
+        transform: translateX(5px) scale(1);
     }
     100% {
         top: 100vh;
         opacity: 0;
-        transform: scale(0.5);
+        transform: translateX(0) scale(0.5);
     }
+}
+
+@keyframes snowflakeRotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 /* Основной контейнер */
@@ -763,9 +774,8 @@ body {
         height: 3px;
     }
     
-    .drop {
-        width: 2px;
-        height: 40px;
+    .snowflake {
+        font-size: 16px;
     }
 }
 

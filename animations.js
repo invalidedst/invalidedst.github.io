@@ -4,6 +4,8 @@
 
     // Переключение тем
     function initThemeSwitcher() {
+        const themeToggle = document.querySelector('.theme-toggle');
+        const themeMenu = document.querySelector('.theme-menu');
         const themeButtons = document.querySelectorAll('.theme-btn');
         const body = document.body;
         
@@ -19,7 +21,19 @@
             }
         });
         
-        // Добавляем обработчики событий
+        // Обработчик для кнопки открытия/закрытия меню
+        themeToggle.addEventListener('click', () => {
+            themeMenu.classList.toggle('open');
+        });
+        
+        // Закрытие меню при клике вне его
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.theme-switcher')) {
+                themeMenu.classList.remove('open');
+            }
+        });
+        
+        // Добавляем обработчики событий для кнопок тем
         themeButtons.forEach(button => {
             button.addEventListener('click', () => {
                 const theme = button.dataset.theme;
@@ -39,6 +53,9 @@
                 
                 // Анимация при переключении
                 createThemeChangeEffect();
+                
+                // Закрываем меню
+                themeMenu.classList.remove('open');
             });
         });
     }
@@ -330,7 +347,7 @@
     function parallaxEffect() {
         window.addEventListener('scroll', () => {
             const scrolled = window.pageYOffset;
-            const parallaxElements = document.querySelectorAll('.blood-drops, .floating-particles, .geometric-shapes');
+            const parallaxElements = document.querySelectorAll('.snowflakes, .floating-particles, .geometric-shapes');
             
             parallaxElements.forEach((element, index) => {
                 const speed = 0.3 + index * 0.1;

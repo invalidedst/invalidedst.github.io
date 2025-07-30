@@ -34,12 +34,44 @@
             top: 20px;
             right: 20px;
             z-index: 1000;
-            display: flex;
-            gap: 10px;
             background: rgba(0, 0, 0, 0.8);
-            padding: 10px;
             border-radius: 15px;
             backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .theme-toggle {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .theme-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px var(--primary-color);
+        }
+        
+        .theme-menu {
+            display: none;
+            flex-direction: column;
+            gap: 8px;
+            padding: 10px;
+            margin-top: 5px;
+        }
+        
+        .theme-menu.open {
+            display: flex;
         }
         
         .theme-btn {
@@ -73,30 +105,35 @@
   <body data-theme="red">
       <!-- Переключатель тем -->
       <div class="theme-switcher">
-          <div class="theme-btn theme-red active" data-theme="red" title="Красная тема"></div>
-          <div class="theme-btn theme-green" data-theme="green" title="Зеленая тема"></div>
-          <div class="theme-btn theme-purple" data-theme="purple" title="Фиолетовая тема"></div>
-          <div class="theme-btn theme-pink" data-theme="pink" title="Розовая тема"></div>
-          <div class="theme-btn theme-blue" data-theme="blue" title="Синяя тема"></div>
+          <button class="theme-toggle" title="Сменить тему">
+              <i class="fas fa-palette"></i>
+          </button>
+          <div class="theme-menu">
+              <div class="theme-btn theme-red active" data-theme="red" title="Красная тема"></div>
+              <div class="theme-btn theme-green" data-theme="green" title="Зеленая тема"></div>
+              <div class="theme-btn theme-purple" data-theme="purple" title="Фиолетовая тема"></div>
+              <div class="theme-btn theme-pink" data-theme="pink" title="Розовая тема"></div>
+              <div class="theme-btn theme-blue" data-theme="blue" title="Синяя тема"></div>
+          </div>
       </div>
 
       <!-- Фоновые анимированные элементы -->
-    <div class="blood-drops">
-        <div class="drop" style="left: 5%; animation-delay: 0s;"></div>
-        <div class="drop" style="left: 15%; animation-delay: 0.3s;"></div>
-        <div class="drop" style="left: 25%; animation-delay: 0.6s;"></div>
-        <div class="drop" style="left: 35%; animation-delay: 0.9s;"></div>
-        <div class="drop" style="left: 45%; animation-delay: 1.2s;"></div>
-        <div class="drop" style="left: 55%; animation-delay: 1.5s;"></div>
-        <div class="drop" style="left: 65%; animation-delay: 1.8s;"></div>
-        <div class="drop" style="left: 75%; animation-delay: 2.1s;"></div>
-        <div class="drop" style="left: 85%; animation-delay: 2.4s;"></div>
-        <div class="drop" style="left: 95%; animation-delay: 2.7s;"></div>
-        <div class="drop" style="left: 12%; animation-delay: 3s;"></div>
-        <div class="drop" style="left: 22%; animation-delay: 3.3s;"></div>
-        <div class="drop" style="left: 32%; animation-delay: 3.6s;"></div>
-        <div class="drop" style="left: 42%; animation-delay: 3.9s;"></div>
-        <div class="drop" style="left: 52%; animation-delay: 4.2s;"></div>
+    <div class="snowflakes">
+        <div class="snowflake" style="left: 5%; animation-delay: 0s;"><i class="fas fa-snowflake"></i></div>
+        <div class="snowflake" style="left: 15%; animation-delay: 0.3s;"><i class="fas fa-snowflake"></i></div>
+        <div class="snowflake" style="left: 25%; animation-delay: 0.6s;"><i class="fas fa-snowflake"></i></div>
+        <div class="snowflake" style="left: 35%; animation-delay: 0.9s;"><i class="fas fa-snowflake"></i></div>
+        <div class="snowflake" style="left: 45%; animation-delay: 1.2s;"><i class="fas fa-snowflake"></i></div>
+        <div class="snowflake" style="left: 55%; animation-delay: 1.5s;"><i class="fas fa-snowflake"></i></div>
+        <div class="snowflake" style="left: 65%; animation-delay: 1.8s;"><i class="fas fa-snowflake"></i></div>
+        <div class="snowflake" style="left: 75%; animation-delay: 2.1s;"><i class="fas fa-snowflake"></i></div>
+        <div class="snowflake" style="left: 85%; animation-delay: 2.4s;"><i class="fas fa-snowflake"></i></div>
+        <div class="snowflake" style="left: 95%; animation-delay: 2.7s;"><i class="fas fa-snowflake"></i></div>
+        <div class="snowflake" style="left: 12%; animation-delay: 3s;"><i class="fas fa-snowflake"></i></div>
+        <div class="snowflake" style="left: 22%; animation-delay: 3.3s;"><i class="fas fa-snowflake"></i></div>
+        <div class="snowflake" style="left: 32%; animation-delay: 3.6s;"><i class="fas fa-snowflake"></i></div>
+        <div class="snowflake" style="left: 42%; animation-delay: 3.9s;"><i class="fas fa-snowflake"></i></div>
+        <div class="snowflake" style="left: 52%; animation-delay: 4.2s;"><i class="fas fa-snowflake"></i></div>
     </div>
 
     <div class="floating-particles">
