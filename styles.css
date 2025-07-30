@@ -15,19 +15,17 @@ body {
     overflow-x: hidden;
     min-height: 100vh;
     position: relative;
-    user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
 }
 
-/* Защита от выделения текста */
+/* Красивое выделение текста */
 ::selection {
-    background: transparent;
+    background: rgba(255, 68, 68, 0.3);
+    color: #ffffff;
 }
 
 ::-moz-selection {
-    background: transparent;
+    background: rgba(255, 68, 68, 0.3);
+    color: #ffffff;
 }
 
 /* Анимация капель крови */
