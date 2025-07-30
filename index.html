@@ -26,11 +26,61 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <link rel="stylesheet" href="styles.css">
+    
+    <!-- Переключатель тем -->
+    <style>
+        .theme-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            display: flex;
+            gap: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 10px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .theme-btn {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .theme-btn:hover {
+            transform: scale(1.2);
+            border-color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .theme-btn.active {
+            transform: scale(1.3);
+            border-color: white;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+        
+        .theme-red { background: linear-gradient(45deg, #ff0000, #cc0000); }
+        .theme-green { background: linear-gradient(45deg, #00ff00, #00cc00); }
+        .theme-purple { background: linear-gradient(45deg, #aa00ff, #6600cc); }
+        .theme-pink { background: linear-gradient(45deg, #ff69b4, #ff1493); }
+        .theme-blue { background: linear-gradient(45deg, #00aaff, #0066cc); }
+    </style>
 </head>
-<body>
-    <!-- Убираем экран блокировки -->
+  <body data-theme="red">
+      <!-- Переключатель тем -->
+      <div class="theme-switcher">
+          <div class="theme-btn theme-red active" data-theme="red" title="Красная тема"></div>
+          <div class="theme-btn theme-green" data-theme="green" title="Зеленая тема"></div>
+          <div class="theme-btn theme-purple" data-theme="purple" title="Фиолетовая тема"></div>
+          <div class="theme-btn theme-pink" data-theme="pink" title="Розовая тема"></div>
+          <div class="theme-btn theme-blue" data-theme="blue" title="Синяя тема"></div>
+      </div>
 
-    <!-- Фоновые анимированные элементы -->
+      <!-- Фоновые анимированные элементы -->
     <div class="blood-drops">
         <div class="drop" style="left: 5%; animation-delay: 0s;"></div>
         <div class="drop" style="left: 15%; animation-delay: 0.3s;"></div>
@@ -49,15 +99,25 @@
         <div class="drop" style="left: 52%; animation-delay: 4.2s;"></div>
     </div>
 
-    <div class="floating-hearts">
-        <div class="heart">💀</div>
-        <div class="heart">🖤</div>
-        <div class="heart">⚰️</div>
-        <div class="heart">🔥</div>
-        <div class="heart">💀</div>
-        <div class="heart">🖤</div>
-        <div class="heart">⚡</div>
-        <div class="heart">🔪</div>
+    <div class="floating-particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <div class="geometric-shapes">
+        <div class="shape triangle"></div>
+        <div class="shape circle"></div>
+        <div class="shape square"></div>
+        <div class="shape triangle"></div>
+        <div class="shape circle"></div>
     </div>
 
     <!-- Основной контент -->
@@ -89,7 +149,7 @@
                     </div>
                     <div class="detail-item">
                         <i class="fas fa-code"></i>
-                        <span>Russian(100%) Python(60%)</span>
+                        <span>Python • Russian</span>
                     </div>
                 </div>
             </div>

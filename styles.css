@@ -1,6 +1,67 @@
 /* Импорт готических шрифтов */
 @import url('https://fonts.googleapis.com/css2?family=Creepster&family=Nosifer&family=Chiller&family=Metal+Mania&display=swap');
 
+/* CSS переменные для тем */
+:root {
+    --primary-color: #ff4444;
+    --secondary-color: #cc0000;
+    --accent-color: #ff6666;
+    --bg-start: #0a0a0a;
+    --bg-mid-1: #1a0000;
+    --bg-mid-2: #330000;
+    --text-color: #ff4444;
+}
+
+[data-theme="red"] {
+    --primary-color: #ff4444;
+    --secondary-color: #cc0000;
+    --accent-color: #ff6666;
+    --bg-start: #0a0a0a;
+    --bg-mid-1: #1a0000;
+    --bg-mid-2: #330000;
+    --text-color: #ff4444;
+}
+
+[data-theme="green"] {
+    --primary-color: #44ff44;
+    --secondary-color: #00cc00;
+    --accent-color: #66ff66;
+    --bg-start: #0a0a0a;
+    --bg-mid-1: #001a00;
+    --bg-mid-2: #003300;
+    --text-color: #44ff44;
+}
+
+[data-theme="purple"] {
+    --primary-color: #aa44ff;
+    --secondary-color: #6600cc;
+    --accent-color: #cc66ff;
+    --bg-start: #0a0a0a;
+    --bg-mid-1: #1a001a;
+    --bg-mid-2: #330033;
+    --text-color: #aa44ff;
+}
+
+[data-theme="pink"] {
+    --primary-color: #ff69b4;
+    --secondary-color: #ff1493;
+    --accent-color: #ffb6c1;
+    --bg-start: #0a0a0a;
+    --bg-mid-1: #1a0010;
+    --bg-mid-2: #330020;
+    --text-color: #ff69b4;
+}
+
+[data-theme="blue"] {
+    --primary-color: #44aaff;
+    --secondary-color: #0066cc;
+    --accent-color: #66ccff;
+    --bg-start: #0a0a0a;
+    --bg-mid-1: #001a1a;
+    --bg-mid-2: #003366;
+    --text-color: #44aaff;
+}
+
 /* Основные стили и сброс */
 * {
     margin: 0;
@@ -11,40 +72,145 @@
 body {
     font-family: 'Metal Mania', cursive;
     background: 
-        /* Звезды и точки */
-        radial-gradient(2px 2px at 20px 30px, #ff4444, transparent),
-        radial-gradient(1px 1px at 40px 70px, #cc0000, transparent),
-        radial-gradient(1px 1px at 90px 40px, #ff6666, transparent),
-        radial-gradient(2px 2px at 130px 80px, #ff4444, transparent),
-        radial-gradient(1px 1px at 160px 30px, #cc0000, transparent),
+        /* Звездное поле */
+        radial-gradient(2px 2px at 20px 30px, var(--primary-color), transparent),
+        radial-gradient(1px 1px at 40px 70px, var(--secondary-color), transparent),
+        radial-gradient(1px 1px at 90px 40px, var(--accent-color), transparent),
+        radial-gradient(2px 2px at 130px 80px, var(--primary-color), transparent),
+        radial-gradient(1px 1px at 160px 30px, var(--secondary-color), transparent),
+        radial-gradient(1px 1px at 200px 100px, var(--primary-color), transparent),
+        radial-gradient(2px 2px at 300px 200px, var(--secondary-color), transparent),
+        radial-gradient(1px 1px at 450px 50px, var(--accent-color), transparent),
         /* Основной градиент */
-        linear-gradient(135deg, #0a0a0a 0%, #1a0000 25%, #330000 50%, #1a0000 75%, #0a0a0a 100%),
-        /* Текстура */
-        repeating-linear-gradient(
-            45deg,
-            transparent,
-            transparent 2px,
-            rgba(204, 0, 0, 0.03) 2px,
-            rgba(204, 0, 0, 0.03) 4px
-        );
-    color: #ff4444;
+        linear-gradient(135deg, var(--bg-start) 0%, var(--bg-mid-1) 25%, var(--bg-mid-2) 50%, var(--bg-mid-1) 75%, var(--bg-start) 100%);
+    color: var(--text-color);
     overflow-x: hidden;
     min-height: 100vh;
     position: relative;
+    transition: all 0.5s ease;
 }
 
 /* Красивое выделение текста */
 ::selection {
-    background: rgba(255, 68, 68, 0.3);
-    color: #ffffff;
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--primary-color);
 }
 
 ::-moz-selection {
-    background: rgba(255, 68, 68, 0.3);
-    color: #ffffff;
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--primary-color);
 }
 
-/* Анимация капель крови */
+/* Анимированные частицы (вместо смайликов) */
+.floating-particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: radial-gradient(circle, var(--primary-color), transparent);
+    border-radius: 50%;
+    animation: floatParticle 8s ease-in-out infinite;
+    opacity: 0.6;
+    box-shadow: 0 0 10px var(--primary-color);
+}
+
+.particle:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 8s; }
+.particle:nth-child(2) { left: 20%; animation-delay: 1s; animation-duration: 10s; }
+.particle:nth-child(3) { left: 30%; animation-delay: 2s; animation-duration: 7s; }
+.particle:nth-child(4) { left: 40%; animation-delay: 3s; animation-duration: 9s; }
+.particle:nth-child(5) { left: 50%; animation-delay: 4s; animation-duration: 11s; }
+.particle:nth-child(6) { left: 60%; animation-delay: 1.5s; animation-duration: 8s; }
+.particle:nth-child(7) { left: 70%; animation-delay: 2.5s; animation-duration: 10s; }
+.particle:nth-child(8) { left: 80%; animation-delay: 3.5s; animation-duration: 9s; }
+.particle:nth-child(9) { left: 90%; animation-delay: 4.5s; animation-duration: 7s; }
+.particle:nth-child(10) { left: 15%; animation-delay: 5s; animation-duration: 8s; }
+
+@keyframes floatParticle {
+    0% {
+        transform: translateY(100vh) rotate(0deg) scale(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.6;
+        transform: translateY(90vh) rotate(36deg) scale(1);
+    }
+    50% {
+        transform: translateY(50vh) rotate(180deg) scale(1.5);
+        opacity: 1;
+    }
+    90% {
+        opacity: 0.6;
+        transform: translateY(10vh) rotate(324deg) scale(1);
+    }
+    100% {
+        transform: translateY(-10vh) rotate(360deg) scale(0);
+        opacity: 0;
+    }
+}
+
+/* Геометрические фигуры */
+.geometric-shapes {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.shape {
+    position: absolute;
+    animation: rotateShape 15s linear infinite;
+    opacity: 0.1;
+    border: 2px solid var(--primary-color);
+}
+
+.triangle {
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 25px solid var(--accent-color);
+    border-top: none;
+}
+
+.circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--secondary-color), transparent);
+}
+
+.square {
+    width: 25px;
+    height: 25px;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    transform: rotate(45deg);
+}
+
+.shape:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
+.shape:nth-child(2) { top: 40%; right: 15%; animation-delay: 3s; }
+.shape:nth-child(3) { bottom: 30%; left: 20%; animation-delay: 6s; }
+.shape:nth-child(4) { top: 60%; left: 60%; animation-delay: 9s; }
+.shape:nth-child(5) { bottom: 20%; right: 25%; animation-delay: 12s; }
+
+@keyframes rotateShape {
+    0% { transform: rotate(0deg) scale(0.8); }
+    50% { transform: rotate(180deg) scale(1.2); }
+    100% { transform: rotate(360deg) scale(0.8); }
+}
+
+/* Улучшенные капли (теперь энергетические лучи) */
 .blood-drops {
     position: fixed;
     top: 0;
@@ -57,27 +223,24 @@ body {
 
 .drop {
     position: absolute;
-    width: 6px;
-    height: 50px;
-    background: linear-gradient(to bottom, #ff0000, #cc0000, #800000);
-    border-radius: 50px;
-    animation: bloodDrop 8s infinite linear;
+    width: 3px;
+    height: 60px;
+    background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color), transparent);
+    border-radius: 2px;
+    animation: energyBeam 6s infinite linear;
     opacity: 0.8;
-    box-shadow: 0 0 10px rgba(204, 0, 0, 0.5);
+    box-shadow: 0 0 15px var(--primary-color);
 }
 
-@keyframes bloodDrop {
+@keyframes energyBeam {
     0% {
-        top: -50px;
+        top: -60px;
         opacity: 0;
         transform: scale(0.5);
     }
     10% {
         opacity: 0.8;
         transform: scale(1);
-    }
-    50% {
-        transform: scale(1.2);
     }
     90% {
         opacity: 0.8;
@@ -87,47 +250,6 @@ body {
         top: 100vh;
         opacity: 0;
         transform: scale(0.5);
-    }
-}
-
-/* Плавающие элементы */
-.floating-hearts {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 1;
-}
-
-.heart {
-    position: absolute;
-    font-size: 2rem;
-    animation: float 6s ease-in-out infinite;
-    opacity: 0.3;
-}
-
-.heart:nth-child(1) { left: 10%; animation-delay: 0s; }
-.heart:nth-child(2) { left: 30%; animation-delay: 1s; }
-.heart:nth-child(3) { left: 50%; animation-delay: 2s; }
-.heart:nth-child(4) { left: 70%; animation-delay: 3s; }
-.heart:nth-child(5) { left: 90%; animation-delay: 4s; }
-
-@keyframes float {
-    0%, 100% {
-        transform: translateY(100vh) rotate(0deg);
-        opacity: 0;
-    }
-    10% {
-        opacity: 0.3;
-    }
-    50% {
-        transform: translateY(50vh) rotate(180deg);
-        opacity: 0.6;
-    }
-    90% {
-        opacity: 0.3;
     }
 }
 
@@ -155,13 +277,13 @@ body {
 .avatar-border {
     width: 150px;
     height: 150px;
-    border: 3px solid #cc0000;
+    border: 3px solid var(--secondary-color);
     border-radius: 50%;
     padding: 10px;
-    background: linear-gradient(45deg, #1a0000, #330000);
+    background: linear-gradient(45deg, var(--bg-mid-1), var(--bg-mid-2));
     box-shadow: 
-        0 0 30px #cc0000,
-        inset 0 0 30px rgba(204, 0, 0, 0.3);
+        0 0 30px var(--secondary-color),
+        inset 0 0 30px rgba(255, 255, 255, 0.1);
     animation: pulseGlow 2s ease-in-out infinite alternate;
 }
 
@@ -169,27 +291,27 @@ body {
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    background: linear-gradient(135deg, #330000, #660000);
+    background: linear-gradient(135deg, var(--bg-mid-2), var(--secondary-color));
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 4rem;
-    color: #ff4444;
-    text-shadow: 0 0 20px #cc0000;
+    color: var(--primary-color);
+    text-shadow: 0 0 20px var(--secondary-color);
     animation: rotate 4s linear infinite;
 }
 
 @keyframes pulseGlow {
     0% {
         box-shadow: 
-            0 0 30px #cc0000,
-            inset 0 0 30px rgba(204, 0, 0, 0.3);
+            0 0 30px var(--secondary-color),
+            inset 0 0 30px rgba(255, 255, 255, 0.1);
         transform: scale(1);
     }
     100% {
         box-shadow: 
-            0 0 50px #ff0000,
-            inset 0 0 50px rgba(255, 0, 0, 0.5);
+            0 0 50px var(--primary-color),
+            inset 0 0 50px rgba(255, 255, 255, 0.2);
         transform: scale(1.05);
     }
 }
@@ -205,14 +327,17 @@ body {
     font-size: 4rem;
     margin-bottom: 1rem;
     text-shadow: 
-        0 0 20px #cc0000,
+        0 0 20px var(--secondary-color),
         0 5px 10px rgba(0, 0, 0, 0.8);
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .blood-text {
     display: inline-block;
     animation: bloodText 3s ease-in-out infinite;
-    color: #ff1111;
 }
 
 .blood-text:nth-child(1) { animation-delay: 0s; }
@@ -222,13 +347,9 @@ body {
 
 @keyframes bloodText {
     0%, 100% {
-        color: #ff4444;
-        text-shadow: 0 0 20px #cc0000;
         transform: translateY(0) scale(1);
     }
     50% {
-        color: #ff0000;
-        text-shadow: 0 0 30px #ff0000;
         transform: translateY(-5px) scale(1.1);
     }
 }
@@ -242,13 +363,13 @@ body {
 }
 
 .detail-item {
-    background: linear-gradient(135deg, #1a0000, #330000);
+    background: linear-gradient(135deg, var(--bg-mid-1), var(--bg-mid-2));
     padding: 1rem 1.5rem;
     border-radius: 25px;
-    border: 2px solid #cc0000;
+    border: 2px solid var(--secondary-color);
     box-shadow: 
-        0 5px 15px rgba(204, 0, 0, 0.3),
-        inset 0 0 20px rgba(255, 68, 68, 0.1);
+        0 5px 15px rgba(0, 0, 0, 0.3),
+        inset 0 0 20px rgba(255, 255, 255, 0.05);
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -259,25 +380,25 @@ body {
 .detail-item:hover {
     transform: translateY(-3px) scale(1.05);
     box-shadow: 
-        0 10px 25px rgba(204, 0, 0, 0.5),
-        inset 0 0 30px rgba(255, 68, 68, 0.2);
+        0 10px 25px rgba(0, 0, 0, 0.5),
+        inset 0 0 30px rgba(255, 255, 255, 0.1);
 }
 
 .detail-item i {
     font-size: 1.2rem;
-    color: #ff4444;
+    color: var(--primary-color);
 }
 
 @keyframes glow {
     0% {
         box-shadow: 
-            0 5px 15px rgba(204, 0, 0, 0.3),
-            inset 0 0 20px rgba(255, 68, 68, 0.1);
+            0 5px 15px rgba(0, 0, 0, 0.3),
+            inset 0 0 20px rgba(255, 255, 255, 0.05);
     }
     100% {
         box-shadow: 
-            0 5px 15px rgba(255, 0, 0, 0.5),
-            inset 0 0 20px rgba(255, 68, 68, 0.3);
+            0 5px 15px var(--primary-color),
+            inset 0 0 20px rgba(255, 255, 255, 0.1);
     }
 }
 
@@ -287,8 +408,8 @@ body {
     font-size: 2.5rem;
     text-align: center;
     margin-bottom: 2rem;
-    color: #ff4444;
-    text-shadow: 0 0 20px #cc0000;
+    color: var(--primary-color);
+    text-shadow: 0 0 20px var(--secondary-color);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -321,12 +442,12 @@ body {
 }
 
 .social-link {
-    background: linear-gradient(135deg, #1a0000, #330000);
-    border: 2px solid #cc0000;
+    background: linear-gradient(135deg, var(--bg-mid-1), var(--bg-mid-2));
+    border: 2px solid var(--secondary-color);
     border-radius: 15px;
     padding: 1.5rem;
     text-decoration: none;
-    color: #ff4444;
+    color: var(--text-color);
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -342,7 +463,7 @@ body {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 68, 68, 0.2), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
     transition: left 0.5s ease;
 }
 
@@ -353,14 +474,14 @@ body {
 .social-link:hover {
     transform: translateX(10px);
     box-shadow: 
-        0 10px 30px rgba(204, 0, 0, 0.5),
-        inset 0 0 30px rgba(255, 68, 68, 0.2);
-    border-color: #ff0000;
+        0 10px 30px var(--primary-color),
+        inset 0 0 30px rgba(255, 255, 255, 0.1);
+    border-color: var(--primary-color);
 }
 
 .link-icon {
     font-size: 2rem;
-    color: #ff4444;
+    color: var(--primary-color);
     animation: pulse 2s ease-in-out infinite;
 }
 
@@ -385,7 +506,7 @@ body {
 }
 
 .link-handle {
-    color: #ff8888;
+    color: var(--accent-color);
     font-size: 0.9rem;
 }
 
@@ -396,6 +517,23 @@ body {
 
 .social-link:hover .link-arrow {
     transform: translateX(5px);
+}
+
+/* Стили для братьев */
+.bro-link {
+    background: linear-gradient(135deg, #001a00, #003300) !important;
+    border-color: #00cc00 !important;
+}
+
+.bro-link:hover {
+    border-color: #00ff00 !important;
+    box-shadow: 
+        0 10px 30px rgba(0, 204, 0, 0.5),
+        inset 0 0 30px rgba(0, 255, 0, 0.2) !important;
+}
+
+.bro-link .link-icon {
+    color: #00ff00 !important;
 }
 
 /* Секция био */
@@ -410,14 +548,14 @@ body {
 }
 
 .bio-card {
-    background: linear-gradient(135deg, #1a0000, #330000);
-    border: 2px solid #cc0000;
+    background: linear-gradient(135deg, var(--bg-mid-1), var(--bg-mid-2));
+    border: 2px solid var(--secondary-color);
     border-radius: 20px;
     padding: 2rem;
     max-width: 600px;
     box-shadow: 
-        0 10px 30px rgba(204, 0, 0, 0.3),
-        inset 0 0 30px rgba(255, 68, 68, 0.1);
+        0 10px 30px rgba(0, 0, 0, 0.3),
+        inset 0 0 30px rgba(255, 255, 255, 0.05);
     position: relative;
     overflow: hidden;
 }
@@ -429,7 +567,7 @@ body {
     left: -50%;
     width: 200%;
     height: 200%;
-    background: radial-gradient(circle, rgba(255, 68, 68, 0.1) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
     animation: rotateGradient 8s linear infinite;
 }
 
@@ -463,14 +601,14 @@ body {
         color: #ffaa00;
     }
     50% {
-        color: #ff4444;
+        color: var(--primary-color);
     }
 }
 
 /* Футер */
 .site-footer {
-    background: linear-gradient(135deg, #0a0000, #1a0000);
-    border: 2px solid #cc0000;
+    background: linear-gradient(135deg, var(--bg-start), var(--bg-mid-1));
+    border: 2px solid var(--secondary-color);
     border-radius: 20px;
     padding: 2rem;
     text-align: center;
@@ -481,7 +619,7 @@ body {
     font-family: 'Creepster', cursive;
     font-size: 1.8rem;
     margin-bottom: 1rem;
-    color: #ff4444;
+    color: var(--primary-color);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -498,7 +636,7 @@ body {
 }
 
 .license-warning {
-    color: #ff0000;
+    color: var(--primary-color);
     font-weight: bold;
     display: flex;
     align-items: center;
@@ -509,19 +647,19 @@ body {
 
 @keyframes flashWarning {
     0%, 100% {
-        color: #ff4444;
-        text-shadow: 0 0 10px #cc0000;
+        color: var(--primary-color);
+        text-shadow: 0 0 10px var(--secondary-color);
     }
     50% {
-        color: #ff0000;
-        text-shadow: 0 0 20px #ff0000;
+        color: var(--accent-color);
+        text-shadow: 0 0 20px var(--primary-color);
     }
 }
 
 .protection-info {
-    border-top: 1px solid #cc0000;
+    border-top: 1px solid var(--secondary-color);
     padding-top: 1rem;
-    color: #ff8888;
+    color: var(--accent-color);
     font-size: 0.9rem;
 }
 
@@ -595,6 +733,18 @@ body {
     .avatar-inner {
         font-size: 3rem;
     }
+
+    .theme-switcher {
+        top: 10px;
+        right: 10px;
+        padding: 8px;
+        gap: 8px;
+    }
+    
+    .theme-btn {
+        width: 25px;
+        height: 25px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -608,76 +758,22 @@ body {
         gap: 0.5rem;
     }
     
-    .heart {
-        font-size: 1.5rem;
+    .particle {
+        width: 3px;
+        height: 3px;
     }
     
     .drop {
-        width: 3px;
-        height: 30px;
-    }
-}
-
-/* Стили для братьев */
-.bro-link {
-    background: linear-gradient(135deg, #001a00, #003300) !important;
-    border-color: #00cc00 !important;
-}
-
-.bro-link:hover {
-    border-color: #00ff00 !important;
-    box-shadow: 
-        0 10px 30px rgba(0, 204, 0, 0.5),
-        inset 0 0 30px rgba(0, 255, 0, 0.2) !important;
-}
-
-.bro-link .link-icon {
-    color: #00ff00 !important;
-}
-
-/* Дополнительные фоновые элементы */
-body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: 
-        /* Дополнительные звезды */
-        radial-gradient(1px 1px at 200px 100px, #ff4444, transparent),
-        radial-gradient(2px 2px at 300px 200px, #cc0000, transparent),
-        radial-gradient(1px 1px at 450px 50px, #ff6666, transparent),
-        radial-gradient(2px 2px at 600px 150px, #ff4444, transparent),
-        radial-gradient(1px 1px at 750px 250px, #cc0000, transparent),
-        radial-gradient(1px 1px at 50px 200px, #ff4444, transparent),
-        radial-gradient(2px 2px at 150px 50px, #cc0000, transparent),
-        radial-gradient(1px 1px at 250px 300px, #ff6666, transparent);
-    pointer-events: none;
-    z-index: -1;
-    animation: backgroundShift 20s ease-in-out infinite;
-}
-
-@keyframes backgroundShift {
-    0%, 100% {
-        transform: translateX(0) translateY(0);
-    }
-    25% {
-        transform: translateX(10px) translateY(-5px);
-    }
-    50% {
-        transform: translateX(-5px) translateY(10px);
-    }
-    75% {
-        transform: translateX(5px) translateY(-10px);
+        width: 2px;
+        height: 40px;
     }
 }
 
 /* Дополнительные эффекты для курсора */
 body {
-    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewport="0 0 20 20"><circle cx="10" cy="10" r="8" fill="%23cc0000" opacity="0.7"/></svg>'), auto;
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewport="0 0 20 20"><circle cx="10" cy="10" r="8" fill="currentColor" opacity="0.7"/></svg>'), auto;
 }
 
 a:hover, button:hover {
-    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewport="0 0 20 20"><circle cx="10" cy="10" r="8" fill="%23ff0000" opacity="0.9"/></svg>'), pointer;
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewport="0 0 20 20"><circle cx="10" cy="10" r="8" fill="currentColor" opacity="0.9"/></svg>'), pointer;
 }
