@@ -118,10 +118,23 @@
       </div>
 
       <!-- Фоновая музыка -->
-      <audio id="backgroundMusic" loop autoplay>
-          <source src="https://cdn.pixabay.com/audio/2022/05/27/audio_1808fbf07a.mp3" type="audio/mpeg">
+      <audio id="backgroundMusic" loop>
           <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.wav" type="audio/wav">
       </audio>
+
+      <!-- Скример звук -->
+      <audio id="screamerSound" preload="auto">
+          <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.wav" type="audio/wav">
+      </audio>
+
+      <!-- Скример изображение (скрыто) -->
+      <div id="screamerOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #000; z-index: 99999;">
+          <div id="screamerImage" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0); width: 90vw; height: 90vh; transition: transform 0.1s ease-out; font-size: 15rem; text-align: center; color: #ff0000; text-shadow: 0 0 50px #ff0000; display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: 'Nosifer', cursive;">
+              <div style="animation: screamerEyesBlink 0.2s infinite;">👹</div>
+              <div style="font-size: 8rem; margin-top: 20px; animation: screamerTextShake 0.1s infinite;">GOTCHA!</div>
+              <div style="font-size: 4rem; margin-top: 20px; animation: screamerTextShake 0.15s infinite;">💀👻💀</div>
+          </div>
+      </div>
 
       <!-- Фоновые анимированные элементы -->
     <div class="snowflakes">

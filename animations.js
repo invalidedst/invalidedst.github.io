@@ -468,24 +468,143 @@
         });
     }
 
-    // Простая фоновая музыка
+    // Фоновая музыка (убираем автовоспроизведение)
     function initBackgroundMusic() {
         const audio = document.getElementById('backgroundMusic');
         if (audio) {
-            audio.volume = 0.3; // Устанавливаем громкость 30%
+            audio.volume = 0.2; // Тихая фоновая музыка
             
-            // Попытка автовоспроизведения
-            audio.play().catch(e => {
-                console.log('Автовоспроизведение заблокировано браузером');
-                
-                // Запускаем музыку при первом клике пользователя
-                document.addEventListener('click', function startMusic() {
-                    audio.play();
-                    document.removeEventListener('click', startMusic);
-                }, { once: true });
-            });
+            // Запускаем музыку только при клике пользователя
+            document.addEventListener('click', function startMusic() {
+                audio.play().catch(e => console.log('Не удалось запустить музыку'));
+                document.removeEventListener('click', startMusic);
+            }, { once: true });
         }
     }
+
+    // Скример при клике на аватарку
+    function initScreamer() {
+        const avatar = document.querySelector('.avatar-border');
+        const screamerOverlay = document.getElementById('screamerOverlay');
+        const screamerImage = document.getElementById('screamerImage');
+        const screamerSound = document.getElementById('screamerSound');
+        
+        if (!avatar || !screamerOverlay) return;
+        
+        let screamerActivated = false;
+        
+        avatar.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            if (screamerActivated) return; // Предотвращаем повторное срабатывание
+            screamerActivated = true;
+            
+            // Добавляем курсор ожидания
+            avatar.style.cursor = 'wait';
+            
+            // Задержка перед скримером (2-3 секунды)
+            setTimeout(() => {
+                // Показываем черный экран
+                screamerOverlay.style.display = 'block';
+                
+                // Еще одна задержка
+                setTimeout(() => {
+                    // Резко появляется страшное лицо
+                    screamerImage.style.transform = 'translate(-50%, -50%) scale(1.2)';
+                    
+                    // Запускаем громкий звук
+                    if (screamerSound) {
+                        screamerSound.volume = 1.0; // Максимальная громкость
+                        screamerSound.play().catch(e => console.log('Звук заблокирован'));
+                    }
+                    
+                    // Эффект тряски экрана
+                    document.body.style.animation = 'screamerShake 0.5s ease-in-out infinite';
+                    
+                    // Закрываем скример через 3 секунды
+                    setTimeout(() => {
+                        screamerOverlay.style.display = 'none';
+                        screamerImage.style.transform = 'translate(-50%, -50%) scale(0)';
+                        document.body.style.animation = '';
+                        avatar.style.cursor = 'pointer';
+                        
+                        // Можно активировать снова через 10 секунд
+                        setTimeout(() => {
+                            screamerActivated = false;
+                        }, 10000);
+                        
+                    }, 3000);
+                    
+                }, 500); // Короткая задержка на черном экране
+                
+            }, 2500); // Основная задержка перед скримером
+        });
+    }
+
+    // CSS анимации для скримера
+    const screamerStyles = document.createElement('style');
+    screamerStyles.textContent = `
+        @keyframes screamerShake {
+            0%, 100% { transform: translateX(0) translateY(0); }
+            10% { transform: translateX(-10px) translateY(-10px); }
+            20% { transform: translateX(10px) translateY(-10px); }
+            30% { transform: translateX(-10px) translateY(10px); }
+            40% { transform: translateX(10px) translateY(10px); }
+            50% { transform: translateX(-10px) translateY(-10px); }
+            60% { transform: translateX(10px) translateY(-10px); }
+            70% { transform: translateX(-10px) translateY(10px); }
+            80% { transform: translateX(10px) translateY(10px); }
+            90% { transform: translateX(-10px) translateY(-10px); }
+        }
+        
+        #screamerOverlay {
+            animation: screamerFlash 0.08s ease-in-out infinite;
+        }
+        
+        @keyframes screamerFlash {
+            0%, 100% { background: #000; }
+            25% { background: #ff0000; }
+            50% { background: #000; }
+            75% { background: #ffffff; }
+        }
+        
+        @keyframes screamerEyesBlink {
+            0%, 50% { transform: scale(1) rotate(0deg); }
+            25% { transform: scale(1.3) rotate(10deg); }
+            75% { transform: scale(0.8) rotate(-10deg); }
+            100% { transform: scale(1.1) rotate(5deg); }
+        }
+        
+        @keyframes screamerTextShake {
+            0%, 100% { transform: translateX(0) rotate(0deg); }
+            25% { transform: translateX(-5px) rotate(-2deg); }
+            50% { transform: translateX(5px) rotate(2deg); }
+            75% { transform: translateX(-3px) rotate(-1deg); }
+        }
+        
+        .avatar-border {
+            cursor: pointer !important;
+            transition: all 0.3s ease;
+        }
+        
+        .avatar-border:hover {
+            animation: avatarPulse 1s ease-in-out infinite;
+            transform: scale(1.1);
+        }
+        
+        @keyframes avatarPulse {
+            0%, 100% { 
+                box-shadow: 0 0 30px var(--secondary-color);
+                filter: brightness(1);
+            }
+            50% { 
+                box-shadow: 0 0 60px #ff0000, 0 0 90px #ff0000;
+                filter: brightness(1.2);
+            }
+        }
+    `;
+    document.head.appendChild(screamerStyles);
 
     // Упрощенное создание снежинок
     function createSimpleSnowflakes() {
@@ -517,6 +636,9 @@
         // Инициализируем фоновую музыку
         initBackgroundMusic();
         
+        // Инициализируем скример
+        initScreamer();
+        
         // Создаем упрощенные снежинки
         createSimpleSnowflakes();
         
@@ -525,7 +647,8 @@
             // Только самые необходимые эффекты
             interactiveSocialLinks();
             
-            console.log('🎨 Оптимизированный сайт загружен');
+            console.log('🎨 Сайт с скримером загружен');
+            console.log('💀 Кликните на аватар... если осмелитесь');
         }, 100);
     });
 
