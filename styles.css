@@ -10,7 +10,23 @@
 
 body {
     font-family: 'Metal Mania', cursive;
-    background: linear-gradient(135deg, #0a0a0a 0%, #1a0000 25%, #330000 50%, #1a0000 75%, #0a0a0a 100%);
+    background: 
+        /* Звезды и точки */
+        radial-gradient(2px 2px at 20px 30px, #ff4444, transparent),
+        radial-gradient(1px 1px at 40px 70px, #cc0000, transparent),
+        radial-gradient(1px 1px at 90px 40px, #ff6666, transparent),
+        radial-gradient(2px 2px at 130px 80px, #ff4444, transparent),
+        radial-gradient(1px 1px at 160px 30px, #cc0000, transparent),
+        /* Основной градиент */
+        linear-gradient(135deg, #0a0a0a 0%, #1a0000 25%, #330000 50%, #1a0000 75%, #0a0a0a 100%),
+        /* Текстура */
+        repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 2px,
+            rgba(204, 0, 0, 0.03) 2px,
+            rgba(204, 0, 0, 0.03) 4px
+        );
     color: #ff4444;
     overflow-x: hidden;
     min-height: 100vh;
@@ -41,28 +57,36 @@ body {
 
 .drop {
     position: absolute;
-    width: 4px;
-    height: 40px;
-    background: linear-gradient(to bottom, #cc0000, #800000);
+    width: 6px;
+    height: 50px;
+    background: linear-gradient(to bottom, #ff0000, #cc0000, #800000);
     border-radius: 50px;
     animation: bloodDrop 8s infinite linear;
-    opacity: 0.7;
+    opacity: 0.8;
+    box-shadow: 0 0 10px rgba(204, 0, 0, 0.5);
 }
 
 @keyframes bloodDrop {
     0% {
         top: -50px;
         opacity: 0;
+        transform: scale(0.5);
     }
     10% {
-        opacity: 0.7;
+        opacity: 0.8;
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
     }
     90% {
-        opacity: 0.7;
+        opacity: 0.8;
+        transform: scale(1);
     }
     100% {
         top: 100vh;
         opacity: 0;
+        transform: scale(0.5);
     }
 }
 
@@ -591,6 +615,61 @@ body {
     .drop {
         width: 3px;
         height: 30px;
+    }
+}
+
+/* Стили для братьев */
+.bro-link {
+    background: linear-gradient(135deg, #001a00, #003300) !important;
+    border-color: #00cc00 !important;
+}
+
+.bro-link:hover {
+    border-color: #00ff00 !important;
+    box-shadow: 
+        0 10px 30px rgba(0, 204, 0, 0.5),
+        inset 0 0 30px rgba(0, 255, 0, 0.2) !important;
+}
+
+.bro-link .link-icon {
+    color: #00ff00 !important;
+}
+
+/* Дополнительные фоновые элементы */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        /* Дополнительные звезды */
+        radial-gradient(1px 1px at 200px 100px, #ff4444, transparent),
+        radial-gradient(2px 2px at 300px 200px, #cc0000, transparent),
+        radial-gradient(1px 1px at 450px 50px, #ff6666, transparent),
+        radial-gradient(2px 2px at 600px 150px, #ff4444, transparent),
+        radial-gradient(1px 1px at 750px 250px, #cc0000, transparent),
+        radial-gradient(1px 1px at 50px 200px, #ff4444, transparent),
+        radial-gradient(2px 2px at 150px 50px, #cc0000, transparent),
+        radial-gradient(1px 1px at 250px 300px, #ff6666, transparent);
+    pointer-events: none;
+    z-index: -1;
+    animation: backgroundShift 20s ease-in-out infinite;
+}
+
+@keyframes backgroundShift {
+    0%, 100% {
+        transform: translateX(0) translateY(0);
+    }
+    25% {
+        transform: translateX(10px) translateY(-5px);
+    }
+    50% {
+        transform: translateX(-5px) translateY(10px);
+    }
+    75% {
+        transform: translateX(5px) translateY(-10px);
     }
 }
 
