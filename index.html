@@ -117,38 +117,9 @@
           </div>
       </div>
 
-      <!-- Музыкальный плеер -->
-      <div class="music-player">
-          <button class="music-toggle" title="Включить/выключить музыку">
-              <i class="fas fa-music"></i>
-          </button>
-          <div class="music-menu">
-              <div class="volume-control">
-                  <i class="fas fa-volume-up"></i>
-                  <input type="range" class="volume-slider" min="0" max="100" value="30">
-              </div>
-              <div class="music-tracks">
-                  <button class="track-btn active" data-track="dark" title="Темная музыка">
-                      <i class="fas fa-skull"></i> Dark
-                  </button>
-                  <button class="track-btn" data-track="cyber" title="Кибер музыка">
-                      <i class="fas fa-robot"></i> Cyber
-                  </button>
-                  <button class="track-btn" data-track="horror" title="Хоррор музыка">
-                      <i class="fas fa-ghost"></i> Horror
-                  </button>
-              </div>
-          </div>
-      </div>
-
-      <!-- Аудио элементы -->
-      <audio id="darkTrack" loop>
-          <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.wav" type="audio/wav">
-      </audio>
-      <audio id="cyberTrack" loop>
-          <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.wav" type="audio/wav">
-      </audio>
-      <audio id="horrorTrack" loop>
+      <!-- Фоновая музыка -->
+      <audio id="backgroundMusic" loop autoplay>
+          <source src="https://cdn.pixabay.com/audio/2022/05/27/audio_1808fbf07a.mp3" type="audio/mpeg">
           <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.wav" type="audio/wav">
       </audio>
 
