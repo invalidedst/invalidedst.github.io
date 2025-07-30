@@ -1,0 +1,606 @@
+/* Импорт готических шрифтов */
+@import url('https://fonts.googleapis.com/css2?family=Creepster&family=Nosifer&family=Chiller&family=Metal+Mania&display=swap');
+
+/* Основные стили и сброс */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Metal Mania', cursive;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a0000 25%, #330000 50%, #1a0000 75%, #0a0a0a 100%);
+    color: #ff4444;
+    overflow-x: hidden;
+    min-height: 100vh;
+    position: relative;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+/* Защита от выделения текста */
+::selection {
+    background: transparent;
+}
+
+::-moz-selection {
+    background: transparent;
+}
+
+/* Анимация капель крови */
+.blood-drops {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.drop {
+    position: absolute;
+    width: 4px;
+    height: 40px;
+    background: linear-gradient(to bottom, #cc0000, #800000);
+    border-radius: 50px;
+    animation: bloodDrop 8s infinite linear;
+    opacity: 0.7;
+}
+
+@keyframes bloodDrop {
+    0% {
+        top: -50px;
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.7;
+    }
+    90% {
+        opacity: 0.7;
+    }
+    100% {
+        top: 100vh;
+        opacity: 0;
+    }
+}
+
+/* Плавающие элементы */
+.floating-hearts {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.heart {
+    position: absolute;
+    font-size: 2rem;
+    animation: float 6s ease-in-out infinite;
+    opacity: 0.3;
+}
+
+.heart:nth-child(1) { left: 10%; animation-delay: 0s; }
+.heart:nth-child(2) { left: 30%; animation-delay: 1s; }
+.heart:nth-child(3) { left: 50%; animation-delay: 2s; }
+.heart:nth-child(4) { left: 70%; animation-delay: 3s; }
+.heart:nth-child(5) { left: 90%; animation-delay: 4s; }
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.3;
+    }
+    50% {
+        transform: translateY(50vh) rotate(180deg);
+        opacity: 0.6;
+    }
+    90% {
+        opacity: 0.3;
+    }
+}
+
+/* Основной контейнер */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    position: relative;
+    z-index: 10;
+}
+
+/* Заголовок профиля */
+.profile-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    animation: fadeInUp 1s ease-out;
+}
+
+.profile-avatar {
+    margin-bottom: 2rem;
+    display: inline-block;
+}
+
+.avatar-border {
+    width: 150px;
+    height: 150px;
+    border: 3px solid #cc0000;
+    border-radius: 50%;
+    padding: 10px;
+    background: linear-gradient(45deg, #1a0000, #330000);
+    box-shadow: 
+        0 0 30px #cc0000,
+        inset 0 0 30px rgba(204, 0, 0, 0.3);
+    animation: pulseGlow 2s ease-in-out infinite alternate;
+}
+
+.avatar-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #330000, #660000);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    color: #ff4444;
+    text-shadow: 0 0 20px #cc0000;
+    animation: rotate 4s linear infinite;
+}
+
+@keyframes pulseGlow {
+    0% {
+        box-shadow: 
+            0 0 30px #cc0000,
+            inset 0 0 30px rgba(204, 0, 0, 0.3);
+        transform: scale(1);
+    }
+    100% {
+        box-shadow: 
+            0 0 50px #ff0000,
+            inset 0 0 50px rgba(255, 0, 0, 0.5);
+        transform: scale(1.05);
+    }
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Имя профиля */
+.profile-name {
+    font-family: 'Nosifer', cursive;
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    text-shadow: 
+        0 0 20px #cc0000,
+        0 5px 10px rgba(0, 0, 0, 0.8);
+}
+
+.blood-text {
+    display: inline-block;
+    animation: bloodText 3s ease-in-out infinite;
+    color: #ff1111;
+}
+
+.blood-text:nth-child(1) { animation-delay: 0s; }
+.blood-text:nth-child(2) { animation-delay: 0.2s; }
+.blood-text:nth-child(3) { animation-delay: 0.4s; }
+.blood-text:nth-child(4) { animation-delay: 0.6s; }
+
+@keyframes bloodText {
+    0%, 100% {
+        color: #ff4444;
+        text-shadow: 0 0 20px #cc0000;
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        color: #ff0000;
+        text-shadow: 0 0 30px #ff0000;
+        transform: translateY(-5px) scale(1.1);
+    }
+}
+
+/* Детали профиля */
+.profile-details {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.detail-item {
+    background: linear-gradient(135deg, #1a0000, #330000);
+    padding: 1rem 1.5rem;
+    border-radius: 25px;
+    border: 2px solid #cc0000;
+    box-shadow: 
+        0 5px 15px rgba(204, 0, 0, 0.3),
+        inset 0 0 20px rgba(255, 68, 68, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+.detail-item:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 
+        0 10px 25px rgba(204, 0, 0, 0.5),
+        inset 0 0 30px rgba(255, 68, 68, 0.2);
+}
+
+.detail-item i {
+    font-size: 1.2rem;
+    color: #ff4444;
+}
+
+@keyframes glow {
+    0% {
+        box-shadow: 
+            0 5px 15px rgba(204, 0, 0, 0.3),
+            inset 0 0 20px rgba(255, 68, 68, 0.1);
+    }
+    100% {
+        box-shadow: 
+            0 5px 15px rgba(255, 0, 0, 0.5),
+            inset 0 0 20px rgba(255, 68, 68, 0.3);
+    }
+}
+
+/* Секции */
+.section-title {
+    font-family: 'Creepster', cursive;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #ff4444;
+    text-shadow: 0 0 20px #cc0000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.section-title i {
+    animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Социальные ссылки */
+.social-links {
+    margin-bottom: 3rem;
+    animation: fadeInLeft 1s ease-out 0.3s both;
+}
+
+.links-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.social-link {
+    background: linear-gradient(135deg, #1a0000, #330000);
+    border: 2px solid #cc0000;
+    border-radius: 15px;
+    padding: 1.5rem;
+    text-decoration: none;
+    color: #ff4444;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.social-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 68, 68, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.social-link:hover::before {
+    left: 100%;
+}
+
+.social-link:hover {
+    transform: translateX(10px);
+    box-shadow: 
+        0 10px 30px rgba(204, 0, 0, 0.5),
+        inset 0 0 30px rgba(255, 68, 68, 0.2);
+    border-color: #ff0000;
+}
+
+.link-icon {
+    font-size: 2rem;
+    color: #ff4444;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+.link-info {
+    flex: 1;
+}
+
+.link-title {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+    font-size: 1.2rem;
+}
+
+.link-handle {
+    color: #ff8888;
+    font-size: 0.9rem;
+}
+
+.link-arrow {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.social-link:hover .link-arrow {
+    transform: translateX(5px);
+}
+
+/* Секция био */
+.bio-section {
+    margin-bottom: 3rem;
+    animation: fadeInRight 1s ease-out 0.6s both;
+}
+
+.bio-content {
+    display: flex;
+    justify-content: center;
+}
+
+.bio-card {
+    background: linear-gradient(135deg, #1a0000, #330000);
+    border: 2px solid #cc0000;
+    border-radius: 20px;
+    padding: 2rem;
+    max-width: 600px;
+    box-shadow: 
+        0 10px 30px rgba(204, 0, 0, 0.3),
+        inset 0 0 30px rgba(255, 68, 68, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.bio-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 68, 68, 0.1) 0%, transparent 70%);
+    animation: rotateGradient 8s linear infinite;
+}
+
+@keyframes rotateGradient {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.bio-text {
+    position: relative;
+    z-index: 2;
+    line-height: 1.6;
+    font-size: 1.1rem;
+}
+
+.bio-text p {
+    margin-bottom: 1rem;
+}
+
+.warning-text {
+    color: #ffaa00;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    animation: warning 1.5s ease-in-out infinite;
+}
+
+@keyframes warning {
+    0%, 100% {
+        color: #ffaa00;
+    }
+    50% {
+        color: #ff4444;
+    }
+}
+
+/* Футер */
+.site-footer {
+    background: linear-gradient(135deg, #0a0000, #1a0000);
+    border: 2px solid #cc0000;
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    animation: fadeInUp 1s ease-out 0.9s both;
+}
+
+.copyright-title {
+    font-family: 'Creepster', cursive;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #ff4444;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.copyright-content {
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+.copyright-content p {
+    margin-bottom: 0.5rem;
+}
+
+.license-warning {
+    color: #ff0000;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    animation: flashWarning 2s ease-in-out infinite;
+}
+
+@keyframes flashWarning {
+    0%, 100% {
+        color: #ff4444;
+        text-shadow: 0 0 10px #cc0000;
+    }
+    50% {
+        color: #ff0000;
+        text-shadow: 0 0 20px #ff0000;
+    }
+}
+
+.protection-info {
+    border-top: 1px solid #cc0000;
+    padding-top: 1rem;
+    color: #ff8888;
+    font-size: 0.9rem;
+}
+
+.creation-date {
+    margin-top: 0.5rem;
+    font-style: italic;
+}
+
+/* Анимации появления */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Отзывчивый дизайн */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    .profile-name {
+        font-size: 2.5rem;
+    }
+    
+    .profile-details {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .social-link {
+        padding: 1rem;
+    }
+    
+    .avatar-border {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .avatar-inner {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-name {
+        font-size: 2rem;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .heart {
+        font-size: 1.5rem;
+    }
+    
+    .drop {
+        width: 3px;
+        height: 30px;
+    }
+}
+
+/* Дополнительные эффекты для курсора */
+body {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewport="0 0 20 20"><circle cx="10" cy="10" r="8" fill="%23cc0000" opacity="0.7"/></svg>'), auto;
+}
+
+a:hover, button:hover {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewport="0 0 20 20"><circle cx="10" cy="10" r="8" fill="%23ff0000" opacity="0.9"/></svg>'), pointer;
+}
