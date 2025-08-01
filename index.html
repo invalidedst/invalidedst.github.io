@@ -117,42 +117,9 @@
           </div>
       </div>
 
-      <!-- Фоновая музыка -->
-      <audio id="backgroundMusic" loop>
-          <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.wav" type="audio/wav">
-      </audio>
-
-      <!-- Скример звук -->
-      <audio id="screamerSound" preload="auto">
-          <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.wav" type="audio/wav">
-      </audio>
-
-      <!-- Скример изображение (скрыто) -->
-      <div id="screamerOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #000; z-index: 99999;">
-          <div id="screamerImage" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0); width: 90vw; height: 90vh; transition: transform 0.1s ease-out; font-size: 15rem; text-align: center; color: #ff0000; text-shadow: 0 0 50px #ff0000; display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: 'Nosifer', cursive;">
-              <div style="animation: screamerEyesBlink 0.2s infinite;">👹</div>
-              <div style="font-size: 8rem; margin-top: 20px; animation: screamerTextShake 0.1s infinite;">GOTCHA!</div>
-              <div style="font-size: 4rem; margin-top: 20px; animation: screamerTextShake 0.15s infinite;">💀👻💀</div>
-          </div>
-      </div>
-
       <!-- Фоновые анимированные элементы -->
-    <div class="snowflakes">
-        <div class="snowflake" style="left: 5%; animation-delay: 0s;"><i class="fas fa-snowflake"></i></div>
-        <div class="snowflake" style="left: 15%; animation-delay: 0.3s;"><i class="fas fa-snowflake"></i></div>
-        <div class="snowflake" style="left: 25%; animation-delay: 0.6s;"><i class="fas fa-snowflake"></i></div>
-        <div class="snowflake" style="left: 35%; animation-delay: 0.9s;"><i class="fas fa-snowflake"></i></div>
-        <div class="snowflake" style="left: 45%; animation-delay: 1.2s;"><i class="fas fa-snowflake"></i></div>
-        <div class="snowflake" style="left: 55%; animation-delay: 1.5s;"><i class="fas fa-snowflake"></i></div>
-        <div class="snowflake" style="left: 65%; animation-delay: 1.8s;"><i class="fas fa-snowflake"></i></div>
-        <div class="snowflake" style="left: 75%; animation-delay: 2.1s;"><i class="fas fa-snowflake"></i></div>
-        <div class="snowflake" style="left: 85%; animation-delay: 2.4s;"><i class="fas fa-snowflake"></i></div>
-        <div class="snowflake" style="left: 95%; animation-delay: 2.7s;"><i class="fas fa-snowflake"></i></div>
-        <div class="snowflake" style="left: 12%; animation-delay: 3s;"><i class="fas fa-snowflake"></i></div>
-        <div class="snowflake" style="left: 22%; animation-delay: 3.3s;"><i class="fas fa-snowflake"></i></div>
-        <div class="snowflake" style="left: 32%; animation-delay: 3.6s;"><i class="fas fa-snowflake"></i></div>
-        <div class="snowflake" style="left: 42%; animation-delay: 3.9s;"><i class="fas fa-snowflake"></i></div>
-        <div class="snowflake" style="left: 52%; animation-delay: 4.2s;"><i class="fas fa-snowflake"></i></div>
+    <div class="snowflakes" id="snowflakes">
+        <!-- Снежинки будут генерироваться динамически -->
     </div>
 
     <div class="floating-particles">
@@ -256,6 +223,19 @@
                         <i class="fas fa-external-link-alt"></i>
                     </div>
                 </a>
+
+                <a href="https://anixartapp.com/profile/3788257" class="social-link anixart-link" target="_blank" rel="noopener noreferrer">
+                    <div class="link-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <div class="link-info">
+                        <span class="link-title">Anixart профиль</span>
+                        <span class="link-handle">anixartapp.com</span>
+                    </div>
+                    <div class="link-arrow">
+                        <i class="fas fa-external-link-alt"></i>
+                    </div>
+                </a>
             </div>
         </section>
 
@@ -325,32 +305,6 @@
                 </div>
             </div>
         </section>
-
-        <footer class="site-footer">
-            <div class="copyright-section">
-                <h3 class="copyright-title">
-                    <i class="fas fa-shield-alt"></i>
-                    Авторские права и лицензия
-                </h3>
-                <div class="copyright-content">
-                    <p>&copy; 2024 Aeza. Все права защищены.</p>
-                    <p>Этот сайт и его содержимое защищены авторским правом.</p>
-                    <p>Копирование, распространение или использование любых материалов без письменного разрешения строго запрещено.</p>
-                    <p class="license-warning">
-                        <i class="fas fa-ban"></i>
-                        Нарушение авторских прав преследуется по закону
-                    </p>
-                </div>
-            </div>
-            
-            <div class="protection-info">
-                <p>
-                    <i class="fas fa-lock"></i>
-                    Сайт защищен от копирования и несанкционированного доступа
-                </p>
-                <p class="creation-date">Создано: <span id="current-date"></span></p>
-            </div>
-        </footer>
     </div>
 
     <!-- Защитные скрипты -->

@@ -205,7 +205,7 @@ html {
     100% { transform: rotate(360deg) scale(0.8); }
 }
 
-/* Анимированные снежинки - упрощенные */
+/* Анимированные снежинки - зимняя тема */
 .snowflakes {
     position: fixed;
     top: 0;
@@ -219,29 +219,49 @@ html {
 
 .snowflake {
     position: absolute;
-    color: var(--primary-color);
-    font-size: 16px;
-    opacity: 0.5;
-    animation: snowfall 8s linear infinite;
+    color: #ffffff;
+    font-size: 1.2rem;
+    opacity: 0.9;
+    animation: snowfall 10s linear infinite;
     will-change: transform;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
+    filter: blur(0.5px);
+}
+
+.snowflake:nth-child(odd) {
+    animation-duration: 12s;
+    font-size: 1rem;
+}
+
+.snowflake:nth-child(3n) {
+    animation-duration: 8s;
+    font-size: 1.5rem;
+}
+
+.snowflake:nth-child(4n) {
+    animation-duration: 15s;
+    font-size: 0.8rem;
 }
 
 @keyframes snowfall {
     0% {
         top: -50px;
         opacity: 0;
-        transform: translateX(0);
+        transform: translateX(0) rotate(0deg);
     }
     10% {
-        opacity: 0.5;
+        opacity: 0.9;
+    }
+    50% {
+        transform: translateX(20px) rotate(180deg);
     }
     90% {
-        opacity: 0.5;
+        opacity: 0.9;
     }
     100% {
         top: 100vh;
         opacity: 0;
-        transform: translateX(20px);
+        transform: translateX(-20px) rotate(360deg);
     }
 }
 
@@ -546,6 +566,23 @@ html {
 
 .bio-link .link-icon {
     color: #aa00ff !important;
+}
+
+/* Стили для Anixart ссылки */
+.anixart-link {
+    background: linear-gradient(135deg, #1a1a2e, #16213e) !important;
+    border-color: #0f3460 !important;
+}
+
+.anixart-link:hover {
+    border-color: #533483 !important;
+    box-shadow: 
+        0 10px 30px rgba(15, 52, 96, 0.5),
+        inset 0 0 30px rgba(83, 52, 131, 0.2) !important;
+}
+
+.anixart-link .link-icon {
+    color: #0f3460 !important;
 }
 
 /* Убираем стили музыкального плеера */
