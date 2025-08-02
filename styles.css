@@ -133,48 +133,48 @@
 
 [data-theme="pink"] {
     --primary-color: #ff69b4;
-    --secondary-color: #da70d6;
-    --accent-color: #87ceeb;
-    --bg-start: #1a0033;
-    --bg-mid-1: #330066;
-    --bg-mid-2: #4d0099;
-    --text-color: #ff69b4;
+    --secondary-color: #ff1493;
+    --accent-color: #ffb6c1;
+    --bg-start: #ffe6f2;
+    --bg-mid-1: #ffb3d9;
+    --bg-mid-2: #ff99cc;
+    --text-color: #ff1493;
 }
 
 [data-theme="pink"] .snowflakes {
-    background: radial-gradient(ellipse at center, rgba(255, 105, 180, 0.15) 0%, transparent 70%);
+    background: radial-gradient(ellipse at center, rgba(255, 105, 180, 0.1) 0%, transparent 70%);
 }
 
 [data-theme="pink"] .snowflake {
-    color: #ff69b4;
-    text-shadow: 0 0 15px rgba(255, 105, 180, 0.8), 0 0 30px rgba(218, 112, 214, 0.6);
+    color: #ff1493;
+    text-shadow: 0 0 15px rgba(255, 20, 147, 0.8), 0 0 30px rgba(255, 182, 193, 0.6);
 }
 
 [data-theme="pink"] .snowflake:nth-child(3n) {
-    color: #87ceeb;
-    text-shadow: 0 0 15px rgba(135, 206, 235, 0.8), 0 0 30px rgba(255, 105, 180, 0.6);
+    color: #ff69b4;
+    text-shadow: 0 0 15px rgba(255, 105, 180, 0.8), 0 0 30px rgba(255, 20, 147, 0.6);
 }
 
 [data-theme="pink"] .snowflake:nth-child(5n) {
-    color: #da70d6;
-    text-shadow: 0 0 15px rgba(218, 112, 214, 0.8), 0 0 30px rgba(135, 206, 235, 0.6);
+    color: #ffb6c1;
+    text-shadow: 0 0 15px rgba(255, 182, 193, 0.8), 0 0 30px rgba(255, 105, 180, 0.6);
 }
 
 [data-theme="pink"] body {
     font-family: 'Fredoka One', cursive;
-    background: linear-gradient(135deg, #1a0033 0%, #330066 25%, #4d0099 50%, #330066 75%, #1a0033 100%) fixed;
+    background: linear-gradient(135deg, #ffe6f2 0%, #ffb3d9 25%, #ff99cc 50%, #ffb3d9 75%, #ffe6f2 100%) fixed;
 }
 
 [data-theme="pink"] .profile-name {
     font-family: 'Comic Neue', cursive;
     font-weight: 700;
-    text-shadow: 0 0 20px #ff69b4, 0 0 40px #da70d6;
+    text-shadow: 0 0 20px #ff1493, 0 0 40px #ffb6c1;
 }
 
 [data-theme="pink"] .section-title {
     font-family: 'Comic Neue', cursive;
     font-weight: 700;
-    text-shadow: 0 0 15px #ff69b4;
+    text-shadow: 0 0 15px #ff1493;
 }
 
 [data-theme="pink"] .link-title {
@@ -189,47 +189,47 @@
 
 [data-theme="pink"] .detail-item {
     font-family: 'Comic Neue', cursive;
-    border-radius: 30px;
-    background: linear-gradient(135deg, rgba(255, 105, 180, 0.2), rgba(218, 112, 214, 0.2));
-    border: 2px solid #da70d6;
-    box-shadow: 0 0 20px rgba(255, 105, 180, 0.3);
+    border-radius: 50px;
+    background: linear-gradient(135deg, rgba(255, 105, 180, 0.3), rgba(255, 20, 147, 0.3));
+    border: 3px solid #ff1493;
+    box-shadow: 0 0 25px rgba(255, 105, 180, 0.4);
 }
 
 [data-theme="pink"] .social-link {
     font-family: 'Comic Neue', cursive;
-    border-radius: 25px;
-    background: linear-gradient(135deg, rgba(255, 105, 180, 0.1), rgba(218, 112, 214, 0.1));
-    border: 2px solid #da70d6;
-    box-shadow: 0 0 15px rgba(255, 105, 180, 0.2);
+    border-radius: 40px;
+    background: linear-gradient(135deg, rgba(255, 105, 180, 0.2), rgba(255, 20, 147, 0.2));
+    border: 3px solid #ff1493;
+    box-shadow: 0 0 20px rgba(255, 105, 180, 0.3);
 }
 
 [data-theme="pink"] .bio-card {
     font-family: 'Comic Neue', cursive;
-    border-radius: 30px;
-    background: linear-gradient(135deg, rgba(255, 105, 180, 0.1), rgba(218, 112, 214, 0.1));
-    border: 2px solid #da70d6;
-    box-shadow: 0 0 25px rgba(255, 105, 180, 0.3);
+    border-radius: 50px;
+    background: linear-gradient(135deg, rgba(255, 105, 180, 0.2), rgba(255, 20, 147, 0.2));
+    border: 3px solid #ff1493;
+    box-shadow: 0 0 30px rgba(255, 105, 180, 0.4);
 }
 
 [data-theme="pink"] .floating-shapes {
-    background: radial-gradient(ellipse at center, rgba(255, 105, 180, 0.05) 0%, transparent 70%);
+    background: radial-gradient(ellipse at center, rgba(255, 105, 180, 0.08) 0%, transparent 70%);
 }
 
 [data-theme="pink"] .shape {
-    border-color: #ff69b4;
-    opacity: 0.08;
+    border-color: #ff1493;
+    opacity: 0.1;
 }
 
 [data-theme="pink"] .triangle {
-    border-bottom-color: #87ceeb;
+    border-bottom-color: #ffb6c1;
 }
 
 [data-theme="pink"] .circle {
-    background: radial-gradient(circle, #da70d6, transparent);
+    background: radial-gradient(circle, #ff69b4, transparent);
 }
 
 [data-theme="pink"] .square {
-    background: linear-gradient(45deg, #ff69b4, #da70d6);
+    background: linear-gradient(45deg, #ff1493, #ffb6c1);
 }
 
 
