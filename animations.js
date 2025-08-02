@@ -90,14 +90,14 @@
             
             swastika.style.cssText = `
                 position: absolute;
-                color: #8b5cf6;
+                color: #7442c8;
                 font-size: ${size}px;
                 left: ${startX}px;
                 top: ${startY}px;
                 animation: flySwastika ${duration}s linear infinite;
                 animation-delay: ${delay}s;
                 opacity: 0.3;
-                text-shadow: 0 0 10px rgba(139, 92, 246, 0.8);
+                text-shadow: 0 0 10px rgba(116, 66, 200, 0.8);
                 pointer-events: none;
                 user-select: none;
                 will-change: transform;
@@ -153,12 +153,12 @@
             
             link.addEventListener('mouseenter', function() {
                 this.style.transform = 'scale(1.03) translateY(-1px)';
-                this.style.boxShadow = '0 8px 25px rgba(139, 92, 246, 0.3)';
+                this.style.boxShadow = '0 8px 25px rgba(116, 66, 200, 0.3)';
             });
             
             link.addEventListener('mouseleave', function() {
                 this.style.transform = 'scale(1) translateY(0)';
-                this.style.boxShadow = '0 5px 15px rgba(139, 92, 246, 0.2)';
+                this.style.boxShadow = '0 5px 15px rgba(116, 66, 200, 0.2)';
             });
             
             link.addEventListener('click', function(e) {
@@ -167,7 +167,7 @@
                 ripple.style.cssText = `
                     position: absolute;
                     border-radius: 50%;
-                    background: rgba(139, 92, 246, 0.4);
+                    background: rgba(116, 66, 200, 0.4);
                     transform: scale(0);
                     animation: ripple 0.4s ease-out;
                     pointer-events: none;
