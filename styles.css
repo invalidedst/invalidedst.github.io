@@ -135,10 +135,10 @@
     --primary-color: #ff69b4;
     --secondary-color: #ff1493;
     --accent-color: #ffb6c1;
-    --bg-start: #ffe6f2;
-    --bg-mid-1: #ffb3d9;
-    --bg-mid-2: #ff99cc;
-    --text-color: #ff1493;
+    --bg-start: #ff69b4;
+    --bg-mid-1: #ff1493;
+    --bg-mid-2: #ff69b4;
+    --text-color: #ffffff;
 }
 
 [data-theme="pink"] .snowflakes {
@@ -162,33 +162,38 @@
 
 [data-theme="pink"] body {
     font-family: 'Fredoka One', cursive;
-    background: linear-gradient(135deg, #ffe6f2 0%, #ffb3d9 25%, #ff99cc 50%, #ffb3d9 75%, #ffe6f2 100%) fixed;
+    background: linear-gradient(135deg, #ff69b4 0%, #ff1493 25%, #ff69b4 50%, #ff1493 75%, #ff69b4 100%) fixed;
 }
 
 [data-theme="pink"] .profile-name {
     font-family: 'Comic Neue', cursive;
     font-weight: 700;
+    color: #ffffff;
     text-shadow: 0 0 20px #ff1493, 0 0 40px #ffb6c1;
 }
 
 [data-theme="pink"] .section-title {
     font-family: 'Comic Neue', cursive;
     font-weight: 700;
+    color: #ffffff;
     text-shadow: 0 0 15px #ff1493;
 }
 
 [data-theme="pink"] .link-title {
     font-family: 'Comic Neue', cursive;
     font-weight: 600;
+    color: #ffffff;
 }
 
 [data-theme="pink"] .bio-text {
     font-family: 'Comic Neue', cursive;
     font-weight: 400;
+    color: #ffffff;
 }
 
 [data-theme="pink"] .detail-item {
     font-family: 'Comic Neue', cursive;
+    color: #ffffff;
     border-radius: 50px;
     background: linear-gradient(135deg, rgba(255, 105, 180, 0.3), rgba(255, 20, 147, 0.3));
     border: 3px solid #ff1493;
@@ -197,6 +202,7 @@
 
 [data-theme="pink"] .social-link {
     font-family: 'Comic Neue', cursive;
+    color: #ffffff;
     border-radius: 40px;
     background: linear-gradient(135deg, rgba(255, 105, 180, 0.2), rgba(255, 20, 147, 0.2));
     border: 3px solid #ff1493;
@@ -205,10 +211,26 @@
 
 [data-theme="pink"] .bio-card {
     font-family: 'Comic Neue', cursive;
+    color: #ffffff;
     border-radius: 50px;
     background: linear-gradient(135deg, rgba(255, 105, 180, 0.2), rgba(255, 20, 147, 0.2));
     border: 3px solid #ff1493;
     box-shadow: 0 0 30px rgba(255, 105, 180, 0.4);
+}
+
+[data-theme="pink"] .link-handle {
+    color: #ffffff;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+[data-theme="pink"] .detail-item span {
+    color: #ffffff;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+[data-theme="pink"] .detail-item i {
+    color: #ffffff;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
 }
 
 [data-theme="pink"] .floating-shapes {
