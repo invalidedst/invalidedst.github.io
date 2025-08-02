@@ -2,6 +2,10 @@
 (function() {
     'use strict';
 
+    // Переменные для оптимизации
+    let resizeTimeout;
+    let isAnimating = false;
+
     // Экран загрузки
     function initLoadingScreen() {
         const loadingScreen = document.getElementById('loading-screen');
@@ -24,6 +28,9 @@
 
     // Анимация появления элементов
     function animateElements() {
+        if (isAnimating) return;
+        isAnimating = true;
+
         const elements = [
             '.profile-header',
             '.social-links:nth-child(1)',
@@ -39,9 +46,13 @@
                 }, index * 200);
             }
         });
+
+        setTimeout(() => {
+            isAnimating = false;
+        }, elements.length * 200 + 800);
     }
 
-    // Создание летающих свастик
+    // Создание летающих свастик (оптимизировано)
     function createFlyingSwastikas() {
         // Создаем контейнер для свастик, если его нет
         let swastikasContainer = document.getElementById('flying-swastikas');
@@ -64,18 +75,18 @@
         // Очищаем существующие свастики
         swastikasContainer.innerHTML = '';
         
-        // Создаем 8 летающих свастик
-        for (let i = 0; i < 8; i++) {
+        // Создаем только 4 летающие свастики (уменьшено с 8)
+        for (let i = 0; i < 4; i++) {
             const swastika = document.createElement('div');
             swastika.className = 'flying-swastika';
             swastika.innerHTML = '卐';
             
             // Случайные параметры
-            const size = 20 + Math.random() * 40; // 20-60px
+            const size = 20 + Math.random() * 30; // 20-50px (уменьшено)
             const startX = Math.random() * window.innerWidth;
             const startY = Math.random() * window.innerHeight;
-            const duration = 15 + Math.random() * 20; // 15-35 секунд
-            const delay = Math.random() * 10; // 0-10 секунд задержки
+            const duration = 20 + Math.random() * 15; // 20-35 секунд (увеличено)
+            const delay = Math.random() * 8; // 0-8 секунд задержки
             
             swastika.style.cssText = `
                 position: absolute;
@@ -85,17 +96,18 @@
                 top: ${startY}px;
                 animation: flySwastika ${duration}s linear infinite;
                 animation-delay: ${delay}s;
-                opacity: 0.3;
-                text-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+                opacity: 0.2;
+                text-shadow: 0 0 8px rgba(255, 0, 0, 0.6);
                 pointer-events: none;
                 user-select: none;
+                will-change: transform;
             `;
             
             swastikasContainer.appendChild(swastika);
         }
     }
 
-    // Создание динамических снежинок
+    // Создание динамических снежинок (оптимизировано)
     function createDynamicSnowflakes() {
         const snowflakesContainer = document.getElementById('snowflakes');
         if (!snowflakesContainer) return;
@@ -103,16 +115,16 @@
         // Очищаем существующие снежинки
         snowflakesContainer.innerHTML = '';
         
-        // Создаем 50 снежинок
-        for (let i = 0; i < 50; i++) {
+        // Создаем только 20 снежинок (уменьшено с 50)
+        for (let i = 0; i < 20; i++) {
             const snowflake = document.createElement('div');
             snowflake.className = 'snowflake';
             snowflake.innerHTML = '❄';
             
             // Случайные параметры
-            const size = 8 + Math.random() * 12; // 8-20px
+            const size = 10 + Math.random() * 10; // 10-20px
             const startX = Math.random() * window.innerWidth;
-            const duration = 8 + Math.random() * 12; // 8-20 секунд
+            const duration = 10 + Math.random() * 10; // 10-20 секунд
             const delay = Math.random() * 5; // 0-5 секунд задержки
             
             snowflake.style.cssText = `
@@ -124,20 +136,24 @@
                 animation-delay: ${delay}s;
                 pointer-events: none;
                 user-select: none;
+                will-change: transform;
             `;
             
             snowflakesContainer.appendChild(snowflake);
         }
     }
 
-    // Интерактивные эффекты для ссылок
+    // Интерактивные эффекты для ссылок (оптимизировано)
     function initInteractiveEffects() {
         const socialLinks = document.querySelectorAll('.social-link');
         
         socialLinks.forEach(link => {
+            // Используем CSS transitions вместо JavaScript для лучшей производительности
+            link.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
+            
             link.addEventListener('mouseenter', function() {
-                this.style.transform = 'scale(1.05) translateY(-2px)';
-                this.style.boxShadow = '0 10px 30px rgba(255, 68, 68, 0.4)';
+                this.style.transform = 'scale(1.03) translateY(-1px)';
+                this.style.boxShadow = '0 8px 25px rgba(255, 68, 68, 0.3)';
             });
             
             link.addEventListener('mouseleave', function() {
@@ -146,19 +162,20 @@
             });
             
             link.addEventListener('click', function(e) {
-                // Создаем эффект клика
+                // Упрощенный эффект клика
                 const ripple = document.createElement('div');
                 ripple.style.cssText = `
                     position: absolute;
                     border-radius: 50%;
-                    background: rgba(255, 68, 68, 0.6);
+                    background: rgba(255, 68, 68, 0.4);
                     transform: scale(0);
-                    animation: ripple 0.6s linear;
+                    animation: ripple 0.4s ease-out;
                     pointer-events: none;
+                    will-change: transform, opacity;
                 `;
                 
                 const rect = this.getBoundingClientRect();
-                const size = Math.max(rect.width, rect.height);
+                const size = Math.max(rect.width, rect.height) * 0.8;
                 const x = e.clientX - rect.left - size / 2;
                 const y = e.clientY - rect.top - size / 2;
                 
@@ -170,18 +187,18 @@
                 
                 setTimeout(() => {
                     ripple.remove();
-                }, 600);
+                }, 400);
             });
         });
     }
 
-    // Добавляем CSS для ripple эффекта
+    // Добавляем CSS для ripple эффекта (оптимизировано)
     function addRippleStyles() {
         const style = document.createElement('style');
         style.textContent = `
             @keyframes ripple {
                 to {
-                    transform: scale(4);
+                    transform: scale(3);
                     opacity: 0;
                 }
             }
@@ -189,28 +206,95 @@
         document.head.appendChild(style);
     }
 
+    // Оптимизированные анимации для слабых устройств
+    function createOptimizedAnimations() {
+        const snowflakesContainer = document.getElementById('snowflakes');
+        if (snowflakesContainer) {
+            snowflakesContainer.innerHTML = '';
+            
+            // Создаем только 8 снежинок для слабых устройств
+            for (let i = 0; i < 8; i++) {
+                const snowflake = document.createElement('div');
+                snowflake.className = 'snowflake';
+                snowflake.innerHTML = '❄';
+                
+                const size = 12 + Math.random() * 8; // 12-20px
+                const startX = Math.random() * window.innerWidth;
+                const duration = 15 + Math.random() * 10; // 15-25 секунд
+                const delay = Math.random() * 3; // 0-3 секунд задержки
+                
+                snowflake.style.cssText = `
+                    position: absolute;
+                    left: ${startX}px;
+                    top: -20px;
+                    font-size: ${size}px;
+                    animation: snowfall ${duration}s linear infinite;
+                    animation-delay: ${delay}s;
+                    pointer-events: none;
+                    user-select: none;
+                    will-change: transform;
+                `;
+                
+                snowflakesContainer.appendChild(snowflake);
+            }
+        }
+    }
+
+    // Throttled resize handler
+    function handleResize() {
+        if (resizeTimeout) {
+            clearTimeout(resizeTimeout);
+        }
+        
+        resizeTimeout = setTimeout(() => {
+            const performance = checkDevicePerformance();
+            if (!performance.shouldReduceAnimations) {
+                createDynamicSnowflakes();
+                createFlyingSwastikas();
+            } else {
+                createOptimizedAnimations();
+            }
+        }, 250);
+    }
+
+    // Проверка производительности устройства
+    function checkDevicePerformance() {
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        const isLowEnd = navigator.hardwareConcurrency <= 2 || navigator.deviceMemory <= 2;
+        
+        return {
+            isMobile,
+            isLowEnd,
+            shouldReduceAnimations: isMobile || isLowEnd
+        };
+    }
+
     // Инициализация всех функций
     function init() {
+        const performance = checkDevicePerformance();
+        
         // Добавляем стили для ripple эффекта
         addRippleStyles();
         
         // Инициализируем экран загрузки
         initLoadingScreen();
         
-        // Создаем анимированные элементы
-        createFlyingSwastikas();
-        createDynamicSnowflakes();
+        // Создаем анимированные элементы (с учетом производительности)
+        if (!performance.shouldReduceAnimations) {
+            createFlyingSwastikas();
+            createDynamicSnowflakes();
+        } else {
+            // Для слабых устройств создаем меньше элементов
+            createOptimizedAnimations();
+        }
         
         // Инициализируем интерактивные эффекты после загрузки
         setTimeout(() => {
             initInteractiveEffects();
         }, 3000);
         
-        // Обновляем снежинки при изменении размера окна
-        window.addEventListener('resize', () => {
-            createDynamicSnowflakes();
-            createFlyingSwastikas();
-        });
+        // Оптимизированный обработчик resize
+        window.addEventListener('resize', handleResize);
     }
 
     // Запускаем инициализацию после загрузки DOM

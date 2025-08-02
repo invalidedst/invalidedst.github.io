@@ -357,6 +357,7 @@ html {
     animation: floatShape 20s linear infinite;
     opacity: 0.1;
     border: 2px solid var(--primary-color);
+    will-change: transform;
 }
 
 .triangle {
@@ -393,20 +394,20 @@ html {
 
 @keyframes floatShape {
     0% {
-        transform: rotate(0deg) scale(0.8) translateY(0);
+        transform: translate3d(0, 0, 0) rotate(0deg) scale(0.8);
         opacity: 0;
     }
     10% {
         opacity: 0.1;
     }
     50% {
-        transform: rotate(180deg) scale(1.2) translateY(-50px);
+        transform: translate3d(0, -30px, 0) rotate(180deg) scale(1.1);
     }
     90% {
         opacity: 0.1;
     }
     100% {
-        transform: rotate(360deg) scale(0.8) translateY(-100px);
+        transform: translate3d(0, -60px, 0) rotate(360deg) scale(0.8);
         opacity: 0;
     }
 }
@@ -415,11 +416,10 @@ html {
     position: absolute;
     color: var(--primary-color);
     font-size: 1.2rem;
-    opacity: 0.7;
+    opacity: 0.6;
     animation: snowfall 10s linear infinite;
     will-change: transform;
-    text-shadow: 0 0 8px var(--primary-color);
-    filter: blur(0.5px);
+    text-shadow: 0 0 6px var(--primary-color);
     z-index: 2;
     pointer-events: none;
 }
@@ -442,16 +442,16 @@ html {
 @keyframes snowfall {
     0% {
         opacity: 0;
-        transform: translateY(0);
+        transform: translate3d(0, 0, 0);
     }
     10% {
-        opacity: 0.8;
+        opacity: 0.6;
     }
     90% {
-        opacity: 0.8;
+        opacity: 0.6;
     }
     100% {
-        transform: translateY(100vh);
+        transform: translate3d(100px, 100vh, 0);
         opacity: 0;
     }
 }
@@ -993,6 +993,36 @@ html {
     }
 }
 
+/* Оптимизация для слабых устройств */
+@media (max-width: 768px), (max-height: 600px) {
+    .floating-shapes {
+        display: none;
+    }
+    
+    .shape {
+        animation-duration: 30s;
+    }
+    
+    .snowflake {
+        animation-duration: 20s;
+    }
+    
+    .flying-swastika {
+        animation-duration: 40s;
+    }
+}
+
+/* Дополнительная оптимизация для очень слабых устройств */
+@media (max-width: 480px) and (max-height: 600px) {
+    .snowflakes {
+        display: none;
+    }
+    
+    .flying-swastikas {
+        display: none;
+    }
+}
+
 
 
 /* Дополнительные эффекты для курсора */
@@ -1004,20 +1034,20 @@ a:hover, button:hover {
     cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewport="0 0 20 20"><circle cx="10" cy="10" r="8" fill="currentColor" opacity="0.9"/></svg>'), pointer;
 }
 
-/* Анимация для летающих свастик */
+/* Анимация для летающих свастик (оптимизировано) */
 @keyframes flySwastika {
     0% {
-        transform: translateX(-100px) translateY(0) rotate(0deg);
+        transform: translate3d(-100px, 0, 0) rotate(0deg);
         opacity: 0;
     }
     10% {
-        opacity: 0.3;
+        opacity: 0.2;
     }
     90% {
-        opacity: 0.3;
+        opacity: 0.2;
     }
     100% {
-        transform: translateX(calc(100vw + 100px)) translateY(calc(100vh + 100px)) rotate(360deg);
+        transform: translate3d(calc(100vw + 100px), calc(100vh + 100px), 0) rotate(360deg);
         opacity: 0;
     }
 }
