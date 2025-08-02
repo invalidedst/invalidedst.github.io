@@ -330,7 +330,7 @@
 }
 
 body {
-    background: linear-gradient(135deg, #0a0a0a 0%, #1a0000 25%, #330000 50%, #1a0000 75%, #0a0a0a 100%) fixed;
+    background: var(--bg-start);
     color: var(--text-color);
     overflow-x: hidden;
     min-height: 100vh;
