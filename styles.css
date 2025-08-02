@@ -28,7 +28,7 @@
 }
 
 [data-theme="red"] body {
-    font-family: 'Creepster', cursive;
+    font-family: 'Orbitron', monospace;
     background: linear-gradient(135deg, #0a0a0a 0%, #1a0000 25%, #330000 50%, #1a0000 75%, #0a0a0a 100%) fixed;
 }
 
@@ -52,12 +52,12 @@
 }
 
 [data-theme="red"] .profile-name {
-    font-family: 'Creepster', cursive;
+    font-family: 'Orbitron', monospace;
     text-shadow: 0 0 20px #ff4444, 0 0 40px #cc0000;
 }
 
 [data-theme="red"] .section-title {
-    font-family: 'Creepster', cursive;
+    font-family: 'Orbitron', monospace;
     text-shadow: 0 0 15px #ff4444;
 }
 
@@ -80,6 +80,27 @@
     background: linear-gradient(135deg, rgba(255, 68, 68, 0.1), rgba(204, 0, 0, 0.1));
     border: 2px solid #cc0000;
     box-shadow: 0 0 25px rgba(255, 68, 68, 0.3);
+}
+
+[data-theme="red"] .floating-shapes {
+    background: radial-gradient(ellipse at center, rgba(255, 68, 68, 0.05) 0%, transparent 70%);
+}
+
+[data-theme="red"] .shape {
+    border-color: #ff4444;
+    opacity: 0.08;
+}
+
+[data-theme="red"] .triangle {
+    border-bottom-color: #ff6666;
+}
+
+[data-theme="red"] .circle {
+    background: radial-gradient(circle, #cc0000, transparent);
+}
+
+[data-theme="red"] .square {
+    background: linear-gradient(45deg, #ff4444, #cc0000);
 }
 
 
@@ -116,29 +137,29 @@
 }
 
 [data-theme="pink"] body {
-    font-family: 'Fredoka One', cursive;
+    font-family: 'Orbitron', monospace;
     background: linear-gradient(135deg, #1a0033 0%, #330066 25%, #4d0099 50%, #330066 75%, #1a0033 100%) fixed;
 }
 
 [data-theme="pink"] .profile-name {
-    font-family: 'Comic Neue', cursive;
+    font-family: 'Orbitron', monospace;
     font-weight: 700;
     text-shadow: 0 0 20px #ff69b4, 0 0 40px #da70d6;
 }
 
 [data-theme="pink"] .section-title {
-    font-family: 'Comic Neue', cursive;
+    font-family: 'Orbitron', monospace;
     font-weight: 700;
     text-shadow: 0 0 15px #ff69b4;
 }
 
 [data-theme="pink"] .link-title {
-    font-family: 'Comic Neue', cursive;
+    font-family: 'Orbitron', monospace;
     font-weight: 600;
 }
 
 [data-theme="pink"] .bio-text {
-    font-family: 'Comic Neue', cursive;
+    font-family: 'Orbitron', monospace;
     font-weight: 400;
 }
 
@@ -161,6 +182,27 @@
     background: linear-gradient(135deg, rgba(255, 105, 180, 0.1), rgba(218, 112, 214, 0.1));
     border: 2px solid #da70d6;
     box-shadow: 0 0 25px rgba(255, 105, 180, 0.3);
+}
+
+[data-theme="pink"] .floating-shapes {
+    background: radial-gradient(ellipse at center, rgba(255, 105, 180, 0.05) 0%, transparent 70%);
+}
+
+[data-theme="pink"] .shape {
+    border-color: #ff69b4;
+    opacity: 0.08;
+}
+
+[data-theme="pink"] .triangle {
+    border-bottom-color: #87ceeb;
+}
+
+[data-theme="pink"] .circle {
+    background: radial-gradient(circle, #da70d6, transparent);
+}
+
+[data-theme="pink"] .square {
+    background: linear-gradient(45deg, #ff69b4, #da70d6);
 }
 
 
@@ -221,6 +263,76 @@ html {
     pointer-events: none;
     z-index: 1;
     overflow: hidden;
+}
+
+/* Летающие фигуры */
+.floating-shapes {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.shape {
+    position: absolute;
+    animation: floatShape 20s linear infinite;
+    opacity: 0.1;
+    border: 2px solid var(--primary-color);
+}
+
+.triangle {
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 25px solid var(--accent-color);
+    border-top: none;
+}
+
+.circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--secondary-color), transparent);
+}
+
+.square {
+    width: 25px;
+    height: 25px;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    transform: rotate(45deg);
+}
+
+.shape:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
+.shape:nth-child(2) { top: 40%; right: 15%; animation-delay: 3s; }
+.shape:nth-child(3) { bottom: 30%; left: 20%; animation-delay: 6s; }
+.shape:nth-child(4) { top: 60%; left: 60%; animation-delay: 9s; }
+.shape:nth-child(5) { bottom: 20%; right: 25%; animation-delay: 12s; }
+.shape:nth-child(6) { top: 80%; left: 80%; animation-delay: 15s; }
+.shape:nth-child(7) { top: 10%; right: 40%; animation-delay: 18s; }
+.shape:nth-child(8) { bottom: 60%; right: 60%; animation-delay: 21s; }
+
+@keyframes floatShape {
+    0% {
+        transform: rotate(0deg) scale(0.8) translateY(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.1;
+    }
+    50% {
+        transform: rotate(180deg) scale(1.2) translateY(-50px);
+    }
+    90% {
+        opacity: 0.1;
+    }
+    100% {
+        transform: rotate(360deg) scale(0.8) translateY(-100px);
+        opacity: 0;
+    }
 }
 
 .snowflake {
