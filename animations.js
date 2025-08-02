@@ -100,7 +100,7 @@
             
             // Простые символы
             const currentTheme = document.body.getAttribute('data-theme');
-            snowflake.innerHTML = currentTheme === 'red' ? '🔥' : '💖';
+            snowflake.innerHTML = currentTheme === 'red' ? '❄' : '✧';
             
             // Простые параметры
             snowflake.style.left = Math.random() * 100 + '%';
