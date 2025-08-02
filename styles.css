@@ -28,7 +28,7 @@
 }
 
 [data-theme="red"] body {
-    font-family: 'Orbitron', monospace;
+    font-family: 'Inter', sans-serif;
     background: linear-gradient(135deg, #0a0a0a 0%, #1a0000 25%, #330000 50%, #1a0000 75%, #0a0a0a 100%) fixed;
 }
 
@@ -52,12 +52,14 @@
 }
 
 [data-theme="red"] .profile-name {
-    font-family: 'Orbitron', monospace;
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
     text-shadow: 0 0 20px #ff4444, 0 0 40px #cc0000;
 }
 
 [data-theme="red"] .section-title {
-    font-family: 'Orbitron', monospace;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
     text-shadow: 0 0 15px #ff4444;
 }
 
@@ -137,29 +139,29 @@
 }
 
 [data-theme="pink"] body {
-    font-family: 'Orbitron', monospace;
+    font-family: 'Inter', sans-serif;
     background: linear-gradient(135deg, #1a0033 0%, #330066 25%, #4d0099 50%, #330066 75%, #1a0033 100%) fixed;
 }
 
 [data-theme="pink"] .profile-name {
-    font-family: 'Orbitron', monospace;
-    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
     text-shadow: 0 0 20px #ff69b4, 0 0 40px #da70d6;
 }
 
 [data-theme="pink"] .section-title {
-    font-family: 'Orbitron', monospace;
+    font-family: 'Inter', sans-serif;
     font-weight: 700;
     text-shadow: 0 0 15px #ff69b4;
 }
 
 [data-theme="pink"] .link-title {
-    font-family: 'Orbitron', monospace;
+    font-family: 'Inter', sans-serif;
     font-weight: 600;
 }
 
 [data-theme="pink"] .bio-text {
-    font-family: 'Orbitron', monospace;
+    font-family: 'Inter', sans-serif;
     font-weight: 400;
 }
 
@@ -534,7 +536,7 @@ html {
 
 /* Секции */
 .section-title {
-    font-family: 'Creepster', cursive;
+    font-family: 'Inter', sans-serif;
     font-size: 2.5rem;
     text-align: center;
     margin-bottom: 2rem;
