@@ -457,21 +457,7 @@
         document.head.appendChild(rippleStyles);
     }
 
-    // Эффект мерцания для важных элементов
-    function flickerEffect() {
-        const flickerElements = document.querySelectorAll('.warning-text');
-        
-        flickerElements.forEach(element => {
-            setInterval(() => {
-                if (Math.random() < 0.08) {
-                    element.style.opacity = '0.4';
-                    setTimeout(() => {
-                        element.style.opacity = '1';
-                    }, 150);
-                }
-            }, 2000);
-        });
-    }
+
 
     // Обновление символов снежинок при смене темы
     function updateSnowflakeSymbols() {
@@ -481,7 +467,7 @@
         snowflakes.forEach(snowflake => {
             let symbols;
             
-            if (currentTheme === 'magical' || currentTheme === 'pink') {
+            if (currentTheme === 'pink') {
                 symbols = ['⭐', '✨', '💫', '🌟', '💖', '💕', '💗', '💓'];
             } else {
                 symbols = ['❄', '❅', '❆', '✻', '✼', '❄', '❅', '❆'];
@@ -509,7 +495,7 @@
             const currentTheme = document.body.getAttribute('data-theme');
             let symbols;
             
-            if (currentTheme === 'magical' || currentTheme === 'pink') {
+            if (currentTheme === 'pink') {
                 symbols = ['⭐', '✨', '💫', '🌟', '💖', '💕', '💗', '💓'];
             } else {
                 symbols = ['❄', '❅', '❆', '✻', '✼', '❄', '❅', '❆'];
@@ -553,7 +539,7 @@
                     const currentTheme = document.body.getAttribute('data-theme');
                     let symbols;
                     
-                    if (currentTheme === 'magical' || currentTheme === 'pink') {
+                    if (currentTheme === 'pink') {
                         symbols = ['⭐', '✨', '💫', '🌟', '💖', '💕', '💗', '💓'];
                     } else {
                         symbols = ['❄', '❅', '❆', '✻', '✼', '❄', '❅', '❆'];
@@ -581,15 +567,15 @@
         // Создаем динамические снежинки
         createDynamicSnowflakes();
         
-        // Убираем тяжелые эффекты для оптимизации
-        setTimeout(() => {
-            // Только самые необходимые эффекты
-            interactiveSocialLinks();
-            
-            console.log('❄️ Зимний сайт загружен');
-            console.log('🎨 Снежинки падают рандомно');
-            console.log('🌨️ Зимняя тема активна');
-        }, 100);
+            // Оптимизированные эффекты
+    setTimeout(() => {
+        // Только самые необходимые эффекты
+        interactiveSocialLinks();
+        
+        console.log('❄️ Сайт загружен и оптимизирован');
+        console.log('🎨 Снежинки падают рандомно');
+        console.log('🌨️ Зимняя тема активна');
+    }, 100);
     });
 
     // Эффект загрузки страницы

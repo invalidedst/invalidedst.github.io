@@ -136,73 +136,7 @@
     background: radial-gradient(ellipse at center, rgba(176, 224, 230, 0.1) 0%, transparent 70%);
 }
 
-[data-theme="magical"] {
-    --primary-color: #ff69b4;
-    --secondary-color: #da70d6;
-    --accent-color: #87ceeb;
-    --bg-start: #1a0033;
-    --bg-mid-1: #330066;
-    --bg-mid-2: #4d0099;
-    --text-color: #ff69b4;
-}
 
-[data-theme="magical"] .snowflakes {
-    background: radial-gradient(ellipse at center, rgba(255, 105, 180, 0.15) 0%, transparent 70%);
-}
-
-[data-theme="magical"] .snowflake {
-    color: #ff69b4;
-    text-shadow: 0 0 15px rgba(255, 105, 180, 0.8), 0 0 30px rgba(218, 112, 214, 0.6);
-}
-
-[data-theme="magical"] .snowflake:nth-child(3n) {
-    color: #87ceeb;
-    text-shadow: 0 0 15px rgba(135, 206, 235, 0.8), 0 0 30px rgba(255, 105, 180, 0.6);
-}
-
-[data-theme="magical"] .snowflake:nth-child(5n) {
-    color: #da70d6;
-    text-shadow: 0 0 15px rgba(218, 112, 214, 0.8), 0 0 30px rgba(135, 206, 235, 0.6);
-}
-
-[data-theme="magical"] body {
-    font-family: 'Fredoka One', cursive;
-}
-
-[data-theme="magical"] .profile-name {
-    font-family: 'Comic Neue', cursive;
-    font-weight: 700;
-}
-
-[data-theme="magical"] .section-title {
-    font-family: 'Comic Neue', cursive;
-    font-weight: 700;
-}
-
-[data-theme="magical"] .link-title {
-    font-family: 'Comic Neue', cursive;
-    font-weight: 600;
-}
-
-[data-theme="magical"] .bio-text {
-    font-family: 'Comic Neue', cursive;
-    font-weight: 400;
-}
-
-[data-theme="magical"] .detail-item {
-    border-radius: 30px;
-    background: linear-gradient(135deg, rgba(255, 105, 180, 0.2), rgba(218, 112, 214, 0.2));
-}
-
-[data-theme="magical"] .social-link {
-    border-radius: 25px;
-    background: linear-gradient(135deg, rgba(255, 105, 180, 0.1), rgba(218, 112, 214, 0.1));
-}
-
-[data-theme="magical"] .bio-card {
-    border-radius: 30px;
-    background: linear-gradient(135deg, rgba(255, 105, 180, 0.1), rgba(218, 112, 214, 0.1));
-}
 
 /* Основные стили и сброс */
 * {
@@ -684,27 +618,27 @@ html {
     transform: translateX(5px);
 }
 
-/* Стили для братьев */
+/* Стили для братьев - универсальные */
 .bro-link {
-    background: linear-gradient(135deg, #2d1b69, #11998e) !important;
-    border-color: #38ef7d !important;
+    background: linear-gradient(135deg, var(--bg-mid-1), var(--bg-mid-2)) !important;
+    border-color: var(--primary-color) !important;
 }
 
 .bro-link:hover {
-    border-color: #38ef7d !important;
+    border-color: var(--accent-color) !important;
     box-shadow: 
-        0 10px 30px rgba(56, 239, 125, 0.4),
-        inset 0 0 30px rgba(45, 27, 105, 0.3) !important;
+        0 10px 30px var(--primary-color),
+        inset 0 0 30px rgba(255, 255, 255, 0.1) !important;
 }
 
 .bro-link .link-icon {
-    color: #38ef7d !important;
+    color: var(--primary-color) !important;
 }
 
-/* Стили для био ссылки */
+/* Стили для био ссылки - универсальные */
 .bio-link {
-    background: linear-gradient(135deg, #2d1b69, #11998e) !important;
-    border-color: #38ef7d !important;
+    background: linear-gradient(135deg, var(--bg-mid-1), var(--bg-mid-2)) !important;
+    border-color: var(--primary-color) !important;
 }
 
 .bio-link:hover {
@@ -718,21 +652,21 @@ html {
     color: #aa00ff !important;
 }
 
-/* Стили для Anixart ссылки */
+/* Стили для Anixart ссылки - универсальные */
 .anixart-link {
-    background: linear-gradient(135deg, #2d1b69, #11998e) !important;
-    border-color: #38ef7d !important;
+    background: linear-gradient(135deg, var(--bg-mid-1), var(--bg-mid-2)) !important;
+    border-color: var(--primary-color) !important;
 }
 
 .anixart-link:hover {
-    border-color: #38ef7d !important;
+    border-color: var(--accent-color) !important;
     box-shadow: 
-        0 10px 30px rgba(56, 239, 125, 0.4),
-        inset 0 0 30px rgba(45, 27, 105, 0.3) !important;
+        0 10px 30px var(--primary-color),
+        inset 0 0 30px rgba(255, 255, 255, 0.1) !important;
 }
 
 .anixart-link .link-icon {
-    color: #38ef7d !important;
+    color: var(--primary-color) !important;
 }
 
 /* Убираем стили музыкального плеера */
