@@ -10,7 +10,7 @@
         const body = document.body;
         
         // Загружаем сохраненную тему
-        const savedTheme = localStorage.getItem('bioTheme') || 'red';
+        const savedTheme = localStorage.getItem('bioTheme') || 'winter';
         body.setAttribute('data-theme', savedTheme);
         
         // Обновляем активную кнопку
@@ -454,7 +454,7 @@
 
     // Эффект мерцания для важных элементов
     function flickerEffect() {
-        const flickerElements = document.querySelectorAll('.warning-text, .license-warning');
+        const flickerElements = document.querySelectorAll('.warning-text');
         
         flickerElements.forEach(element => {
             setInterval(() => {
@@ -476,22 +476,24 @@
         // Очищаем существующие снежинки
         snowflakesContainer.innerHTML = '';
         
-        // Создаем 20 снежинок с рандомными параметрами
-        for (let i = 0; i < 20; i++) {
+        // Создаем 30 снежинок с рандомными параметрами
+        for (let i = 0; i < 30; i++) {
             const snowflake = document.createElement('div');
             snowflake.className = 'snowflake';
             snowflake.innerHTML = '<i class="fas fa-snowflake"></i>';
             
             // Рандомные параметры для каждой снежинки
             const randomLeft = Math.random() * 100; // Рандомная позиция по горизонтали
-            const randomDelay = Math.random() * 10; // Рандомная задержка
-            const randomDuration = 8 + Math.random() * 12; // Рандомная длительность анимации (8-20 сек)
-            const randomSize = 0.8 + Math.random() * 1.2; // Рандомный размер (0.8-2.0)
+            const randomDelay = Math.random() * 15; // Рандомная задержка (0-15 сек)
+            const randomDuration = 6 + Math.random() * 18; // Рандомная длительность анимации (6-24 сек)
+            const randomSize = 0.6 + Math.random() * 1.8; // Рандомный размер (0.6-2.4)
+            const randomOpacity = 0.3 + Math.random() * 0.7; // Рандомная прозрачность
             
             snowflake.style.left = randomLeft + '%';
             snowflake.style.animationDelay = randomDelay + 's';
             snowflake.style.animationDuration = randomDuration + 's';
             snowflake.style.fontSize = randomSize + 'rem';
+            snowflake.style.opacity = randomOpacity;
             
             snowflakesContainer.appendChild(snowflake);
         }
@@ -504,16 +506,20 @@
                 const rect = snowflake.getBoundingClientRect();
                 if (rect.top > window.innerHeight) {
                     const randomLeft = Math.random() * 100;
-                    const randomDelay = Math.random() * 5;
-                    const randomDuration = 8 + Math.random() * 12;
+                    const randomDelay = Math.random() * 3;
+                    const randomDuration = 6 + Math.random() * 18;
+                    const randomSize = 0.6 + Math.random() * 1.8;
+                    const randomOpacity = 0.3 + Math.random() * 0.7;
                     
                     snowflake.style.left = randomLeft + '%';
                     snowflake.style.animationDelay = randomDelay + 's';
                     snowflake.style.animationDuration = randomDuration + 's';
+                    snowflake.style.fontSize = randomSize + 'rem';
+                    snowflake.style.opacity = randomOpacity;
                     snowflake.style.top = '-50px';
                 }
             });
-        }, 5000); // Проверяем каждые 5 секунд
+        }, 3000); // Проверяем каждые 3 секунды
     }
 
     // Запуск всех эффектов после загрузки DOM
@@ -531,6 +537,7 @@
             
             console.log('❄️ Зимний сайт загружен');
             console.log('🎨 Снежинки падают рандомно');
+            console.log('🌨️ Зимняя тема активна');
         }, 100);
     });
 

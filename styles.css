@@ -62,6 +62,26 @@
     --text-color: #44aaff;
 }
 
+[data-theme="winter"] {
+    --primary-color: #87ceeb;
+    --secondary-color: #4682b4;
+    --accent-color: #b0e0e6;
+    --bg-start: #0a0a0a;
+    --bg-mid-1: #001a1a;
+    --bg-mid-2: #003366;
+    --text-color: #87ceeb;
+}
+
+[data-theme="winter"] .snowflake {
+    color: #b0e0e6;
+    text-shadow: 0 0 10px rgba(176, 224, 230, 0.8);
+    filter: blur(0.3px);
+}
+
+[data-theme="winter"] .snowflakes {
+    background: radial-gradient(ellipse at center, rgba(176, 224, 230, 0.1) 0%, transparent 70%);
+}
+
 /* Основные стили и сброс */
 * {
     margin: 0;
@@ -226,6 +246,7 @@ html {
     will-change: transform;
     text-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
     filter: blur(0.5px);
+    z-index: 2;
 }
 
 .snowflake:nth-child(odd) {
@@ -252,8 +273,14 @@ html {
     10% {
         opacity: 0.9;
     }
+    25% {
+        transform: translateX(15px) rotate(90deg);
+    }
     50% {
-        transform: translateX(20px) rotate(180deg);
+        transform: translateX(-10px) rotate(180deg);
+    }
+    75% {
+        transform: translateX(20px) rotate(270deg);
     }
     90% {
         opacity: 0.9;
@@ -261,7 +288,7 @@ html {
     100% {
         top: 100vh;
         opacity: 0;
-        transform: translateX(-20px) rotate(360deg);
+        transform: translateX(-5px) rotate(360deg);
     }
 }
 
@@ -656,68 +683,7 @@ html {
     }
 }
 
-/* Футер */
-.site-footer {
-    background: linear-gradient(135deg, var(--bg-start), var(--bg-mid-1));
-    border: 2px solid var(--secondary-color);
-    border-radius: 20px;
-    padding: 2rem;
-    text-align: center;
-    animation: fadeInUp 1s ease-out 0.9s both;
-}
 
-.copyright-title {
-    font-family: 'Creepster', cursive;
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-    color: var(--primary-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-}
-
-.copyright-content {
-    margin-bottom: 1.5rem;
-    line-height: 1.5;
-}
-
-.copyright-content p {
-    margin-bottom: 0.5rem;
-}
-
-.license-warning {
-    color: var(--primary-color);
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    animation: flashWarning 2s ease-in-out infinite;
-}
-
-@keyframes flashWarning {
-    0%, 100% {
-        color: var(--primary-color);
-        text-shadow: 0 0 10px var(--secondary-color);
-    }
-    50% {
-        color: var(--accent-color);
-        text-shadow: 0 0 20px var(--primary-color);
-    }
-}
-
-.protection-info {
-    border-top: 1px solid var(--secondary-color);
-    padding-top: 1rem;
-    color: var(--accent-color);
-    font-size: 0.9rem;
-}
-
-.creation-date {
-    margin-top: 0.5rem;
-    font-style: italic;
-}
 
 /* Анимации появления */
 @keyframes fadeInUp {
