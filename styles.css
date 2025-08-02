@@ -139,29 +139,29 @@
 }
 
 [data-theme="pink"] body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Fredoka One', cursive;
     background: linear-gradient(135deg, #1a0033 0%, #330066 25%, #4d0099 50%, #330066 75%, #1a0033 100%) fixed;
 }
 
 [data-theme="pink"] .profile-name {
-    font-family: 'Inter', sans-serif;
-    font-weight: 800;
+    font-family: 'Comic Neue', cursive;
+    font-weight: 700;
     text-shadow: 0 0 20px #ff69b4, 0 0 40px #da70d6;
 }
 
 [data-theme="pink"] .section-title {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Comic Neue', cursive;
     font-weight: 700;
     text-shadow: 0 0 15px #ff69b4;
 }
 
 [data-theme="pink"] .link-title {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Comic Neue', cursive;
     font-weight: 600;
 }
 
 [data-theme="pink"] .bio-text {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Comic Neue', cursive;
     font-weight: 400;
 }
 
