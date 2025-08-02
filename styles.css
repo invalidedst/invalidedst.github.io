@@ -877,3 +877,31 @@ body {
 a:hover, button:hover {
     cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewport="0 0 20 20"><circle cx="10" cy="10" r="8" fill="currentColor" opacity="0.9"/></svg>'), pointer;
 }
+
+/* Анимация для летающих свастик */
+@keyframes flySwastika {
+    0% {
+        transform: translateX(-100px) translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.3;
+    }
+    90% {
+        opacity: 0.3;
+    }
+    100% {
+        transform: translateX(calc(100vw + 100px)) translateY(calc(100vh + 100px)) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.flying-swastika {
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
