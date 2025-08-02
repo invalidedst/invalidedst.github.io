@@ -416,10 +416,10 @@ html {
     position: absolute;
     color: var(--primary-color);
     font-size: 1.2rem;
-    opacity: 0.6;
+    opacity: 0.7;
     animation: snowfall 10s linear infinite;
     will-change: transform;
-    text-shadow: 0 0 6px var(--primary-color);
+    text-shadow: 0 0 8px var(--primary-color);
     z-index: 2;
     pointer-events: none;
 }
@@ -442,16 +442,16 @@ html {
 @keyframes snowfall {
     0% {
         opacity: 0;
-        transform: translate3d(0, 0, 0);
+        transform: translate3d(0, -30px, 0);
     }
     10% {
-        opacity: 0.6;
+        opacity: 0.7;
     }
     90% {
-        opacity: 0.6;
+        opacity: 0.7;
     }
     100% {
-        transform: translate3d(100px, 100vh, 0);
+        transform: translate3d(50px, calc(100vh + 30px), 0);
         opacity: 0;
     }
 }
@@ -1004,22 +1004,22 @@ html {
     }
     
     .snowflake {
-        animation-duration: 20s;
+        animation-duration: 15s;
     }
     
     .flying-swastika {
-        animation-duration: 40s;
+        animation-duration: 25s;
     }
 }
 
 /* Дополнительная оптимизация для очень слабых устройств */
 @media (max-width: 480px) and (max-height: 600px) {
-    .snowflakes {
-        display: none;
+    .snowflake {
+        animation-duration: 20s;
     }
     
-    .flying-swastikas {
-        display: none;
+    .flying-swastika {
+        animation-duration: 30s;
     }
 }
 
@@ -1034,20 +1034,20 @@ a:hover, button:hover {
     cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewport="0 0 20 20"><circle cx="10" cy="10" r="8" fill="currentColor" opacity="0.9"/></svg>'), pointer;
 }
 
-/* Анимация для летающих свастик (оптимизировано) */
+/* Анимация для летающих свастик (постоянное падение) */
 @keyframes flySwastika {
     0% {
-        transform: translate3d(-100px, 0, 0) rotate(0deg);
+        transform: translate3d(0, -50px, 0) rotate(0deg);
         opacity: 0;
     }
     10% {
-        opacity: 0.2;
+        opacity: 0.3;
     }
     90% {
-        opacity: 0.2;
+        opacity: 0.3;
     }
     100% {
-        transform: translate3d(calc(100vw + 100px), calc(100vh + 100px), 0) rotate(360deg);
+        transform: translate3d(100px, calc(100vh + 50px), 0) rotate(360deg);
         opacity: 0;
     }
 }

@@ -75,18 +75,18 @@
         // Очищаем существующие свастики
         swastikasContainer.innerHTML = '';
         
-        // Создаем только 4 летающие свастики (уменьшено с 8)
-        for (let i = 0; i < 4; i++) {
+        // Создаем 6 летающих свастик (увеличено с 4)
+        for (let i = 0; i < 6; i++) {
             const swastika = document.createElement('div');
             swastika.className = 'flying-swastika';
             swastika.innerHTML = '卐';
             
             // Случайные параметры
-            const size = 20 + Math.random() * 30; // 20-50px (уменьшено)
+            const size = 20 + Math.random() * 40; // 20-60px
             const startX = Math.random() * window.innerWidth;
-            const startY = Math.random() * window.innerHeight;
-            const duration = 20 + Math.random() * 15; // 20-35 секунд (увеличено)
-            const delay = Math.random() * 8; // 0-8 секунд задержки
+            const startY = -50; // Начинаем выше экрана
+            const duration = 15 + Math.random() * 20; // 15-35 секунд
+            const delay = Math.random() * 10; // 0-10 секунд задержки
             
             swastika.style.cssText = `
                 position: absolute;
@@ -96,8 +96,8 @@
                 top: ${startY}px;
                 animation: flySwastika ${duration}s linear infinite;
                 animation-delay: ${delay}s;
-                opacity: 0.2;
-                text-shadow: 0 0 8px rgba(255, 0, 0, 0.6);
+                opacity: 0.3;
+                text-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
                 pointer-events: none;
                 user-select: none;
                 will-change: transform;
@@ -115,22 +115,22 @@
         // Очищаем существующие снежинки
         snowflakesContainer.innerHTML = '';
         
-        // Создаем только 20 снежинок (уменьшено с 50)
-        for (let i = 0; i < 20; i++) {
+        // Создаем 30 снежинок для постоянного падения
+        for (let i = 0; i < 30; i++) {
             const snowflake = document.createElement('div');
             snowflake.className = 'snowflake';
             snowflake.innerHTML = '❄';
             
-            // Случайные параметры
-            const size = 10 + Math.random() * 10; // 10-20px
+            // Случайные параметры для постоянного падения
+            const size = 8 + Math.random() * 15; // 8-23px
             const startX = Math.random() * window.innerWidth;
-            const duration = 10 + Math.random() * 10; // 10-20 секунд
-            const delay = Math.random() * 5; // 0-5 секунд задержки
+            const duration = 8 + Math.random() * 12; // 8-20 секунд
+            const delay = Math.random() * 8; // 0-8 секунд задержки
             
             snowflake.style.cssText = `
                 position: absolute;
                 left: ${startX}px;
-                top: -20px;
+                top: -30px;
                 font-size: ${size}px;
                 animation: snowfall ${duration}s linear infinite;
                 animation-delay: ${delay}s;
@@ -212,21 +212,21 @@
         if (snowflakesContainer) {
             snowflakesContainer.innerHTML = '';
             
-            // Создаем только 8 снежинок для слабых устройств
-            for (let i = 0; i < 8; i++) {
+            // Создаем 15 снежинок для слабых устройств
+            for (let i = 0; i < 15; i++) {
                 const snowflake = document.createElement('div');
                 snowflake.className = 'snowflake';
                 snowflake.innerHTML = '❄';
                 
-                const size = 12 + Math.random() * 8; // 12-20px
+                const size = 10 + Math.random() * 10; // 10-20px
                 const startX = Math.random() * window.innerWidth;
-                const duration = 15 + Math.random() * 10; // 15-25 секунд
-                const delay = Math.random() * 3; // 0-3 секунд задержки
+                const duration = 12 + Math.random() * 8; // 12-20 секунд
+                const delay = Math.random() * 5; // 0-5 секунд задержки
                 
                 snowflake.style.cssText = `
                     position: absolute;
                     left: ${startX}px;
-                    top: -20px;
+                    top: -30px;
                     font-size: ${size}px;
                     animation: snowfall ${duration}s linear infinite;
                     animation-delay: ${delay}s;
@@ -237,6 +237,55 @@
                 
                 snowflakesContainer.appendChild(snowflake);
             }
+        }
+        
+        // Создаем 3 свастики для слабых устройств
+        let swastikasContainer = document.getElementById('flying-swastikas');
+        if (!swastikasContainer) {
+            swastikasContainer = document.createElement('div');
+            swastikasContainer.id = 'flying-swastikas';
+            swastikasContainer.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+                z-index: 1;
+                overflow: hidden;
+            `;
+            document.body.appendChild(swastikasContainer);
+        }
+        
+        swastikasContainer.innerHTML = '';
+        
+        for (let i = 0; i < 3; i++) {
+            const swastika = document.createElement('div');
+            swastika.className = 'flying-swastika';
+            swastika.innerHTML = '卐';
+            
+            const size = 25 + Math.random() * 25; // 25-50px
+            const startX = Math.random() * window.innerWidth;
+            const startY = -50;
+            const duration = 20 + Math.random() * 15; // 20-35 секунд
+            const delay = Math.random() * 8; // 0-8 секунд задержки
+            
+            swastika.style.cssText = `
+                position: absolute;
+                color: #ff0000;
+                font-size: ${size}px;
+                left: ${startX}px;
+                top: ${startY}px;
+                animation: flySwastika ${duration}s linear infinite;
+                animation-delay: ${delay}s;
+                opacity: 0.25;
+                text-shadow: 0 0 8px rgba(255, 0, 0, 0.7);
+                pointer-events: none;
+                user-select: none;
+                will-change: transform;
+            `;
+            
+            swastikasContainer.appendChild(swastika);
         }
     }
 
