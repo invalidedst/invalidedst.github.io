@@ -51,10 +51,7 @@
                 // Сохраняем тему
                 localStorage.setItem('bioTheme', theme);
                 
-                // Обновляем символы снежинок при смене темы
-                setTimeout(() => {
-                    updateSnowflakeSymbols();
-                }, 100);
+
                 
                 // Закрываем меню
                 themeMenu.classList.remove('open');
@@ -80,359 +77,15 @@
         }
     });
 
-    // Улучшенный эффект матрицы в фоне
-    function createMatrixEffect() {
-        const canvas = document.createElement('canvas');
-        canvas.style.position = 'fixed';
-        canvas.style.top = '0';
-        canvas.style.left = '0';
-        canvas.style.width = '100%';
-        canvas.style.height = '100%';
-        canvas.style.pointerEvents = 'none';
-        canvas.style.zIndex = '0';
-        canvas.style.opacity = '0.05';
-        
-        document.body.insertBefore(canvas, document.body.firstChild);
-        
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        
-        const characters = 'AEZA01♦♠♣♥◊◈∞Ω';
-        const fontSize = 16;
-        const columns = canvas.width / fontSize;
-        
-        const drops = Array(Math.floor(columns)).fill(1);
-        
-        function draw() {
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.08)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            
-            // Получаем текущий цвет темы
-            const primaryColor = getComputedStyle(document.body).getPropertyValue('--primary-color').trim();
-            ctx.fillStyle = primaryColor || '#ff4444';
-            ctx.font = fontSize + 'px monospace';
-            
-            for (let i = 0; i < drops.length; i++) {
-                const text = characters[Math.floor(Math.random() * characters.length)];
-                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-                
-                if (drops[i] * fontSize > canvas.height && Math.random() > 0.98) {
-                    drops[i] = 0;
-                }
-                drops[i]++;
-            }
-        }
-        
-        setInterval(draw, 120);
-        
-        // Обновление размеров при изменении окна
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
-    }
-
-    // Улучшенный эффект курсора
-    function createCursorEffect() {
-        const cursor = document.createElement('div');
-        cursor.style.cssText = `
-            position: fixed;
-            width: 20px;
-            height: 20px;
-            background: radial-gradient(circle, var(--primary-color), transparent);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 9999;
-            transition: transform 0.1s ease;
-        `;
-        document.body.appendChild(cursor);
-
-        const trail = [];
-        const trailLength = 8;
-
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX - 10 + 'px';
-            cursor.style.top = e.clientY - 10 + 'px';
-
-            // Создаем след
-            trail.push({ x: e.clientX, y: e.clientY, time: Date.now() });
-            
-            if (trail.length > trailLength) {
-                trail.shift();
-            }
-
-            // Обновляем след
-            trail.forEach((point, index) => {
-                let trailElement = document.querySelector(`#trail-${index}`);
-                if (!trailElement) {
-                    trailElement = document.createElement('div');
-                    trailElement.id = `trail-${index}`;
-                    trailElement.style.cssText = `
-                        position: fixed;
-                        width: ${18 - index * 2}px;
-                        height: ${18 - index * 2}px;
-                        background: radial-gradient(circle, var(--accent-color), transparent);
-                        border-radius: 50%;
-                        pointer-events: none;
-                        z-index: 9998;
-                        opacity: ${0.6 - index * 0.08};
-                    `;
-                    document.body.appendChild(trailElement);
-                }
-                
-                trailElement.style.left = point.x - (18 - index * 2) / 2 + 'px';
-                trailElement.style.top = point.y - (18 - index * 2) / 2 + 'px';
-            });
-        });
-
-        // Эффект клика с цветом текущей темы
-        document.addEventListener('click', (e) => {
-            for (let i = 0; i < 12; i++) {
-                createClickParticle(e.clientX, e.clientY);
-            }
-        });
-    }
-
-    // Создание частиц при клике с динамическим цветом
-    function createClickParticle(x, y) {
-        const particle = document.createElement('div');
-        particle.style.cssText = `
-            position: fixed;
-            width: 8px;
-            height: 8px;
-            background: var(--primary-color);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 10000;
-            box-shadow: 0 0 10px var(--primary-color);
-        `;
-        
-        document.body.appendChild(particle);
-        
-        const angle = Math.random() * Math.PI * 2;
-        const velocity = 3 + Math.random() * 4;
-        const life = 1200 + Math.random() * 800;
-        
-        let startTime = Date.now();
-        
-        function animate() {
-            const elapsed = Date.now() - startTime;
-            const progress = elapsed / life;
-            
-            if (progress >= 1) {
-                particle.remove();
-                return;
-            }
-            
-            const distance = velocity * elapsed * 0.01;
-            const newX = x + Math.cos(angle) * distance;
-            const newY = y + Math.sin(angle) * distance + (elapsed * 0.0003); // гравитация
-            
-            particle.style.left = newX + 'px';
-            particle.style.top = newY + 'px';
-            particle.style.opacity = 1 - progress;
-            particle.style.transform = `scale(${1 - progress * 0.3})`;
-            
-            requestAnimationFrame(animate);
-        }
-        
-        animate();
-    }
-
-    // Эффект глитча для заголовка с учетом темы
-    function glitchEffect() {
-        const nameElement = document.querySelector('.profile-name');
-        if (!nameElement) return;
-
-        const originalHTML = nameElement.innerHTML;
-        const glitchChars = '!@#$%^&*()_+-=[]{}|;:,.<>?АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ';
-        
-        function glitch() {
-            const spans = nameElement.querySelectorAll('.blood-text');
-            let glitchedHTML = '';
-            
-            spans.forEach(span => {
-                if (Math.random() < 0.15) {
-                    const randomChar = glitchChars[Math.floor(Math.random() * glitchChars.length)];
-                    glitchedHTML += `<span class="blood-text">${randomChar}</span>`;
-                } else {
-                    glitchedHTML += span.outerHTML;
-                }
-            });
-            
-            nameElement.innerHTML = glitchedHTML;
-            
-            setTimeout(() => {
-                nameElement.innerHTML = originalHTML;
-            }, 200);
-        }
-        
-        // Случайные глитчи
-        setInterval(() => {
-            if (Math.random() < 0.08) {
-                glitch();
-            }
-        }, 4000);
-    }
-
-    // Анимация при скролле
-    function scrollAnimations() {
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animationPlayState = 'running';
-                    entry.target.classList.add('animate-in');
-                }
-            });
-        }, observerOptions);
-
-        // Наблюдаем за элементами
-        document.querySelectorAll('.social-link, .bio-card, .detail-item').forEach(el => {
-            observer.observe(el);
-        });
-    }
-
-    // Эффект параллакса для фоновых элементов
-    function parallaxEffect() {
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const parallaxElements = document.querySelectorAll('.snowflakes, .floating-particles, .geometric-shapes');
-            
-            parallaxElements.forEach((element, index) => {
-                const speed = 0.3 + index * 0.1;
-                element.style.transform = `translateY(${scrolled * speed}px)`;
-            });
-        });
-    }
-
-    // Эффект дрожания для важных элементов
-    function shakeEffect(element, duration = 300) {
-        element.style.animation = `shake ${duration}ms ease-in-out`;
-        
-        setTimeout(() => {
-            element.style.animation = '';
-        }, duration);
-    }
-
-    // CSS для дополнительных эффектов
-    const additionalStyles = document.createElement('style');
-    additionalStyles.textContent = `
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-3px) rotate(-1deg); }
-            75% { transform: translateX(3px) rotate(1deg); }
-        }
-        
-        .animate-in {
-            animation: fadeInScale 0.6s ease-out both;
-        }
-        
-        @keyframes fadeInScale {
-            from {
-                opacity: 0;
-                transform: scale(0.9) translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
-        }
-
-        .theme-switcher .theme-btn:hover {
-            animation: themeHover 0.3s ease-in-out;
-        }
-
-        @keyframes themeHover {
-            0%, 100% { transform: scale(1.2); }
-            50% { transform: scale(1.4) rotate(10deg); }
-        }
-    `;
-    document.head.appendChild(additionalStyles);
-
-    // Интерактивность для социальных ссылок
-    function interactiveSocialLinks() {
-        const socialLinks = document.querySelectorAll('.social-link');
-        
-        socialLinks.forEach(link => {
-            link.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateX(10px) scale(1.02)';
-                shakeEffect(this.querySelector('.link-icon'), 200);
-            });
-            
-            link.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateX(0) scale(1)';
-            });
-            
-            link.addEventListener('click', function(e) {
-                // Ripple эффект с цветом темы
-                const ripple = document.createElement('div');
-                ripple.style.cssText = `
-                    position: absolute;
-                    border-radius: 50%;
-                    background: var(--primary-color);
-                    opacity: 0.3;
-                    transform: scale(0);
-                    animation: ripple 0.8s ease-out;
-                    pointer-events: none;
-                `;
-                
-                const rect = this.getBoundingClientRect();
-                const size = Math.max(rect.width, rect.height) * 1.5;
-                ripple.style.width = ripple.style.height = size + 'px';
-                ripple.style.left = e.clientX - rect.left - size / 2 + 'px';
-                ripple.style.top = e.clientY - rect.top - size / 2 + 'px';
-                
-                this.appendChild(ripple);
-                
-                setTimeout(() => ripple.remove(), 800);
-            });
-        });
-        
-        // CSS для ripple эффекта
-        const rippleStyles = document.createElement('style');
-        rippleStyles.textContent = `
-            @keyframes ripple {
-                to {
-                    transform: scale(1);
-                    opacity: 0;
-                }
-            }
-        `;
-        document.head.appendChild(rippleStyles);
-    }
 
 
 
-    // Обновление символов снежинок при смене темы
-    function updateSnowflakeSymbols() {
-        const snowflakes = document.querySelectorAll('.snowflake');
-        const currentTheme = document.body.getAttribute('data-theme');
-        
-        snowflakes.forEach(snowflake => {
-            let symbols;
-            
-            if (currentTheme === 'pink') {
-                symbols = ['✧', '✦', '✩', '✪', '✫', '✬', '✭', '✮'];
-            } else if (currentTheme === 'red') {
-                symbols = ['✧', '✦', '✩', '✪', '✫', '✬', '✭', '✮'];
-            } else if (currentTheme === 'green') {
-                symbols = ['✧', '✦', '✩', '✪', '✫', '✬', '✭', '✮'];
-            } else {
-                symbols = ['❄', '❅', '❆', '✻', '✼', '❄', '❅', '❆'];
-            }
-            
-            const randomSymbol = symbols[Math.floor(Math.random() * symbols.length)];
-            snowflake.innerHTML = randomSymbol;
-        });
-    }
 
-    // Динамическое создание снежинок с рандомным падением
+
+
+
+
+    // Оптимизированное создание снежинок
     function createDynamicSnowflakes() {
         const snowflakesContainer = document.getElementById('snowflakes');
         if (!snowflakesContainer) return;
@@ -440,136 +93,38 @@
         // Очищаем существующие снежинки
         snowflakesContainer.innerHTML = '';
         
-        // Создаем 40 снежинок с рандомными параметрами
-        for (let i = 0; i < 40; i++) {
+        // Создаем только 15 снежинок для оптимизации
+        for (let i = 0; i < 15; i++) {
             const snowflake = document.createElement('div');
             snowflake.className = 'snowflake';
             
-            // Разные символы в зависимости от темы
+            // Простые символы
             const currentTheme = document.body.getAttribute('data-theme');
-            let symbols;
+            snowflake.innerHTML = currentTheme === 'winter' ? '❄' : '✧';
             
-            if (currentTheme === 'pink') {
-                symbols = ['✧', '✦', '✩', '✪', '✫', '✬', '✭', '✮'];
-            } else if (currentTheme === 'red') {
-                symbols = ['✧', '✦', '✩', '✪', '✫', '✬', '✭', '✮'];
-            } else if (currentTheme === 'green') {
-                symbols = ['✧', '✦', '✩', '✪', '✫', '✬', '✭', '✮'];
-            } else {
-                symbols = ['❄', '❅', '❆', '✻', '✼', '❄', '❅', '❆'];
-            }
-            
-            const randomSymbol = symbols[Math.floor(Math.random() * symbols.length)];
-            snowflake.innerHTML = randomSymbol;
-            
-            // Рандомные параметры для каждой снежинки
-            const randomLeft = Math.random() * 100; // Рандомная позиция по горизонтали
-            const randomDelay = Math.random() * 15; // Рандомная задержка (0-15 сек)
-            const randomDuration = 6 + Math.random() * 18; // Рандомная длительность анимации (6-24 сек)
-            const randomSize = 0.6 + Math.random() * 1.8; // Рандомный размер (0.6-2.4)
-            const randomOpacity = 0.3 + Math.random() * 0.7; // Рандомная прозрачность
-            const randomTop = Math.random() * 100; // Рандомная позиция по вертикали
-            
-            snowflake.style.left = randomLeft + '%';
-            snowflake.style.top = randomTop + 'vh';
-            snowflake.style.animationDelay = randomDelay + 's';
-            snowflake.style.animationDuration = randomDuration + 's';
-            snowflake.style.fontSize = randomSize + 'rem';
-            snowflake.style.opacity = randomOpacity;
+            // Простые параметры
+            snowflake.style.left = Math.random() * 100 + '%';
+            snowflake.style.top = Math.random() * 100 + 'vh';
+            snowflake.style.animationDelay = Math.random() * 10 + 's';
+            snowflake.style.animationDuration = (8 + Math.random() * 12) + 's';
+            snowflake.style.fontSize = (0.8 + Math.random() * 1.2) + 'rem';
+            snowflake.style.opacity = 0.6 + Math.random() * 0.4;
             
             snowflakesContainer.appendChild(snowflake);
         }
-        
-        // Периодически обновляем снежинки для непрерывного эффекта
-        setInterval(() => {
-            const snowflakes = snowflakesContainer.querySelectorAll('.snowflake');
-            snowflakes.forEach(snowflake => {
-                // Если снежинка вышла за пределы экрана, перемещаем её наверх
-                const rect = snowflake.getBoundingClientRect();
-                if (rect.top > window.innerHeight) {
-                    const randomLeft = Math.random() * 100;
-                    const randomDelay = Math.random() * 3;
-                    const randomDuration = 6 + Math.random() * 18;
-                    const randomSize = 0.6 + Math.random() * 1.8;
-                    const randomOpacity = 0.3 + Math.random() * 0.7;
-                    
-                    // Обновляем символ в зависимости от темы
-                    const currentTheme = document.body.getAttribute('data-theme');
-                    let symbols;
-                    
-                    if (currentTheme === 'pink') {
-                        symbols = ['✧', '✦', '✩', '✪', '✫', '✬', '✭', '✮'];
-                    } else if (currentTheme === 'red') {
-                        symbols = ['✧', '✦', '✩', '✪', '✫', '✬', '✭', '✮'];
-                    } else if (currentTheme === 'green') {
-                        symbols = ['✧', '✦', '✩', '✪', '✫', '✬', '✭', '✮'];
-                    } else {
-                        symbols = ['❄', '❅', '❆', '✻', '✼', '❄', '❅', '❆'];
-                    }
-                    
-                    const randomSymbol = symbols[Math.floor(Math.random() * symbols.length)];
-                    snowflake.innerHTML = randomSymbol;
-                    
-                    snowflake.style.left = randomLeft + '%';
-                    snowflake.style.top = '-10vh';
-                    snowflake.style.animationDelay = randomDelay + 's';
-                    snowflake.style.animationDuration = randomDuration + 's';
-                    snowflake.style.fontSize = randomSize + 'rem';
-                    snowflake.style.opacity = randomOpacity;
-                }
-            });
-        }, 3000); // Проверяем каждые 3 секунды
     }
 
-        // Управление фоновой музыкой
-    function initMusicControl() {
-        const musicBtn = document.getElementById('musicBtn');
-        const bgMusic = document.getElementById('bgMusic');
-        
-        if (!musicBtn || !bgMusic) return;
-        
-        // Загружаем состояние музыки из localStorage
-        const musicEnabled = localStorage.getItem('musicEnabled') === 'true';
-        
-        if (musicEnabled) {
-            bgMusic.play().catch(e => console.log('Автовоспроизведение заблокировано'));
-            musicBtn.classList.add('playing');
-        }
-        
-        musicBtn.addEventListener('click', () => {
-            if (bgMusic.paused) {
-                bgMusic.play();
-                musicBtn.classList.add('playing');
-                localStorage.setItem('musicEnabled', 'true');
-            } else {
-                bgMusic.pause();
-                musicBtn.classList.remove('playing');
-                localStorage.setItem('musicEnabled', 'false');
-            }
-        });
-    }
+    
 
     // Запуск всех эффектов после загрузки DOM
     document.addEventListener('DOMContentLoaded', function() {
         // Инициализируем переключатель тем
         initThemeSwitcher();
         
-        // Инициализируем управление музыкой
-        initMusicControl();
-        
         // Создаем динамические снежинки
         createDynamicSnowflakes();
         
-        // Оптимизированные эффекты
-        setTimeout(() => {
-            // Только самые необходимые эффекты
-            interactiveSocialLinks();
-            
-            console.log('❄️ Сайт загружен и оптимизирован');
-            console.log('🎨 Снежинки падают рандомно');
-            console.log('🌨️ Зимняя тема активна');
-            console.log('🎵 Музыка готова к воспроизведению');
-        }, 100);
+        console.log('❄️ Сайт загружен и оптимизирован');
     });
 
     // Эффект загрузки страницы
