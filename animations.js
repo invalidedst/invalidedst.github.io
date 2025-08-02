@@ -492,8 +492,10 @@
             const randomDuration = 6 + Math.random() * 18; // Рандомная длительность анимации (6-24 сек)
             const randomSize = 0.6 + Math.random() * 1.8; // Рандомный размер (0.6-2.4)
             const randomOpacity = 0.3 + Math.random() * 0.7; // Рандомная прозрачность
+            const randomTop = Math.random() * 100; // Рандомная позиция по вертикали
             
             snowflake.style.left = randomLeft + '%';
+            snowflake.style.top = randomTop + 'vh';
             snowflake.style.animationDelay = randomDelay + 's';
             snowflake.style.animationDuration = randomDuration + 's';
             snowflake.style.fontSize = randomSize + 'rem';
@@ -521,11 +523,11 @@
                     snowflake.innerHTML = randomSymbol;
                     
                     snowflake.style.left = randomLeft + '%';
+                    snowflake.style.top = '-10vh';
                     snowflake.style.animationDelay = randomDelay + 's';
                     snowflake.style.animationDuration = randomDuration + 's';
                     snowflake.style.fontSize = randomSize + 'rem';
                     snowflake.style.opacity = randomOpacity;
-                    snowflake.style.top = '-50px';
                 }
             });
         }, 3000); // Проверяем каждые 3 секунды
