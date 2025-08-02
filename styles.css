@@ -44,12 +44,31 @@
 
 [data-theme="pink"] {
     --primary-color: #ff69b4;
-    --secondary-color: #ff1493;
-    --accent-color: #ffb6c1;
-    --bg-start: #0a0a0a;
-    --bg-mid-1: #1a0010;
-    --bg-mid-2: #330020;
+    --secondary-color: #da70d6;
+    --accent-color: #87ceeb;
+    --bg-start: #1a0033;
+    --bg-mid-1: #330066;
+    --bg-mid-2: #4d0099;
     --text-color: #ff69b4;
+}
+
+[data-theme="pink"] .snowflakes {
+    background: radial-gradient(ellipse at center, rgba(255, 105, 180, 0.15) 0%, transparent 70%);
+}
+
+[data-theme="pink"] .snowflake {
+    color: #ff69b4;
+    text-shadow: 0 0 15px rgba(255, 105, 180, 0.8), 0 0 30px rgba(218, 112, 214, 0.6);
+}
+
+[data-theme="pink"] .snowflake:nth-child(3n) {
+    color: #87ceeb;
+    text-shadow: 0 0 15px rgba(135, 206, 235, 0.8), 0 0 30px rgba(255, 105, 180, 0.6);
+}
+
+[data-theme="pink"] .snowflake:nth-child(5n) {
+    color: #da70d6;
+    text-shadow: 0 0 15px rgba(218, 112, 214, 0.8), 0 0 30px rgba(135, 206, 235, 0.6);
 }
 
 [data-theme="blue"] {

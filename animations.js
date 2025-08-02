@@ -481,7 +481,7 @@
         snowflakes.forEach(snowflake => {
             let symbols;
             
-            if (currentTheme === 'magical') {
+            if (currentTheme === 'magical' || currentTheme === 'pink') {
                 symbols = ['⭐', '✨', '💫', '🌟', '💖', '💕', '💗', '💓'];
             } else {
                 symbols = ['❄', '❅', '❆', '✻', '✼', '❄', '❅', '❆'];
@@ -509,7 +509,7 @@
             const currentTheme = document.body.getAttribute('data-theme');
             let symbols;
             
-            if (currentTheme === 'magical') {
+            if (currentTheme === 'magical' || currentTheme === 'pink') {
                 symbols = ['⭐', '✨', '💫', '🌟', '💖', '💕', '💗', '💓'];
             } else {
                 symbols = ['❄', '❅', '❆', '✻', '✼', '❄', '❅', '❆'];
@@ -553,7 +553,7 @@
                     const currentTheme = document.body.getAttribute('data-theme');
                     let symbols;
                     
-                    if (currentTheme === 'magical') {
+                    if (currentTheme === 'magical' || currentTheme === 'pink') {
                         symbols = ['⭐', '✨', '💫', '🌟', '💖', '💕', '💗', '💓'];
                     } else {
                         symbols = ['❄', '❅', '❆', '✻', '✼', '❄', '❅', '❆'];
