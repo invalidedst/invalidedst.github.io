@@ -1,6 +1,9 @@
 /* Импорт готических шрифтов */
 @import url('https://fonts.googleapis.com/css2?family=Creepster&family=Nosifer&family=Chiller&family=Metal+Mania&display=swap');
 
+/* Импорт шрифтов с поддержкой кириллицы */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
+
 /* CSS переменные для тем */
 :root {
     --primary-color: #8b5cf6;
@@ -64,7 +67,7 @@
 }
 
 .loading-name {
-    font-family: 'Orbitron', monospace;
+    font-family: 'Orbitron', 'Inter', monospace;
     font-size: 2.5rem;
     font-weight: 700;
     text-shadow: 0 0 20px var(--primary-color), 0 0 40px var(--secondary-color);
@@ -103,7 +106,7 @@
     left: 50%;
     transform: translateX(-50%);
     color: rgba(255, 68, 68, 0.3);
-    font-family: 'Orbitron', monospace;
+    font-family: 'Orbitron', 'Inter', monospace;
     font-size: 0.8rem;
     text-align: center;
     z-index: 1000;
@@ -129,7 +132,7 @@
 }
 
 [data-theme="purple"] body {
-    font-family: 'Orbitron', monospace;
+    font-family: 'Orbitron', 'Inter', monospace;
     background: 
         linear-gradient(135deg, #000000 0%, #1a0a1a 25%, #35063e 50%, #1a0a1a 75%, #000000 100%) fixed,
         radial-gradient(circle at 20% 80%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
@@ -334,6 +337,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Orbitron', 'Inter', 'Arial', sans-serif;
 }
 
 body {
@@ -576,7 +580,7 @@ html {
 
 /* Имя профиля */
 .profile-name {
-    font-family: 'Nosifer', cursive;
+    font-family: 'Orbitron', 'Inter', monospace;
     font-size: 4rem;
     margin-bottom: 1rem;
     color: var(--primary-color);
@@ -656,7 +660,7 @@ html {
 
 /* Секции */
 .section-title {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Orbitron', 'Inter', sans-serif;
     font-size: 2.5rem;
     text-align: center;
     margin-bottom: 2rem;
@@ -752,6 +756,7 @@ html {
 
 .link-title {
     display: block;
+    font-family: 'Orbitron', 'Inter', sans-serif;
     font-weight: bold;
     margin-bottom: 0.3rem;
     font-size: 1.2rem;
@@ -865,6 +870,7 @@ html {
 }
 
 .bio-text {
+    font-family: 'Orbitron', 'Inter', sans-serif;
     position: relative;
     z-index: 2;
     line-height: 1.6;
