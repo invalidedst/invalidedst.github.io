@@ -28,7 +28,7 @@
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <link rel="stylesheet" href="styles.css?v=10">
+    <link rel="stylesheet" href="styles.css?v=11">
     
     <!-- Переключатель тем -->
     <style>
@@ -116,9 +116,7 @@
           <div class="theme-menu">
               <div class="theme-btn theme-red" data-theme="red" title="Красная тема"></div>
               <div class="theme-btn theme-green" data-theme="green" title="Зеленая тема"></div>
-              <div class="theme-btn theme-purple" data-theme="purple" title="Фиолетовая тема"></div>
               <div class="theme-btn theme-pink" data-theme="pink" title="Розовая тема"></div>
-              <div class="theme-btn theme-blue" data-theme="blue" title="Синяя тема"></div>
               <div class="theme-btn theme-winter active" data-theme="winter" title="Зимняя тема"></div>
           </div>
       </div>
@@ -313,8 +311,20 @@
         </section>
     </div>
 
+    <!-- Фоновая музыка -->
+    <audio id="bgMusic" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+    
+    <!-- Кнопка управления музыкой -->
+    <div class="music-control" id="musicControl">
+        <button class="music-btn" id="musicBtn" title="Включить/выключить музыку">
+            <i class="fas fa-music"></i>
+        </button>
+    </div>
+
     <!-- Защитные скрипты -->
-    <script src="protection.js?v=10"></script>
-    <script src="animations.js?v=10"></script>
+    <script src="protection.js?v=11"></script>
+    <script src="animations.js?v=11"></script>
 </body>
 </html>

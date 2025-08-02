@@ -51,9 +51,6 @@
                 // Сохраняем тему
                 localStorage.setItem('bioTheme', theme);
                 
-                // Анимация при переключении
-                createThemeChangeEffect();
-                
                 // Обновляем символы снежинок при смене темы
                 setTimeout(() => {
                     updateSnowflakeSymbols();
@@ -65,54 +62,7 @@
         });
     }
 
-    // Эффект при смене темы
-    function createThemeChangeEffect() {
-        for (let i = 0; i < 20; i++) {
-            setTimeout(() => {
-                createColorBurst();
-            }, i * 50);
-        }
-    }
 
-    function createColorBurst() {
-        const burst = document.createElement('div');
-        burst.style.cssText = `
-            position: fixed;
-            width: 10px;
-            height: 10px;
-            background: var(--primary-color);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 10000;
-            left: ${Math.random() * window.innerWidth}px;
-            top: ${Math.random() * window.innerHeight}px;
-            animation: colorBurst 1s ease-out forwards;
-        `;
-        
-        document.body.appendChild(burst);
-        
-        setTimeout(() => burst.remove(), 1000);
-    }
-
-    // CSS для эффекта смены темы
-    const burstStyles = document.createElement('style');
-    burstStyles.textContent = `
-        @keyframes colorBurst {
-            0% {
-                transform: scale(0);
-                opacity: 1;
-            }
-            50% {
-                transform: scale(2);
-                opacity: 0.8;
-            }
-            100% {
-                transform: scale(4);
-                opacity: 0;
-            }
-        }
-    `;
-    document.head.appendChild(burstStyles);
 
     // Установка текущей даты
     document.addEventListener('DOMContentLoaded', function() {
@@ -473,10 +423,6 @@
                 symbols = ['✧', '✦', '✩', '✪', '✫', '✬', '✭', '✮'];
             } else if (currentTheme === 'green') {
                 symbols = ['✧', '✦', '✩', '✪', '✫', '✬', '✭', '✮'];
-            } else if (currentTheme === 'purple') {
-                symbols = ['✧', '✦', '✩', '✪', '✫', '✬', '✭', '✮'];
-            } else if (currentTheme === 'blue') {
-                symbols = ['✧', '✦', '✩', '✪', '✫', '✬', '✭', '✮'];
             } else {
                 symbols = ['❄', '❅', '❆', '✻', '✼', '❄', '❅', '❆'];
             }
@@ -508,10 +454,6 @@
             } else if (currentTheme === 'red') {
                 symbols = ['✧', '✦', '✩', '✪', '✫', '✬', '✭', '✮'];
             } else if (currentTheme === 'green') {
-                symbols = ['✧', '✦', '✩', '✪', '✫', '✬', '✭', '✮'];
-            } else if (currentTheme === 'purple') {
-                symbols = ['✧', '✦', '✩', '✪', '✫', '✬', '✭', '✮'];
-            } else if (currentTheme === 'blue') {
                 symbols = ['✧', '✦', '✩', '✪', '✫', '✬', '✭', '✮'];
             } else {
                 symbols = ['❄', '❅', '❆', '✻', '✼', '❄', '❅', '❆'];
@@ -561,10 +503,6 @@
                         symbols = ['✧', '✦', '✩', '✪', '✫', '✬', '✭', '✮'];
                     } else if (currentTheme === 'green') {
                         symbols = ['✧', '✦', '✩', '✪', '✫', '✬', '✭', '✮'];
-                    } else if (currentTheme === 'purple') {
-                        symbols = ['✧', '✦', '✩', '✪', '✫', '✬', '✭', '✮'];
-                    } else if (currentTheme === 'blue') {
-                        symbols = ['✧', '✦', '✩', '✪', '✫', '✬', '✭', '✮'];
                     } else {
                         symbols = ['❄', '❅', '❆', '✻', '✼', '❄', '❅', '❆'];
                     }
@@ -583,23 +521,55 @@
         }, 3000); // Проверяем каждые 3 секунды
     }
 
+        // Управление фоновой музыкой
+    function initMusicControl() {
+        const musicBtn = document.getElementById('musicBtn');
+        const bgMusic = document.getElementById('bgMusic');
+        
+        if (!musicBtn || !bgMusic) return;
+        
+        // Загружаем состояние музыки из localStorage
+        const musicEnabled = localStorage.getItem('musicEnabled') === 'true';
+        
+        if (musicEnabled) {
+            bgMusic.play().catch(e => console.log('Автовоспроизведение заблокировано'));
+            musicBtn.classList.add('playing');
+        }
+        
+        musicBtn.addEventListener('click', () => {
+            if (bgMusic.paused) {
+                bgMusic.play();
+                musicBtn.classList.add('playing');
+                localStorage.setItem('musicEnabled', 'true');
+            } else {
+                bgMusic.pause();
+                musicBtn.classList.remove('playing');
+                localStorage.setItem('musicEnabled', 'false');
+            }
+        });
+    }
+
     // Запуск всех эффектов после загрузки DOM
     document.addEventListener('DOMContentLoaded', function() {
         // Инициализируем переключатель тем
         initThemeSwitcher();
         
+        // Инициализируем управление музыкой
+        initMusicControl();
+        
         // Создаем динамические снежинки
         createDynamicSnowflakes();
         
-            // Оптимизированные эффекты
-    setTimeout(() => {
-        // Только самые необходимые эффекты
-        interactiveSocialLinks();
-        
-        console.log('❄️ Сайт загружен и оптимизирован');
-        console.log('🎨 Снежинки падают рандомно');
-        console.log('🌨️ Зимняя тема активна');
-    }, 100);
+        // Оптимизированные эффекты
+        setTimeout(() => {
+            // Только самые необходимые эффекты
+            interactiveSocialLinks();
+            
+            console.log('❄️ Сайт загружен и оптимизирован');
+            console.log('🎨 Снежинки падают рандомно');
+            console.log('🌨️ Зимняя тема активна');
+            console.log('🎵 Музыка готова к воспроизведению');
+        }, 100);
     });
 
     // Эффект загрузки страницы

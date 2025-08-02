@@ -136,69 +136,7 @@
     border: 2px solid #00cc00;
 }
 
-[data-theme="purple"] {
-    --primary-color: #8a2be2;
-    --secondary-color: #4b0082;
-    --accent-color: #9370db;
-    --bg-start: #0a0a0a;
-    --bg-mid-1: #1a001a;
-    --bg-mid-2: #330033;
-    --text-color: #8a2be2;
-}
 
-[data-theme="purple"] body {
-    font-family: 'Orbitron', monospace;
-    background: linear-gradient(135deg, #0a0a0a 0%, #1a001a 25%, #330033 50%, #1a001a 75%, #0a0a0a 100%) fixed;
-}
-
-[data-theme="purple"] .snowflakes {
-    background: radial-gradient(ellipse at center, rgba(138, 43, 226, 0.15) 0%, transparent 70%);
-}
-
-[data-theme="purple"] .snowflake {
-    color: #8a2be2;
-    text-shadow: 0 0 15px rgba(138, 43, 226, 0.8), 0 0 30px rgba(75, 0, 130, 0.6);
-}
-
-[data-theme="purple"] .snowflake:nth-child(3n) {
-    color: #4b0082;
-    text-shadow: 0 0 15px rgba(75, 0, 130, 0.8), 0 0 30px rgba(138, 43, 226, 0.6);
-}
-
-[data-theme="purple"] .snowflake:nth-child(5n) {
-    color: #9370db;
-    text-shadow: 0 0 15px rgba(147, 112, 219, 0.8), 0 0 30px rgba(75, 0, 130, 0.6);
-}
-
-[data-theme="purple"] .profile-name {
-    font-family: 'Orbitron', monospace;
-    font-weight: 900;
-    text-shadow: 0 0 20px #8a2be2, 0 0 40px #4b0082;
-}
-
-[data-theme="purple"] .section-title {
-    font-family: 'Orbitron', monospace;
-    font-weight: 700;
-    text-shadow: 0 0 15px #8a2be2;
-}
-
-[data-theme="purple"] .detail-item {
-    border-radius: 10px;
-    background: linear-gradient(135deg, rgba(138, 43, 226, 0.2), rgba(75, 0, 130, 0.2));
-    border: 2px solid #4b0082;
-}
-
-[data-theme="purple"] .social-link {
-    border-radius: 10px;
-    background: linear-gradient(135deg, rgba(138, 43, 226, 0.1), rgba(75, 0, 130, 0.1));
-    border: 2px solid #4b0082;
-}
-
-[data-theme="purple"] .bio-card {
-    border-radius: 15px;
-    background: linear-gradient(135deg, rgba(138, 43, 226, 0.1), rgba(75, 0, 130, 0.1));
-    border: 2px solid #4b0082;
-}
 
 [data-theme="pink"] {
     --primary-color: #ff69b4;
@@ -268,69 +206,7 @@
     background: linear-gradient(135deg, rgba(255, 105, 180, 0.1), rgba(218, 112, 214, 0.1));
 }
 
-[data-theme="blue"] {
-    --primary-color: #44aaff;
-    --secondary-color: #0066cc;
-    --accent-color: #66ccff;
-    --bg-start: #0a0a0a;
-    --bg-mid-1: #001a1a;
-    --bg-mid-2: #003366;
-    --text-color: #44aaff;
-}
 
-[data-theme="blue"] body {
-    font-family: 'Orbitron', monospace;
-    background: linear-gradient(135deg, #0a0a0a 0%, #001a1a 25%, #003366 50%, #001a1a 75%, #0a0a0a 100%) fixed;
-}
-
-[data-theme="blue"] .snowflakes {
-    background: radial-gradient(ellipse at center, rgba(68, 170, 255, 0.15) 0%, transparent 70%);
-}
-
-[data-theme="blue"] .snowflake {
-    color: #44aaff;
-    text-shadow: 0 0 15px rgba(68, 170, 255, 0.8), 0 0 30px rgba(0, 102, 204, 0.6);
-}
-
-[data-theme="blue"] .snowflake:nth-child(3n) {
-    color: #0066cc;
-    text-shadow: 0 0 15px rgba(0, 102, 204, 0.8), 0 0 30px rgba(68, 170, 255, 0.6);
-}
-
-[data-theme="blue"] .snowflake:nth-child(5n) {
-    color: #66ccff;
-    text-shadow: 0 0 15px rgba(102, 204, 255, 0.8), 0 0 30px rgba(0, 102, 204, 0.6);
-}
-
-[data-theme="blue"] .profile-name {
-    font-family: 'Orbitron', monospace;
-    font-weight: 900;
-    text-shadow: 0 0 20px #44aaff, 0 0 40px #0066cc;
-}
-
-[data-theme="blue"] .section-title {
-    font-family: 'Orbitron', monospace;
-    font-weight: 700;
-    text-shadow: 0 0 15px #44aaff;
-}
-
-[data-theme="blue"] .detail-item {
-    border-radius: 8px;
-    background: linear-gradient(135deg, rgba(68, 170, 255, 0.2), rgba(0, 102, 204, 0.2));
-    border: 2px solid #0066cc;
-}
-
-[data-theme="blue"] .social-link {
-    border-radius: 8px;
-    background: linear-gradient(135deg, rgba(68, 170, 255, 0.1), rgba(0, 102, 204, 0.1));
-    border: 2px solid #0066cc;
-}
-
-[data-theme="blue"] .bio-card {
-    border-radius: 12px;
-    background: linear-gradient(135deg, rgba(68, 170, 255, 0.1), rgba(0, 102, 204, 0.1));
-    border: 2px solid #0066cc;
-}
 
 [data-theme="winter"] {
     --primary-color: #87ceeb;
@@ -1052,6 +928,42 @@ html {
     .snowflake {
         font-size: 16px;
     }
+}
+
+/* Кнопка управления музыкой */
+.music-control {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 1000;
+}
+
+.music-btn {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border: 2px solid var(--accent-color);
+    border-radius: 50%;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.music-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.music-btn.playing {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
 }
 
 /* Дополнительные эффекты для курсора */
