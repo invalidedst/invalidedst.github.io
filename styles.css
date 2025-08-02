@@ -108,7 +108,7 @@
     opacity: 0.6;
 }
 
-[data-theme="red"] {
+[data-theme="white"] {
     --primary-color: #333333;
     --secondary-color: #666666;
     --accent-color: #999999;
@@ -121,7 +121,7 @@
     --glow-color: rgba(0, 0, 0, 0.2);
 }
 
-[data-theme="red"] body {
+[data-theme="white"] body {
     font-family: 'Inter', sans-serif;
     background: 
         linear-gradient(135deg, #ffffff 0%, #f8f8f8 25%, #f0f0f0 50%, #f8f8f8 75%, #ffffff 100%) fixed,
@@ -138,7 +138,7 @@
     position: relative;
 }
 
-[data-theme="red"] body::before {
+[data-theme="white"] body::before {
     content: '';
     position: fixed;
     top: 0;
@@ -164,60 +164,60 @@
     z-index: 0;
 }
 
-[data-theme="red"] .snowflakes {
+[data-theme="white"] .snowflakes {
     background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.05) 0%, transparent 70%);
 }
 
-[data-theme="red"] .snowflake {
+[data-theme="white"] .snowflake {
     color: #666666;
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
-[data-theme="red"] .snowflake:nth-child(3n) {
+[data-theme="white"] .snowflake:nth-child(3n) {
     color: #999999;
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-[data-theme="red"] .snowflake:nth-child(5n) {
+[data-theme="white"] .snowflake:nth-child(5n) {
     color: #333333;
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
 
-[data-theme="red"] .profile-name {
+[data-theme="white"] .profile-name {
     font-family: 'Inter', sans-serif;
     font-weight: 700;
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-[data-theme="red"] .section-title {
+[data-theme="white"] .section-title {
     font-family: 'Inter', sans-serif;
     font-weight: 700;
     text-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
 }
 
-[data-theme="red"] .link-title {
+[data-theme="white"] .link-title {
     font-family: 'Inter', sans-serif;
     font-weight: 600;
 }
 
-[data-theme="red"] .bio-text {
+[data-theme="white"] .bio-text {
     font-family: 'Inter', sans-serif;
     font-weight: 400;
 }
 
-[data-theme="red"] .detail-item {
+[data-theme="white"] .detail-item {
     font-family: 'Inter', sans-serif;
 }
 
-[data-theme="red"] .social-link {
+[data-theme="white"] .social-link {
     font-family: 'Inter', sans-serif;
 }
 
-[data-theme="red"] .bio-card {
+[data-theme="white"] .bio-card {
     font-family: 'Inter', sans-serif;
 }
 
-[data-theme="red"] .detail-item {
+[data-theme="white"] .detail-item {
     border-radius: 20px;
     background: 
         linear-gradient(135deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.02)),
@@ -230,14 +230,14 @@
     transition: all 0.3s ease;
 }
 
-[data-theme="red"] .detail-item:hover {
+[data-theme="white"] .detail-item:hover {
     transform: translateY(-2px);
     box-shadow: 
         0 5px 25px rgba(0, 0, 0, 0.15),
         inset 0 0 30px rgba(0, 0, 0, 0.03);
 }
 
-[data-theme="red"] .social-link {
+[data-theme="white"] .social-link {
     border-radius: 20px;
     background: 
         linear-gradient(135deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.02)),
@@ -250,14 +250,14 @@
     transition: all 0.3s ease;
 }
 
-[data-theme="red"] .social-link:hover {
+[data-theme="white"] .social-link:hover {
     transform: translateY(-3px) scale(1.02);
     box-shadow: 
         0 8px 25px rgba(0, 0, 0, 0.15),
         inset 0 0 25px rgba(0, 0, 0, 0.03);
 }
 
-[data-theme="red"] .bio-card {
+[data-theme="white"] .bio-card {
     border-radius: 25px;
     background: 
         linear-gradient(135deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.02)),
@@ -270,14 +270,14 @@
     transition: all 0.3s ease;
 }
 
-[data-theme="red"] .bio-card:hover {
+[data-theme="white"] .bio-card:hover {
     transform: translateY(-2px);
     box-shadow: 
         0 5px 30px rgba(0, 0, 0, 0.15),
         inset 0 0 35px rgba(0, 0, 0, 0.03);
 }
 
-[data-theme="red"] .floating-shapes {
+[data-theme="white"] .floating-shapes {
     background: 
         radial-gradient(ellipse at center, rgba(0, 0, 0, 0.02) 0%, transparent 70%),
         repeating-linear-gradient(
@@ -289,23 +289,23 @@
         );
 }
 
-[data-theme="red"] .shape {
+[data-theme="white"] .shape {
     border-color: #999999;
     opacity: 0.15;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-[data-theme="red"] .triangle {
+[data-theme="white"] .triangle {
     border-bottom-color: #666666;
     filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.1));
 }
 
-[data-theme="red"] .circle {
+[data-theme="white"] .circle {
     background: radial-gradient(circle, #999999, transparent);
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
-[data-theme="red"] .square {
+[data-theme="white"] .square {
     background: linear-gradient(45deg, #666666, #999999);
     box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
 }
