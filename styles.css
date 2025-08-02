@@ -33,13 +33,13 @@
 }
 
 [data-theme="purple"] {
-    --primary-color: #aa44ff;
-    --secondary-color: #6600cc;
-    --accent-color: #cc66ff;
+    --primary-color: #8a2be2;
+    --secondary-color: #4b0082;
+    --accent-color: #9370db;
     --bg-start: #0a0a0a;
     --bg-mid-1: #1a001a;
     --bg-mid-2: #330033;
-    --text-color: #aa44ff;
+    --text-color: #8a2be2;
 }
 
 [data-theme="pink"] {
@@ -72,22 +72,7 @@
     --text-color: #87ceeb;
 }
 
-[data-theme="winter"] .snowflake {
-    color: #87ceeb;
-    text-shadow: 0 0 15px rgba(135, 206, 235, 0.9), 0 0 30px rgba(176, 224, 230, 0.6);
-    filter: blur(0.2px);
-    font-weight: bold;
-}
 
-[data-theme="winter"] .snowflake:nth-child(3n) {
-    color: #b0e0e6;
-    text-shadow: 0 0 15px rgba(176, 224, 230, 0.9), 0 0 30px rgba(135, 206, 235, 0.6);
-}
-
-[data-theme="winter"] .snowflake:nth-child(5n) {
-    color: #ffffff;
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.9), 0 0 30px rgba(135, 206, 235, 0.6);
-}
 
 [data-theme="winter"] .snowflakes {
     background: radial-gradient(ellipse at center, rgba(176, 224, 230, 0.1) 0%, transparent 70%);
@@ -101,7 +86,7 @@
 }
 
 body {
-    font-family: 'Metal Mania', cursive;
+    font-family: 'Orbitron', monospace;
     background: linear-gradient(135deg, var(--bg-start) 0%, var(--bg-mid-1) 25%, var(--bg-mid-2) 50%, var(--bg-mid-1) 75%, var(--bg-start) 100%) fixed;
     color: var(--text-color);
     overflow-x: hidden;
@@ -250,12 +235,12 @@ html {
 
 .snowflake {
     position: absolute;
-    color: #87ceeb;
+    color: var(--primary-color);
     font-size: 1.2rem;
-    opacity: 0.9;
+    opacity: 0.7;
     animation: snowfall 10s linear infinite;
     will-change: transform;
-    text-shadow: 0 0 8px rgba(135, 206, 235, 0.8);
+    text-shadow: 0 0 8px var(--primary-color);
     filter: blur(0.5px);
     z-index: 2;
     pointer-events: none;
@@ -575,25 +560,25 @@ html {
 
 /* Стили для братьев */
 .bro-link {
-    background: linear-gradient(135deg, #001a00, #003300) !important;
-    border-color: #00cc00 !important;
+    background: linear-gradient(135deg, #2d1b69, #11998e) !important;
+    border-color: #38ef7d !important;
 }
 
 .bro-link:hover {
-    border-color: #00ff00 !important;
+    border-color: #38ef7d !important;
     box-shadow: 
-        0 10px 30px rgba(0, 204, 0, 0.5),
-        inset 0 0 30px rgba(0, 255, 0, 0.2) !important;
+        0 10px 30px rgba(56, 239, 125, 0.4),
+        inset 0 0 30px rgba(45, 27, 105, 0.3) !important;
 }
 
 .bro-link .link-icon {
-    color: #00ff00 !important;
+    color: #38ef7d !important;
 }
 
 /* Стили для био ссылки */
 .bio-link {
-    background: linear-gradient(135deg, #1a001a, #330033) !important;
-    border-color: #aa00ff !important;
+    background: linear-gradient(135deg, #2d1b69, #11998e) !important;
+    border-color: #38ef7d !important;
 }
 
 .bio-link:hover {
