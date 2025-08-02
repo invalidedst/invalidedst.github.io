@@ -10,7 +10,7 @@
         const body = document.body;
         
         // Загружаем сохраненную тему
-        const savedTheme = localStorage.getItem('bioTheme') || 'winter';
+        const savedTheme = localStorage.getItem('bioTheme') || 'red';
         body.setAttribute('data-theme', savedTheme);
         
         // Обновляем активную кнопку
@@ -100,7 +100,7 @@
             
             // Простые символы
             const currentTheme = document.body.getAttribute('data-theme');
-            snowflake.innerHTML = currentTheme === 'winter' ? '❄' : '✧';
+            snowflake.innerHTML = currentTheme === 'red' ? '🔥' : '💖';
             
             // Простые параметры
             snowflake.style.left = Math.random() * 100 + '%';
