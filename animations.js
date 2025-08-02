@@ -54,6 +54,11 @@
                 // Анимация при переключении
                 createThemeChangeEffect();
                 
+                // Обновляем символы снежинок при смене темы
+                setTimeout(() => {
+                    updateSnowflakeSymbols();
+                }, 100);
+                
                 // Закрываем меню
                 themeMenu.classList.remove('open');
             });
@@ -468,6 +473,25 @@
         });
     }
 
+    // Обновление символов снежинок при смене темы
+    function updateSnowflakeSymbols() {
+        const snowflakes = document.querySelectorAll('.snowflake');
+        const currentTheme = document.body.getAttribute('data-theme');
+        
+        snowflakes.forEach(snowflake => {
+            let symbols;
+            
+            if (currentTheme === 'magical') {
+                symbols = ['⭐', '✨', '💫', '🌟', '💖', '💕', '💗', '💓'];
+            } else {
+                symbols = ['❄', '❅', '❆', '✻', '✼', '❄', '❅', '❆'];
+            }
+            
+            const randomSymbol = symbols[Math.floor(Math.random() * symbols.length)];
+            snowflake.innerHTML = randomSymbol;
+        });
+    }
+
     // Динамическое создание снежинок с рандомным падением
     function createDynamicSnowflakes() {
         const snowflakesContainer = document.getElementById('snowflakes');
@@ -481,9 +505,17 @@
             const snowflake = document.createElement('div');
             snowflake.className = 'snowflake';
             
-            // Разные символы снежинок
-            const snowflakeSymbols = ['❄', '❅', '❆', '✻', '✼', '❄', '❅', '❆'];
-            const randomSymbol = snowflakeSymbols[Math.floor(Math.random() * snowflakeSymbols.length)];
+            // Разные символы в зависимости от темы
+            const currentTheme = document.body.getAttribute('data-theme');
+            let symbols;
+            
+            if (currentTheme === 'magical') {
+                symbols = ['⭐', '✨', '💫', '🌟', '💖', '💕', '💗', '💓'];
+            } else {
+                symbols = ['❄', '❅', '❆', '✻', '✼', '❄', '❅', '❆'];
+            }
+            
+            const randomSymbol = symbols[Math.floor(Math.random() * symbols.length)];
             snowflake.innerHTML = randomSymbol;
             
             // Рандомные параметры для каждой снежинки
@@ -517,9 +549,17 @@
                     const randomSize = 0.6 + Math.random() * 1.8;
                     const randomOpacity = 0.3 + Math.random() * 0.7;
                     
-                    // Обновляем символ снежинки
-                    const snowflakeSymbols = ['❄', '❅', '❆', '✻', '✼', '❄', '❅', '❆'];
-                    const randomSymbol = snowflakeSymbols[Math.floor(Math.random() * snowflakeSymbols.length)];
+                    // Обновляем символ в зависимости от темы
+                    const currentTheme = document.body.getAttribute('data-theme');
+                    let symbols;
+                    
+                    if (currentTheme === 'magical') {
+                        symbols = ['⭐', '✨', '💫', '🌟', '💖', '💕', '💗', '💓'];
+                    } else {
+                        symbols = ['❄', '❅', '❆', '✻', '✼', '❄', '❅', '❆'];
+                    }
+                    
+                    const randomSymbol = symbols[Math.floor(Math.random() * symbols.length)];
                     snowflake.innerHTML = randomSymbol;
                     
                     snowflake.style.left = randomLeft + '%';
