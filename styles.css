@@ -23,15 +23,15 @@
     width: 100%;
     height: 100%;
     background: 
-        linear-gradient(135deg, #ffffff 0%, #f8f8f8 25%, #f0f0f0 50%, #f8f8f8 75%, #ffffff 100%),
-        radial-gradient(circle at 30% 70%, rgba(0, 0, 0, 0.02) 0%, transparent 50%),
-        radial-gradient(circle at 70% 30%, rgba(0, 0, 0, 0.02) 0%, transparent 50%),
+        linear-gradient(135deg, #0a0a0a 0%, #1a0000 25%, #330000 50%, #1a0000 75%, #0a0a0a 100%),
+        radial-gradient(circle at 30% 70%, rgba(255, 68, 68, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 70% 30%, rgba(204, 0, 0, 0.1) 0%, transparent 50%),
         repeating-linear-gradient(
             45deg,
             transparent,
-            transparent 20px,
-            rgba(0, 0, 0, 0.003) 20px,
-            rgba(0, 0, 0, 0.003) 40px
+            transparent 10px,
+            rgba(255, 68, 68, 0.02) 10px,
+            rgba(255, 68, 68, 0.02) 20px
         );
     display: flex;
     align-items: center;
@@ -77,11 +77,11 @@
 
 .loading-progress {
     height: 100%;
-    background: linear-gradient(90deg, #333333, #666666, #999999);
+    background: linear-gradient(90deg, #ff4444, #cc0000, #ff6666);
     border-radius: 2px;
     width: 0%;
     animation: loadingProgress 2s ease-in-out forwards;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 15px rgba(255, 68, 68, 0.5);
 }
 
 @keyframes loadingProgress {
@@ -95,8 +95,8 @@
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
-    color: rgba(0, 0, 0, 0.3);
-    font-family: 'Inter', sans-serif;
+    color: rgba(255, 68, 68, 0.3);
+    font-family: 'Orbitron', monospace;
     font-size: 0.8rem;
     text-align: center;
     z-index: 1000;
@@ -108,37 +108,37 @@
     opacity: 0.6;
 }
 
-[data-theme="white"] {
-    --primary-color: #333333;
-    --secondary-color: #666666;
-    --accent-color: #999999;
-    --bg-start: #ffffff;
-    --bg-mid-1: #f8f8f8;
-    --bg-mid-2: #f0f0f0;
-    --text-color: #333333;
-    --border-color: #dddddd;
-    --shadow-color: rgba(0, 0, 0, 0.1);
-    --glow-color: rgba(0, 0, 0, 0.2);
+[data-theme="red"] {
+    --primary-color: #ff4444;
+    --secondary-color: #cc0000;
+    --accent-color: #ff6666;
+    --bg-start: #0a0a0a;
+    --bg-mid-1: #1a0000;
+    --bg-mid-2: #330000;
+    --text-color: #ff4444;
+    --border-color: #ff3333;
+    --shadow-color: rgba(255, 68, 68, 0.3);
+    --glow-color: rgba(255, 68, 68, 0.6);
 }
 
-[data-theme="white"] body {
-    font-family: 'Inter', sans-serif;
+[data-theme="red"] body {
+    font-family: 'Orbitron', monospace;
     background: 
-        linear-gradient(135deg, #ffffff 0%, #f8f8f8 25%, #f0f0f0 50%, #f8f8f8 75%, #ffffff 100%) fixed,
-        radial-gradient(circle at 20% 80%, rgba(0, 0, 0, 0.03) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(0, 0, 0, 0.03) 0%, transparent 50%),
-        radial-gradient(circle at 40% 40%, rgba(0, 0, 0, 0.02) 0%, transparent 50%),
+        linear-gradient(135deg, #0a0a0a 0%, #1a0000 25%, #330000 50%, #1a0000 75%, #0a0a0a 100%) fixed,
+        radial-gradient(circle at 20% 80%, rgba(255, 68, 68, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(204, 0, 0, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(255, 102, 102, 0.05) 0%, transparent 50%),
         repeating-linear-gradient(
             45deg,
             transparent,
             transparent 10px,
-            rgba(0, 0, 0, 0.005) 10px,
-            rgba(0, 0, 0, 0.005) 20px
+            rgba(255, 68, 68, 0.02) 10px,
+            rgba(255, 68, 68, 0.02) 20px
         );
     position: relative;
 }
 
-[data-theme="white"] body::before {
+[data-theme="red"] body::before {
     content: '';
     position: fixed;
     top: 0;
@@ -149,38 +149,31 @@
         repeating-linear-gradient(
             45deg,
             transparent,
-            transparent 20px,
-            rgba(0, 0, 0, 0.01) 20px,
-            rgba(0, 0, 0, 0.01) 40px
-        ),
-        repeating-linear-gradient(
-            -45deg,
-            transparent,
-            transparent 15px,
-            rgba(0, 0, 0, 0.005) 15px,
-            rgba(0, 0, 0, 0.005) 30px
+            transparent 2px,
+            rgba(255, 68, 68, 0.02) 2px,
+            rgba(255, 68, 68, 0.02) 4px
         );
     pointer-events: none;
     z-index: 0;
 }
 
-[data-theme="white"] .snowflakes {
-    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.05) 0%, transparent 70%);
+[data-theme="red"] .snowflakes {
+    background: radial-gradient(ellipse at center, rgba(255, 68, 68, 0.15) 0%, transparent 70%);
 }
 
-[data-theme="white"] .snowflake {
-    color: #666666;
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+[data-theme="red"] .snowflake {
+    color: #ff4444;
+    text-shadow: 0 0 15px rgba(255, 68, 68, 0.8), 0 0 30px rgba(204, 0, 0, 0.6);
 }
 
-[data-theme="white"] .snowflake:nth-child(3n) {
-    color: #999999;
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+[data-theme="red"] .snowflake:nth-child(3n) {
+    color: #cc0000;
+    text-shadow: 0 0 15px rgba(204, 0, 0, 0.8), 0 0 30px rgba(255, 68, 68, 0.6);
 }
 
-[data-theme="white"] .snowflake:nth-child(5n) {
-    color: #333333;
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+[data-theme="red"] .snowflake:nth-child(5n) {
+    color: #ff6666;
+    text-shadow: 0 0 15px rgba(255, 102, 102, 0.8), 0 0 30px rgba(204, 0, 0, 0.6);
 }
 
 [data-theme="white"] .profile-name {
