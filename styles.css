@@ -28,7 +28,7 @@
 }
 
 [data-theme="red"] body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Orbitron', monospace;
     background: linear-gradient(135deg, #0a0a0a 0%, #1a0000 25%, #330000 50%, #1a0000 75%, #0a0a0a 100%) fixed;
 }
 
@@ -52,15 +52,37 @@
 }
 
 [data-theme="red"] .profile-name {
-    font-family: 'Inter', sans-serif;
-    font-weight: 800;
+    font-family: 'Orbitron', monospace;
+    font-weight: 700;
     text-shadow: 0 0 20px #ff4444, 0 0 40px #cc0000;
 }
 
 [data-theme="red"] .section-title {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Orbitron', monospace;
     font-weight: 700;
     text-shadow: 0 0 15px #ff4444;
+}
+
+[data-theme="red"] .link-title {
+    font-family: 'Orbitron', monospace;
+    font-weight: 600;
+}
+
+[data-theme="red"] .bio-text {
+    font-family: 'Orbitron', monospace;
+    font-weight: 400;
+}
+
+[data-theme="red"] .detail-item {
+    font-family: 'Orbitron', monospace;
+}
+
+[data-theme="red"] .social-link {
+    font-family: 'Orbitron', monospace;
+}
+
+[data-theme="red"] .bio-card {
+    font-family: 'Orbitron', monospace;
 }
 
 [data-theme="red"] .detail-item {
@@ -166,6 +188,7 @@
 }
 
 [data-theme="pink"] .detail-item {
+    font-family: 'Comic Neue', cursive;
     border-radius: 30px;
     background: linear-gradient(135deg, rgba(255, 105, 180, 0.2), rgba(218, 112, 214, 0.2));
     border: 2px solid #da70d6;
@@ -173,6 +196,7 @@
 }
 
 [data-theme="pink"] .social-link {
+    font-family: 'Comic Neue', cursive;
     border-radius: 25px;
     background: linear-gradient(135deg, rgba(255, 105, 180, 0.1), rgba(218, 112, 214, 0.1));
     border: 2px solid #da70d6;
@@ -180,6 +204,7 @@
 }
 
 [data-theme="pink"] .bio-card {
+    font-family: 'Comic Neue', cursive;
     border-radius: 30px;
     background: linear-gradient(135deg, rgba(255, 105, 180, 0.1), rgba(218, 112, 214, 0.1));
     border: 2px solid #da70d6;
