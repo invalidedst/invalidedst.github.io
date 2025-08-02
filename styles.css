@@ -73,9 +73,10 @@
 }
 
 [data-theme="winter"] .snowflake {
-    color: #b0e0e6;
-    text-shadow: 0 0 10px rgba(176, 224, 230, 0.8);
-    filter: blur(0.3px);
+    color: #ffffff;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.9), 0 0 30px rgba(176, 224, 230, 0.6);
+    filter: blur(0.2px);
+    font-weight: bold;
 }
 
 [data-theme="winter"] .snowflakes {
@@ -247,6 +248,7 @@ html {
     text-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
     filter: blur(0.5px);
     z-index: 2;
+    pointer-events: none;
 }
 
 .snowflake:nth-child(odd) {
@@ -268,27 +270,29 @@ html {
     0% {
         top: -50px;
         opacity: 0;
-        transform: translateX(0) rotate(0deg);
+        transform: translateX(0) rotate(0deg) scale(0.8);
     }
     10% {
         opacity: 0.9;
+        transform: translateX(10px) rotate(45deg) scale(1);
     }
     25% {
-        transform: translateX(15px) rotate(90deg);
+        transform: translateX(-15px) rotate(90deg) scale(1.1);
     }
     50% {
-        transform: translateX(-10px) rotate(180deg);
+        transform: translateX(20px) rotate(180deg) scale(0.9);
     }
     75% {
-        transform: translateX(20px) rotate(270deg);
+        transform: translateX(-10px) rotate(270deg) scale(1.2);
     }
     90% {
         opacity: 0.9;
+        transform: translateX(5px) rotate(315deg) scale(1);
     }
     100% {
         top: 100vh;
         opacity: 0;
-        transform: translateX(-5px) rotate(360deg);
+        transform: translateX(-15px) rotate(360deg) scale(0.7);
     }
 }
 
@@ -597,19 +601,19 @@ html {
 
 /* Стили для Anixart ссылки */
 .anixart-link {
-    background: linear-gradient(135deg, #1a1a2e, #16213e) !important;
-    border-color: #0f3460 !important;
+    background: linear-gradient(135deg, #2d1b69, #11998e) !important;
+    border-color: #38ef7d !important;
 }
 
 .anixart-link:hover {
-    border-color: #533483 !important;
+    border-color: #38ef7d !important;
     box-shadow: 
-        0 10px 30px rgba(15, 52, 96, 0.5),
-        inset 0 0 30px rgba(83, 52, 131, 0.2) !important;
+        0 10px 30px rgba(56, 239, 125, 0.4),
+        inset 0 0 30px rgba(45, 27, 105, 0.3) !important;
 }
 
 .anixart-link .link-icon {
-    color: #0f3460 !important;
+    color: #38ef7d !important;
 }
 
 /* Убираем стили музыкального плеера */

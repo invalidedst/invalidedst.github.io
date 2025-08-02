@@ -476,11 +476,15 @@
         // Очищаем существующие снежинки
         snowflakesContainer.innerHTML = '';
         
-        // Создаем 30 снежинок с рандомными параметрами
-        for (let i = 0; i < 30; i++) {
+        // Создаем 40 снежинок с рандомными параметрами
+        for (let i = 0; i < 40; i++) {
             const snowflake = document.createElement('div');
             snowflake.className = 'snowflake';
-            snowflake.innerHTML = '<i class="fas fa-snowflake"></i>';
+            
+            // Разные символы снежинок
+            const snowflakeSymbols = ['❄', '❅', '❆', '✻', '✼', '❄', '❅', '❆'];
+            const randomSymbol = snowflakeSymbols[Math.floor(Math.random() * snowflakeSymbols.length)];
+            snowflake.innerHTML = randomSymbol;
             
             // Рандомные параметры для каждой снежинки
             const randomLeft = Math.random() * 100; // Рандомная позиция по горизонтали
@@ -510,6 +514,11 @@
                     const randomDuration = 6 + Math.random() * 18;
                     const randomSize = 0.6 + Math.random() * 1.8;
                     const randomOpacity = 0.3 + Math.random() * 0.7;
+                    
+                    // Обновляем символ снежинки
+                    const snowflakeSymbols = ['❄', '❅', '❆', '✻', '✼', '❄', '❅', '❆'];
+                    const randomSymbol = snowflakeSymbols[Math.floor(Math.random() * snowflakeSymbols.length)];
+                    snowflake.innerHTML = randomSymbol;
                     
                     snowflake.style.left = randomLeft + '%';
                     snowflake.style.animationDelay = randomDelay + 's';
