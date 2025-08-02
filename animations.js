@@ -318,6 +318,27 @@
         };
     }
 
+    // Анимация статистик
+    function animateStats() {
+        const statNumbers = document.querySelectorAll('.stat-number');
+        
+        statNumbers.forEach(stat => {
+            const target = parseInt(stat.getAttribute('data-target'));
+            const duration = 2000; // 2 секунды
+            const step = target / (duration / 16); // 60 FPS
+            let current = 0;
+            
+            const timer = setInterval(() => {
+                current += step;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                stat.textContent = Math.floor(current);
+            }, 16);
+        });
+    }
+
     // Инициализация всех функций
     function init() {
         const performance = checkDevicePerformance();
@@ -340,6 +361,7 @@
         // Инициализируем интерактивные эффекты после загрузки
         setTimeout(() => {
             initInteractiveEffects();
+            animateStats(); // Запускаем анимацию статистик
         }, 3000);
         
         // Оптимизированный обработчик resize

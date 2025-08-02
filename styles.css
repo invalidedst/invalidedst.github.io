@@ -23,15 +23,22 @@
     width: 100%;
     height: 100%;
     background: 
-        linear-gradient(135deg, #0a0a0a 0%, #1a0000 25%, #330000 50%, #1a0000 75%, #0a0a0a 100%),
-        radial-gradient(circle at 30% 70%, rgba(255, 68, 68, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 70% 30%, rgba(204, 0, 0, 0.1) 0%, transparent 50%),
+        linear-gradient(135deg, #000000 0%, #1a0000 25%, #330000 50%, #1a0000 75%, #000000 100%),
+        radial-gradient(circle at 30% 70%, rgba(255, 68, 68, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 70% 30%, rgba(204, 0, 0, 0.15) 0%, transparent 50%),
         repeating-linear-gradient(
             45deg,
             transparent,
-            transparent 10px,
-            rgba(255, 68, 68, 0.02) 10px,
-            rgba(255, 68, 68, 0.02) 20px
+            transparent 5px,
+            rgba(255, 68, 68, 0.03) 5px,
+            rgba(255, 68, 68, 0.03) 10px
+        ),
+        repeating-linear-gradient(
+            -45deg,
+            transparent,
+            transparent 8px,
+            rgba(255, 0, 0, 0.02) 8px,
+            rgba(255, 0, 0, 0.02) 16px
         );
     display: flex;
     align-items: center;
@@ -124,16 +131,23 @@
 [data-theme="red"] body {
     font-family: 'Orbitron', monospace;
     background: 
-        linear-gradient(135deg, #0a0a0a 0%, #1a0000 25%, #330000 50%, #1a0000 75%, #0a0a0a 100%) fixed,
-        radial-gradient(circle at 20% 80%, rgba(255, 68, 68, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(204, 0, 0, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 40% 40%, rgba(255, 102, 102, 0.05) 0%, transparent 50%),
+        linear-gradient(135deg, #000000 0%, #1a0000 25%, #330000 50%, #1a0000 75%, #000000 100%) fixed,
+        radial-gradient(circle at 20% 80%, rgba(255, 68, 68, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(204, 0, 0, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(255, 102, 102, 0.1) 0%, transparent 50%),
         repeating-linear-gradient(
             45deg,
             transparent,
-            transparent 10px,
-            rgba(255, 68, 68, 0.02) 10px,
-            rgba(255, 68, 68, 0.02) 20px
+            transparent 5px,
+            rgba(255, 68, 68, 0.03) 5px,
+            rgba(255, 68, 68, 0.03) 10px
+        ),
+        repeating-linear-gradient(
+            -45deg,
+            transparent,
+            transparent 8px,
+            rgba(255, 0, 0, 0.02) 8px,
+            rgba(255, 0, 0, 0.02) 16px
         );
     position: relative;
 }
@@ -1100,4 +1114,184 @@ a:hover, button:hover {
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
+}
+
+/* Новые анимированные элементы */
+.star {
+    width: 30px;
+    height: 30px;
+    background: radial-gradient(circle, #ff6666, transparent);
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    animation: floatShape 25s linear infinite;
+    opacity: 0.1;
+    border: 2px solid var(--primary-color);
+    will-change: transform;
+}
+
+.diamond {
+    width: 25px;
+    height: 25px;
+    background: linear-gradient(45deg, #cc0000, #ff4444);
+    transform: rotate(45deg);
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    animation: floatShape 22s linear infinite;
+    opacity: 0.1;
+    border: 2px solid var(--primary-color);
+    will-change: transform;
+}
+
+.cross {
+    width: 28px;
+    height: 28px;
+    background: linear-gradient(45deg, #ff4444, #cc0000);
+    clip-path: polygon(40% 0%, 60% 0%, 60% 40%, 100% 40%, 100% 60%, 60% 60%, 60% 100%, 40% 100%, 40% 60%, 0% 60%, 0% 40%, 40% 40%);
+    animation: floatShape 28s linear infinite;
+    opacity: 0.1;
+    border: 2px solid var(--primary-color);
+    will-change: transform;
+}
+
+/* Позиции для новых фигур */
+.shape:nth-child(13) { top: 15%; left: 85%; animation-delay: 36s; }
+.shape:nth-child(14) { top: 85%; left: 15%; animation-delay: 39s; }
+.shape:nth-child(15) { top: 25%; left: 75%; animation-delay: 42s; }
+.shape:nth-child(16) { top: 75%; left: 25%; animation-delay: 45s; }
+.shape:nth-child(17) { top: 35%; left: 65%; animation-delay: 48s; }
+.shape:nth-child(18) { top: 65%; left: 35%; animation-delay: 51s; }
+
+/* Анимированные частицы */
+.particles-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: #ff4444;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #ff4444;
+    animation: particleFloat 15s linear infinite;
+}
+
+.particle:nth-child(1) { left: 10%; animation-delay: 0s; }
+.particle:nth-child(2) { left: 20%; animation-delay: 3s; }
+.particle:nth-child(3) { left: 30%; animation-delay: 6s; }
+.particle:nth-child(4) { left: 40%; animation-delay: 9s; }
+.particle:nth-child(5) { left: 50%; animation-delay: 12s; }
+.particle:nth-child(6) { left: 60%; animation-delay: 15s; }
+.particle:nth-child(7) { left: 70%; animation-delay: 18s; }
+.particle:nth-child(8) { left: 80%; animation-delay: 21s; }
+.particle:nth-child(9) { left: 90%; animation-delay: 24s; }
+.particle:nth-child(10) { left: 95%; animation-delay: 27s; }
+
+@keyframes particleFloat {
+    0% {
+        transform: translateY(100vh) scale(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+        transform: translateY(90vh) scale(1);
+    }
+    90% {
+        opacity: 1;
+        transform: translateY(10vh) scale(1);
+    }
+    100% {
+        transform: translateY(-10vh) scale(0);
+        opacity: 0;
+    }
+}
+
+/* Матричные линии */
+.matrix-lines {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.matrix-line {
+    position: absolute;
+    width: 2px;
+    height: 100px;
+    background: linear-gradient(to bottom, transparent, #ff4444, transparent);
+    animation: matrixFall 8s linear infinite;
+    opacity: 0.3;
+}
+
+.matrix-line:nth-child(1) { left: 5%; animation-delay: 0s; }
+.matrix-line:nth-child(2) { left: 25%; animation-delay: 2s; }
+.matrix-line:nth-child(3) { left: 45%; animation-delay: 4s; }
+.matrix-line:nth-child(4) { left: 65%; animation-delay: 6s; }
+.matrix-line:nth-child(5) { left: 85%; animation-delay: 8s; }
+
+@keyframes matrixFall {
+    0% {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.3;
+    }
+    90% {
+        opacity: 0.3;
+    }
+    100% {
+        transform: translateY(100vh);
+        opacity: 0;
+    }
+}
+
+/* Статистики */
+.stats-container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.stat-item {
+    text-align: center;
+    background: linear-gradient(135deg, rgba(255, 68, 68, 0.1), rgba(204, 0, 0, 0.1));
+    border: 2px solid #cc0000;
+    border-radius: 15px;
+    padding: 1rem;
+    min-width: 120px;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    box-shadow: 0 0 20px rgba(255, 68, 68, 0.2);
+}
+
+.stat-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(255, 68, 68, 0.4);
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ff4444;
+    text-shadow: 0 0 15px #ff4444;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #ff6666;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
