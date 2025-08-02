@@ -56,17 +56,15 @@
         return true;
     }
 
-    // 🖱️ Блокировка правого клика
+    // 🖱️ Блокировка правого клика (уже включена в антипастинг)
     function blockRightClick() {
-        document.addEventListener('contextmenu', function(e) {
-            e.preventDefault();
-            logAttempt('rightclick', { x: e.clientX, y: e.clientY });
-            return false;
-        });
+        // Функция оставлена для совместимости, но логика перенесена в blockCopyPaste
+        return true;
     }
 
-    // 📋 Блокировка копирования
+    // 📋 Блокировка копирования и антипастинг
     function blockCopyPaste() {
+        // Блокировка копирования
         document.addEventListener('copy', function(e) {
             e.preventDefault();
             logAttempt('copy', { selection: window.getSelection().toString() });
@@ -79,9 +77,46 @@
             return false;
         });
         
+        // Антипастинг - блокировка вставки
         document.addEventListener('paste', function(e) {
             e.preventDefault();
             logAttempt('paste', {});
+            return false;
+        });
+        
+        // Дополнительная защита от вставки через input/textarea
+        document.addEventListener('paste', function(e) {
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+                e.preventDefault();
+                logAttempt('paste_input', { target: e.target.tagName });
+                return false;
+            }
+        });
+        
+        // Блокировка drag & drop
+        document.addEventListener('drop', function(e) {
+            e.preventDefault();
+            logAttempt('drop', {});
+            return false;
+        });
+        
+        // Блокировка выделения текста
+        document.addEventListener('selectstart', function(e) {
+            e.preventDefault();
+            logAttempt('select', {});
+            return false;
+        });
+        
+        // Блокировка выделения через CSS
+        document.body.style.userSelect = 'none';
+        document.body.style.webkitUserSelect = 'none';
+        document.body.style.mozUserSelect = 'none';
+        document.body.style.msUserSelect = 'none';
+        
+        // Блокировка контекстного меню для всех элементов
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            logAttempt('contextmenu', { target: e.target.tagName });
             return false;
         });
     }

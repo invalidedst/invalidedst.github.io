@@ -1,61 +1,43 @@
-// Дополнительные анимации и интерактивные эффекты + переключение тем
+// Дополнительные анимации и интерактивные эффекты
 (function() {
     'use strict';
 
-    // Переключение тем
-    function initThemeSwitcher() {
-        const themeToggle = document.querySelector('.theme-toggle');
-        const themeMenu = document.querySelector('.theme-menu');
-        const themeButtons = document.querySelectorAll('.theme-btn');
-        const body = document.body;
+    // Экран загрузки
+    function initLoadingScreen() {
+        const loadingScreen = document.getElementById('loading-screen');
+        const mainContent = document.getElementById('main-content');
         
-        // Загружаем сохраненную тему
-        const savedTheme = localStorage.getItem('bioTheme') || 'red';
-        body.setAttribute('data-theme', savedTheme);
-        
-        // Обновляем активную кнопку
-        themeButtons.forEach(btn => {
-            btn.classList.remove('active');
-            if (btn.dataset.theme === savedTheme) {
-                btn.classList.add('active');
-            }
-        });
-        
-        // Обработчик для кнопки открытия/закрытия меню
-        themeToggle.addEventListener('click', () => {
-            themeMenu.classList.toggle('open');
-        });
-        
-        // Закрытие меню при клике вне его
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('.theme-switcher')) {
-                themeMenu.classList.remove('open');
-            }
-        });
-        
-        // Добавляем обработчики событий для кнопок тем
-        themeButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const theme = button.dataset.theme;
+        // Скрываем экран загрузки через 2 секунды
+        setTimeout(() => {
+            loadingScreen.classList.add('hidden');
+            
+            // Показываем основной контент с плавной анимацией
+            setTimeout(() => {
+                mainContent.style.transition = 'opacity 1s ease-in-out';
+                mainContent.style.opacity = '1';
                 
-                // Убираем активный класс у всех кнопок
-                themeButtons.forEach(btn => btn.classList.remove('active'));
-                
-                // Добавляем активный класс к выбранной кнопке
-                button.classList.add('active');
-                
-                // Плавный переход
-                body.style.transition = 'all 0.5s ease';
-                body.setAttribute('data-theme', theme);
-                
-                // Сохраняем тему
-                localStorage.setItem('bioTheme', theme);
-                
+                // Добавляем анимации появления для элементов
+                animateElements();
+            }, 500);
+        }, 2000);
+    }
 
-                
-                // Закрываем меню
-                themeMenu.classList.remove('open');
-            });
+    // Анимация появления элементов
+    function animateElements() {
+        const elements = [
+            '.profile-header',
+            '.social-links:nth-child(1)',
+            '.social-links:nth-child(2)',
+            '.bio-section'
+        ];
+        
+        elements.forEach((selector, index) => {
+            const element = document.querySelector(selector);
+            if (element) {
+                setTimeout(() => {
+                    element.classList.add('animate');
+                }, index * 200);
+            }
         });
     }
 
@@ -99,37 +81,21 @@
                 position: absolute;
                 color: #ff0000;
                 font-size: ${size}px;
-                font-weight: bold;
-                text-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
-                opacity: 0.3;
-                transform: rotate(${Math.random() * 360}deg);
-                animation: flySwastika ${duration}s linear infinite;
-                animation-delay: ${delay}s;
                 left: ${startX}px;
                 top: ${startY}px;
+                animation: flySwastika ${duration}s linear infinite;
+                animation-delay: ${delay}s;
+                opacity: 0.3;
+                text-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+                pointer-events: none;
+                user-select: none;
             `;
             
             swastikasContainer.appendChild(swastika);
         }
     }
 
-    // Установка текущей даты
-    document.addEventListener('DOMContentLoaded', function() {
-        const currentDateElement = document.getElementById('current-date');
-        if (currentDateElement) {
-            const now = new Date();
-            const options = { 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit'
-            };
-            currentDateElement.textContent = now.toLocaleDateString('ru-RU', options);
-        }
-    });
-
-    // Оптимизированное создание снежинок
+    // Создание динамических снежинок
     function createDynamicSnowflakes() {
         const snowflakesContainer = document.getElementById('snowflakes');
         if (!snowflakesContainer) return;
@@ -137,49 +103,120 @@
         // Очищаем существующие снежинки
         snowflakesContainer.innerHTML = '';
         
-        // Создаем только 15 снежинок для оптимизации
-        for (let i = 0; i < 15; i++) {
+        // Создаем 50 снежинок
+        for (let i = 0; i < 50; i++) {
             const snowflake = document.createElement('div');
             snowflake.className = 'snowflake';
+            snowflake.innerHTML = '❄';
             
-            // Простые символы
-            const currentTheme = document.body.getAttribute('data-theme');
-            snowflake.innerHTML = currentTheme === 'red' ? '❄' : '💖';
+            // Случайные параметры
+            const size = 8 + Math.random() * 12; // 8-20px
+            const startX = Math.random() * window.innerWidth;
+            const duration = 8 + Math.random() * 12; // 8-20 секунд
+            const delay = Math.random() * 5; // 0-5 секунд задержки
             
-            // Простые параметры
-            snowflake.style.left = Math.random() * 100 + '%';
-            snowflake.style.top = Math.random() * 100 + 'vh';
-            snowflake.style.animationDelay = Math.random() * 10 + 's';
-            snowflake.style.animationDuration = (8 + Math.random() * 12) + 's';
-            snowflake.style.fontSize = (0.8 + Math.random() * 1.2) + 'rem';
-            snowflake.style.opacity = 0.6 + Math.random() * 0.4;
+            snowflake.style.cssText = `
+                position: absolute;
+                left: ${startX}px;
+                top: -20px;
+                font-size: ${size}px;
+                animation: snowfall ${duration}s linear infinite;
+                animation-delay: ${delay}s;
+                pointer-events: none;
+                user-select: none;
+            `;
             
             snowflakesContainer.appendChild(snowflake);
         }
     }
 
-    // Запуск всех эффектов после загрузки DOM
-    document.addEventListener('DOMContentLoaded', function() {
-        // Инициализируем переключатель тем
-        initThemeSwitcher();
+    // Интерактивные эффекты для ссылок
+    function initInteractiveEffects() {
+        const socialLinks = document.querySelectorAll('.social-link');
         
-        // Создаем динамические снежинки
+        socialLinks.forEach(link => {
+            link.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.05) translateY(-2px)';
+                this.style.boxShadow = '0 10px 30px rgba(255, 68, 68, 0.4)';
+            });
+            
+            link.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1) translateY(0)';
+                this.style.boxShadow = '0 5px 15px rgba(255, 68, 68, 0.2)';
+            });
+            
+            link.addEventListener('click', function(e) {
+                // Создаем эффект клика
+                const ripple = document.createElement('div');
+                ripple.style.cssText = `
+                    position: absolute;
+                    border-radius: 50%;
+                    background: rgba(255, 68, 68, 0.6);
+                    transform: scale(0);
+                    animation: ripple 0.6s linear;
+                    pointer-events: none;
+                `;
+                
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                
+                this.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+    }
+
+    // Добавляем CSS для ripple эффекта
+    function addRippleStyles() {
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+
+    // Инициализация всех функций
+    function init() {
+        // Добавляем стили для ripple эффекта
+        addRippleStyles();
+        
+        // Инициализируем экран загрузки
+        initLoadingScreen();
+        
+        // Создаем анимированные элементы
+        createFlyingSwastikas();
         createDynamicSnowflakes();
         
-        // Создаем летающие свастики
-        createFlyingSwastikas();
-        
-        console.log('❄️ Сайт загружен и оптимизирован');
-    });
-
-    // Эффект загрузки страницы
-    window.addEventListener('load', function() {
-        document.body.style.opacity = '0';
-        document.body.style.transition = 'opacity 1s ease-in-out';
-        
+        // Инициализируем интерактивные эффекты после загрузки
         setTimeout(() => {
-            document.body.style.opacity = '1';
-        }, 100);
-    });
+            initInteractiveEffects();
+        }, 3000);
+        
+        // Обновляем снежинки при изменении размера окна
+        window.addEventListener('resize', () => {
+            createDynamicSnowflakes();
+            createFlyingSwastikas();
+        });
+    }
 
+    // Запускаем инициализацию после загрузки DOM
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
 })();

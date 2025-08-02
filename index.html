@@ -28,97 +28,25 @@
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <link rel="stylesheet" href="styles.css?v=25">
-    
-    <!-- Переключатель тем -->
-    <style>
-        .theme-switcher {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-            background: rgba(0, 0, 0, 0.8);
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .theme-toggle {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-            border-radius: 50%;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-        
-        .theme-toggle:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 20px var(--primary-color);
-        }
-        
-        .theme-menu {
-            display: none;
-            flex-direction: column;
-            gap: 8px;
-            padding: 10px;
-            margin-top: 5px;
-        }
-        
-        .theme-menu.open {
-            display: flex;
-        }
-        
-        .theme-btn {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-        
-        .theme-btn:hover {
-            transform: scale(1.2);
-            border-color: rgba(255, 255, 255, 0.8);
-        }
-        
-        .theme-btn.active {
-            transform: scale(1.3);
-            border-color: white;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
-        }
-        
-        .theme-red { background: linear-gradient(45deg, #ff0000, #cc0000); }
-        .theme-green { background: linear-gradient(45deg, #00ff00, #00cc00); }
-        .theme-purple { background: linear-gradient(45deg, #aa00ff, #6600cc); }
-        .theme-pink { background: linear-gradient(45deg, #ff69b4, #ff1493); }
-        .theme-blue { background: linear-gradient(45deg, #00aaff, #0066cc); }
-        .theme-winter { background: linear-gradient(45deg, #87ceeb, #4682b4); }
-
-    </style>
+    <link rel="stylesheet" href="styles.css?v=26">
 </head>
-  <body data-theme="red">
-      <!-- Переключатель тем -->
-      <div class="theme-switcher">
-          <button class="theme-toggle" title="Сменить тему">
-              <i class="fas fa-palette"></i>
-          </button>
-          <div class="theme-menu">
-              <div class="theme-btn theme-red active" data-theme="red" title="Красная тема"></div>
-          </div>
-      </div>
+<body data-theme="red">
+    <!-- Экран загрузки -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-logo">
+                <i class="fas fa-skull-crossbones"></i>
+            </div>
+            <div class="loading-text">
+                <span class="loading-name">Aeza</span>
+                <div class="loading-bar">
+                    <div class="loading-progress"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-      <!-- Фоновые анимированные элементы -->
+    <!-- Фоновые анимированные элементы -->
     <div class="snowflakes" id="snowflakes">
         <!-- Снежинки будут генерироваться динамически -->
     </div>
@@ -134,10 +62,8 @@
         <div class="shape circle"></div>
     </div>
 
-
-
     <!-- Основной контент -->
-    <div class="container">
+    <div class="container" id="main-content" style="opacity: 0;">
         <header class="profile-header">
             <div class="profile-avatar">
                 <div class="avatar-border">
@@ -300,10 +226,13 @@
         </section>
     </div>
 
-
+    <!-- Копирайт -->
+    <div class="copyright">
+        © 2025 xelvorn. Все права защищены.
+    </div>
 
     <!-- Защитные скрипты -->
-    <script src="protection.js?v=25"></script>
-    <script src="animations.js?v=25"></script>
+    <script src="protection.js?v=26"></script>
+    <script src="animations.js?v=26"></script>
 </body>
 </html>
