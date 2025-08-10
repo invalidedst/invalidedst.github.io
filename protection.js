@@ -1,5 +1,5 @@
 // 🔒 ЗАЩИТА ОТ КРАЖИ КОДА - AEZA BIO
-// Автор: AEZA
+// Автор: RAZE/AEZA
 // Версия: 2.0
 // Дата: 2024
 
@@ -8,7 +8,7 @@
     
     // 🔐 Основные настройки защиты
     const PROTECTION_CONFIG = {
-        author: 'AEZA',
+        author: 'RAZE',
         version: '2.0',
         domain: window.location.hostname,
         timestamp: Date.now(),
