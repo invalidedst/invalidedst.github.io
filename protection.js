@@ -1,5 +1,5 @@
-// 🔒 ЗАЩИТА ОТ КРАЖИ КОДА - AEZA BIO
-// Автор: RAZE/AEZA
+// 🔒 ЗАЩИТА ОТ КРАЖИ КОДА - RAZE BIO
+// Автор: RAZE
 // Версия: 2.0
 // Дата: 2024
 
@@ -225,7 +225,7 @@
 
     // 🚀 Инициализация защиты
     function initProtection() {
-        console.log('🛡️ Защита AEZA BIO активирована');
+        console.log('🛡️ Защита RAZE BIO активирована');
         
         if (PROTECTION_CONFIG.checks.devTools) {
             checkDevTools();
@@ -263,7 +263,7 @@
     }
 
     // 🌐 Глобальные функции для внешнего доступа
-    window.AEZA_PROTECTION = {
+    window.RAZE_PROTECTION = {
         config: PROTECTION_CONFIG,
         logAttempt: logAttempt,
         checkDevTools: checkDevTools
